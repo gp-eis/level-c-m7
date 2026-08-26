@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-US" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="en-US">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Week Song — Level C Month 7</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="lesson-page talk-song-page">
+  <main class="talk-song-shell">
+    <a class="back-link talk-song-back" id="talk-song-back" href="../index.html">⬅️ Back to Literacy</a>
+
+    <header class="talk-song-header">
+      <h1>🎵 Week Song</h1>
+      <p id="talk-song-week">Level C · Month 7</p>
+    </header>
+
+    <section class="talk-song-card" aria-label="Week Song video player">
+      <div class="video-play-shell">
+        <video
+          id="talk-song-video"
+          class="talk-song-video"
+          controls
+          playsinline
+          preload="metadata"
+          aria-label="Level C Month 7 Week Song video"
+        ></video>
+        <button id="talk-song-play" class="center-video-play" type="button" aria-label="Play the Week Song">▶</button>
+      </div>
+      <p class="talk-song-note">Press play, sing, and move along!</p>
+    </section>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const requestedWeek = Number(params.get('week'));
+      const weekNumber = requestedWeek >= 1 && requestedWeek <= 4 ? requestedWeek : 1;
+      const week = window.LEVEL_C_M7 && window.LEVEL_C_M7.weeks[weekNumber];
+      const returnTarget = params.get('return') || '';
+      const safeReturn = /^week-[1-4]-page-\d{2}\.html#lesson-focus$/.test(returnTarget);
+      const back = document.querySelector('#talk-song-back');
+      const label = document.querySelector('#talk-song-week');
+      const video = document.querySelector('#talk-song-video');
+      const play = document.querySelector('#talk-song-play');
+      const songSources = {
+        2: '../assets/video/literacy/week-2-talk-song.mp4',
+        3: '../assets/video/literacy/week-3-talk-song.mp4',
+        4: '../assets/video/literacy/week-4-talk-song.mp4'
+      };
+
+      back.href = safeReturn ? returnTarget : `../week-${weekNumber}.html#card-literacy`;
+      back.textContent = `⬅️ Back to Week ${weekNumber} Literacy`;
+      label.textContent = week ? `Week ${weekNumber} — ${week.title}` : `Week ${weekNumber}`;
+      document.title = `Week Song — Week ${weekNumber} — Level C Month 7`;
+
+      video.src = songSources[weekNumber] || '../assets/video/literacy/c-song-m7.mp4';
+      video.setAttribute('aria-label', `Level C Month 7 Week ${weekNumber} Week Song video`);
+
+      play.addEventListener('click', () => video.play());
+      video.addEventListener('play', () => { play.hidden = true; });
+      video.addEventListener('pause', () => { play.hidden = video.ended; });
+      video.addEventListener('ended', () => { play.hidden = false; });
+    })();
+  </script>
+</body>
+</html>

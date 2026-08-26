@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-US" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Animal Actions Activity — Literacy Week 1</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="lesson-page literacy-reading-activity-page">
+  <main class="page level-c-literacy-quiz-page">
+    <a class="back-link" href="week-1-page-01.html#lesson-focus">⬅️ Back to Video</a>
+
+    <header class="literacy-quiz-header">
+      <h1 class="big-title">Animal Actions Challenge</h1>
+      <p class="subtitle">Look carefully and choose the correct answer!</p>
+    </header>
+
+    <section class="literacy-quiz-board" aria-labelledby="quiz-question">
+      <div class="literacy-quiz-progress" aria-label="Activity progress">
+        <span id="quiz-progress-label">Question 1 of 4</span>
+        <span class="literacy-progress-dots" id="quiz-progress-dots" aria-hidden="true"></span>
+      </div>
+
+      <div class="literacy-question-card">
+        <div class="literacy-question-visual" id="quiz-question-visual" data-base-class="literacy-question-visual" role="img" aria-label="A dog"></div>
+        <div class="literacy-question-copy">
+          <h2 id="quiz-question">What is the dog doing?</h2>
+          <p id="quiz-question-detail">The dog is sitting.</p>
+        </div>
+        <button class="literacy-listen-button" id="quiz-listen" type="button" aria-label="Listen to the question">🔊</button>
+      </div>
+
+      <div class="literacy-answer-grid" id="quiz-answers"></div>
+      <p class="literacy-quiz-feedback" id="quiz-feedback" aria-live="polite"></p>
+
+      <div class="literacy-quiz-complete" id="quiz-complete" hidden>
+        <div class="literacy-complete-icon" aria-hidden="true">🏆</div>
+        <h2>Great job!</h2>
+        <p>You remembered all four animal actions!</p>
+        <div class="literacy-complete-actions">
+          <button class="pill-btn green" id="quiz-restart" type="button">🔄 Try Again</button>
+          <a class="pill-btn blue" href="week-1-page-01.html#lesson-focus">🎬 Back to Video</a>
+          <a class="pill-btn orange" href="week-1-page-02.html#lesson-focus">Next Page ➡️</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/literacy-reading-activity.js"></script>
+</body>
+</html>

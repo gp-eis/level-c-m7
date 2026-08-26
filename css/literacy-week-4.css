@@ -1,0 +1,276 @@
+.w4-wrap {
+  position: relative;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  overscroll-behavior-inline: contain;
+  border-radius: 22px;
+  scrollbar-color: #79bfe9 #eef8ff;
+}
+.w4-stage {
+  position: relative;
+  width: 100%;
+  min-width: 900px;
+  overflow: hidden;
+  isolation: isolate;
+  touch-action: manipulation;
+}
+.w4-stage > .activity-sheet-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.w4-page2-stage { aspect-ratio: 1412 / 1114; }
+.w4-page4-stage,
+.w4-page5-stage { aspect-ratio: 1536 / 1024; }
+.w4-page3-stage { aspect-ratio: 1672 / 941; }
+.w4-page6-stage,
+.w4-page7-stage { aspect-ratio: 1412 / 1114; }
+.w4-feedback {
+  min-height: 38px;
+  margin: 18px auto 2px !important;
+  color: #285d80;
+  font: 900 clamp(1rem, 2.4vw, 1.2rem) var(--font-friendly);
+  text-align: center;
+}
+.w4-feedback.is-correct { color: #2f8a28; }
+.w4-feedback.is-wrong { color: #d23b47; }
+.w4-actions { display: flex; justify-content: center; gap: 12px; margin-top: 8px; }
+.w4-action {
+  min-width: 108px;
+  min-height: 48px;
+  padding: 8px 22px;
+  border: 4px solid #fff;
+  border-radius: 999px;
+  background: linear-gradient(#7bd957, #42a62f);
+  color: #fff;
+  box-shadow: 0 5px 0 #236f23;
+  font: 900 1rem var(--font-friendly);
+  cursor: pointer;
+}
+.w4-action.secondary { background: linear-gradient(#5ac9ff, #218ccf); box-shadow-color: #176aa5; }
+.w4-action:focus-visible,
+.w4-speaker:focus-visible,
+.w4-counter button:focus-visible,
+.w4-choice:focus-visible,
+.w4-match-endpoint:focus-visible { outline: 5px solid #ffd54f; outline-offset: 3px; }
+.w4-speaker {
+  position: absolute;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: linear-gradient(#5bd0ff, #168ed7);
+  color: #fff;
+  box-shadow: 0 3px 0 #096ba9;
+  cursor: pointer;
+}
+
+/* Page 2: bird tracing and shape counters. */
+.w4-page2-speaker-sentence { left: 10.2%; top: 82.5%; }
+.w4-page2-speaker-question { left: 50.6%; }
+.w4-page2-speaker-question[data-question="0"] { top: 41%; }
+.w4-page2-speaker-question[data-question="1"] { top: 58.1%; }
+.w4-page2-speaker-question[data-question="2"] { top: 75.2%; }
+.w4-trace-word {
+  position: absolute;
+  z-index: 7;
+  left: 28.35%;
+  top: 82.2%;
+  width: 9.9%;
+  height: 8.2%;
+  border: 4px dashed rgba(30,111,217,.55);
+  border-radius: 14px;
+  background: rgba(255,255,255,.08);
+  cursor: pointer;
+}
+.w4-trace-word:hover { background: rgba(207,237,255,.35); }
+.w4-trace-result {
+  position: absolute;
+  z-index: 8;
+  left: 28.6%;
+  top: 83.2%;
+  width: 9.5%;
+  height: 6.8%;
+  object-fit: contain;
+  pointer-events: none;
+}
+.w4-counter {
+  position: absolute;
+  z-index: 7;
+  left: 82.05%;
+  width: 12.2%;
+  height: 11.2%;
+  transform: translateY(-50%);
+}
+.w4-counter[data-question="0"] { top: 45.4%; }
+.w4-counter[data-question="1"] { top: 62.25%; }
+.w4-counter[data-question="2"] { top: 79.15%; }
+.w4-counter output {
+  position: absolute;
+  inset: 6% 29% 6% 4%;
+  display: grid;
+  place-items: center;
+  color: #173b67;
+  font: 1000 clamp(1.2rem, 2.8vw, 2rem) var(--font-friendly);
+}
+.w4-counter-steps { position: absolute; right: 3%; top: 7%; display: grid; gap: 4px; }
+.w4-counter button {
+  min-width: 28px;
+  height: 26px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 7px;
+  background: #ffd45a;
+  color: #7c4300;
+  box-shadow: 0 2px 0 #d99013;
+  font-weight: 1000;
+  cursor: pointer;
+}
+.w4-counter .w4-counter-go {
+  position: absolute;
+  right: 1%;
+  bottom: -19%;
+  min-width: 42px;
+  background: #55b637;
+  color: #fff;
+  box-shadow: 0 3px 0 #33831a;
+}
+.w4-counter-status { position: absolute; left: 4%; top: -12%; color: #d23b47; font-size: 1.5rem; font-weight: 1000; }
+.w4-counter.is-correct output { color: #31931f; }
+.w4-counter.is-correct .w4-counter-status { color: #31931f; }
+.w4-counter.is-wrong output { border-radius: 12px; background: rgba(255,112,112,.25); color: #c62828; animation: w4-shake .4s ease; }
+.w4-trace-overlay {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(23,38,63,.68);
+  backdrop-filter: blur(5px);
+}
+.w4-trace-overlay[hidden] { display: none; }
+.w4-trace-board {
+  position: relative;
+  width: min(780px, 100%);
+  padding: clamp(22px, 4vw, 38px);
+  border: 8px solid #fff;
+  border-radius: 34px;
+  background: linear-gradient(145deg,#f8fdff,#fff8d9);
+  box-shadow: 0 12px 0 #4a9ed0, 0 24px 50px rgba(0,0,0,.3);
+  text-align: center;
+}
+.w4-trace-board h2 { margin: 0; color: #1e6fd9; font-size: clamp(2rem,6vw,3rem); }
+.w4-trace-board p { color: #486c87; font-weight: 800; }
+.w4-trace-close { position: absolute; right: 14px; top: 12px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: #ef5350; color: #fff; font-size: 2rem; cursor: pointer; }
+.w4-canvas-shell { position: relative; width: 100%; aspect-ratio: 18 / 7; overflow: hidden; border: 6px solid #79bfe9; border-radius: 24px; background-color: #fff; background-image: linear-gradient(#dceef9 1px,transparent 1px),linear-gradient(90deg,#dceef9 1px,transparent 1px); background-size: 28px 28px; }
+.w4-trace-guide { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(66,78,91,.18); font: 900 clamp(7rem,22vw,12rem) var(--font-friendly); user-select: none; }
+.w4-trace-canvas { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+.w4-trace-actions { display: flex; justify-content: center; gap: 14px; }
+
+/* Page 3: connect each sentence beginning to its ending. */
+.w4-match-svg { position: absolute; z-index: 4; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.w4-match-line { stroke-width: 5; stroke-linecap: round; filter: drop-shadow(0 2px 1px rgba(0,0,0,.22)); }
+.w4-match-endpoint {
+  position: absolute;
+  z-index: 7;
+  width: 3%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #111;
+  box-shadow: 0 3px 7px rgba(0,0,0,.3);
+  transform: translate(-50%,-50%);
+  cursor: pointer;
+}
+.w4-match-source { left: 72.85%; }
+.w4-match-target { left: 80.75%; }
+.w4-match-endpoint[data-row="0"] { top: 40.5%; }
+.w4-match-endpoint[data-row="1"] { top: 57.5%; }
+.w4-match-endpoint[data-row="2"] { top: 74.6%; }
+.w4-match-endpoint.is-selected { background: #ffd54f; box-shadow: 0 0 0 6px #176ac2; }
+.w4-match-endpoint.is-matched { background: #62c843; }
+.w4-match-endpoint.is-wrong { background: #ef5350; animation: w4-shake .4s ease; }
+
+/* Pages 4 and 5: circle every matching bird/time card. */
+.w4-bird-choice {
+  position: absolute;
+  z-index: 7;
+  width: 17.6%;
+  height: 18.8%;
+  border: 6px solid transparent;
+  border-radius: 46%;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease, transform .15s ease;
+}
+.w4-bird-choice[data-col="0"] { left: 5%; }
+.w4-bird-choice[data-col="1"] { left: 28.6%; }
+.w4-bird-choice[data-col="2"] { left: 52.1%; }
+.w4-bird-choice[data-col="3"] { left: 75.6%; }
+.w4-bird-choice[data-row="0"] { top: 24.3%; }
+.w4-bird-choice[data-row="1"] { top: 48.1%; }
+.w4-bird-choice[data-row="2"] { top: 72.2%; }
+.w4-bird-choice:hover { border-color: rgba(255,193,7,.8); }
+.w4-bird-choice[aria-pressed="true"] { border-color: #176ac2; background: rgba(187,225,255,.18); transform: scale(.98); }
+.w4-bird-choice.is-correct { border-color: #50b52d; background: rgba(220,255,204,.18); }
+.w4-bird-choice.is-wrong { border-color: #ef5350; background: rgba(255,225,229,.24); animation: w4-shake .4s ease; }
+.w4-bird-choice.is-missing { border-color: #ffad20; background: rgba(255,240,183,.25); }
+
+/* Page 6: park-rule O/X controls. */
+.w4-rule-speaker { transform: translate(-50%,-50%); }
+.w4-rule-control { position: absolute; z-index: 7; width: 10.6%; height: 5.8%; transform: translate(-50%,-50%); }
+.w4-rule-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 9%; height: 100%; }
+.w4-rule-choice,
+.w4-word-choice {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 0;
+  border: 3px solid #258ed0;
+  border-radius: 12px;
+  background: rgba(255,255,255,.96);
+  color: #1676b2;
+  box-shadow: 0 3px 0 #126eaa;
+  font: 1000 clamp(.9rem,1.9vw,1.45rem) var(--font-friendly);
+  cursor: pointer;
+}
+.w4-rule-choice[data-choice="X"] { border-color: #ef5350; color: #d63d43; box-shadow-color: #bd3037; }
+.w4-rule-choice.is-selected,
+.w4-word-choice.is-selected { border-color: #419f25; background: #e7f8df; color: #277c16; box-shadow: 0 3px 0 #2d831b; }
+.w4-rule-choice.is-wrong,
+.w4-word-choice.is-wrong { border-color: #a91d1d; background: #ef5350; color: #fff; box-shadow: 0 3px 0 #a91d1d; animation: w4-shake .4s ease; }
+
+/* Page 7: scary/scared grammar choices placed over the printed words. */
+.w4-grammar-speaker { left: 57.4%; transform: translate(-50%,-50%); }
+.w4-grammar-control { position: absolute; z-index: 7; height: 4.8%; transform: translateY(-50%); }
+.w4-word-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 4%; height: 100%; }
+.w4-word-choice { border-width: 3px; background: rgba(255,255,255,.12); color: transparent; font-size: 0; box-shadow: none; }
+.w4-word-choice[data-choice="scared"] { border-color: #ef5350; color: #d63d43; box-shadow-color: #bd3037; }
+.w4-word-choice[data-choice="scared"] { color: transparent; box-shadow: none; }
+.w4-word-choice.is-selected { background: rgba(231,248,223,.72); color: transparent; box-shadow: 0 0 0 3px rgba(65,159,37,.28); }
+.w4-word-choice.is-wrong { color: transparent; }
+
+@keyframes w4-shake {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(-7px); }
+  65% { transform: translateX(7px); }
+}
+@media (max-width: 820px) {
+  .w4-wrap { border-radius: 16px; }
+  .w4-stage { min-width: 820px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .w4-counter.is-wrong output,
+  .w4-match-endpoint.is-wrong,
+  .w4-bird-choice.is-wrong,
+  .w4-rule-choice.is-wrong,
+  .w4-word-choice.is-wrong { animation-duration: .01ms; }
+}

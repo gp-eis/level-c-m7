@@ -1,0 +1,446 @@
+/* Level C Month 7, Week 2 Literacy activities. The controls sit over the supplied worksheets. */
+.w2-interactive-wrap {
+  width: min(1040px,100%);
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  overscroll-behavior-inline: contain;
+  scrollbar-color: #ef7f9e #fff0f5;
+}
+
+.w2-activity-stage {
+  position: relative;
+  width: 100%;
+  min-width: 900px;
+  aspect-ratio: 1412 / 1114;
+  overflow: hidden;
+  background: #fff;
+}
+
+.w2-activity-stage .activity-sheet-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.w2-activity-feedback {
+  min-height: 36px;
+  margin: 18px auto 0 !important;
+  color: #315c7b;
+  font-family: var(--font-friendly);
+  font-size: 1.08rem !important;
+  font-weight: 900;
+  text-align: center;
+}
+
+.w2-speaker {
+  position: absolute;
+  z-index: 12;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: linear-gradient(180deg,#61d5ff,#168ed7);
+  color: #fff;
+  box-shadow: 0 4px 0 #096ba9,0 6px 12px rgba(30,58,95,.22);
+  font-size: .78rem;
+  cursor: pointer;
+  transition: transform .14s ease,filter .14s ease;
+}
+
+.w2-speaker:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.w2-speaker:active { transform: translateY(2px); box-shadow: 0 1px 0 #096ba9; }
+.w2-speaker:focus-visible,
+.w2-counter-step:focus-visible,
+.w2-counter-go:focus-visible,
+.w2p2-trace-word:focus-visible,
+.w2p2-trace-close:focus-visible,
+.w2p3-endpoint:focus-visible,
+.w2p5-animal:focus-visible,
+.w2p6-choice:focus-visible { outline: 5px solid #ffd54f; outline-offset: 3px; }
+
+.w2-counter {
+  position: absolute;
+  z-index: 10;
+  width: 9.5%;
+  height: 8.2%;
+  transform: translate(-50%,-50%);
+}
+
+.w2-counter-value {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: grid;
+  place-items: center;
+  width: 68%;
+  border-radius: 10px;
+  background: transparent;
+  color: #173b67;
+  font-family: var(--font-friendly);
+  font-size: clamp(1.15rem,2vw,1.65rem);
+  font-weight: 1000;
+}
+
+.w2-counter-steps {
+  position: absolute;
+  left: 72%;
+  top: 50%;
+  display: grid;
+  gap: 5px;
+  transform: translateY(-50%);
+}
+
+.w2-counter-step {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: #ffd45a;
+  color: #7c4300;
+  box-shadow: 0 2px 0 #d99013;
+  font-size: .78rem;
+  cursor: pointer;
+}
+
+.w2-counter-step:active { transform: translateY(1px); box-shadow: none; }
+.w2-counter-step:disabled,
+.w2-counter-go:disabled { cursor: default; opacity: .58; }
+
+.w2-counter-go {
+  position: absolute;
+  left: 34%;
+  top: calc(100% + 6px);
+  min-width: 39px;
+  height: 34px;
+  padding: 0 5px;
+  transform: translateX(-50%);
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(180deg,#79d753,#4aaa28);
+  color: #fff;
+  box-shadow: 0 4px 0 #33831a;
+  font-family: var(--font-friendly);
+  font-size: .72rem;
+  font-weight: 1000;
+  cursor: pointer;
+}
+
+.w2-counter-status {
+  position: absolute;
+  right: -9px;
+  top: -13px;
+  display: grid;
+  place-items: center;
+  min-width: 25px;
+  min-height: 25px;
+  border-radius: 50%;
+  background: #fff;
+  color: #d23b47;
+  box-shadow: 0 2px 5px rgba(30,58,95,.22);
+  font-size: 1.15rem;
+  font-weight: 1000;
+}
+
+.w2-counter-status:empty { display: none; }
+.w2-counter.is-correct .w2-counter-value { color: #388e1f; box-shadow: inset 0 0 0 4px rgba(74,170,40,.62); }
+.w2-counter.is-correct .w2-counter-status { color: #388e1f; }
+.w2-counter.is-wrong .w2-counter-value {
+  color: #c62828;
+  background: rgba(255,112,112,.2);
+  box-shadow: inset 0 0 0 4px #d94747;
+  animation: w2-wrong-shake .4s ease;
+}
+
+@keyframes w2-wrong-shake {
+  0%,100% { transform: translateX(0); }
+  25% { transform: translateX(-7px); }
+  75% { transform: translateX(7px); }
+}
+
+/* Page 2: trace duck and count tangram shapes. */
+.w2p2-stage { aspect-ratio: 1413 / 1113; }
+.w2p2-sentence-speaker { left: 11.5%; top: 80.8%; }
+.w2p2-question-speaker { left: 53.2%; }
+.w2p2-question-speaker-1 { top: 39.5%; }
+.w2p2-question-speaker-2 { top: 58.7%; }
+.w2p2-question-speaker-3 { top: 78.2%; }
+.w2p2-counter { left: 88.2%; }
+.w2p2-counter-1 { top: 43.8%; }
+.w2p2-counter-2 { top: 62.4%; }
+.w2p2-counter-3 { top: 81.5%; }
+
+.w2p2-trace-word {
+  position: absolute;
+  z-index: 9;
+  left: 27.2%;
+  top: 80.7%;
+  width: 15.7%;
+  height: 9.5%;
+  padding: 0;
+  border: 4px dashed rgba(30,111,217,.5);
+  border-radius: 15px;
+  background: rgba(255,255,255,.08);
+  cursor: crosshair;
+  transition: transform .14s ease,background .14s ease,border-color .14s ease;
+}
+.w2p2-trace-word:hover { transform: scale(1.025); border-color: #1e6fd9; background: rgba(207,237,255,.3); }
+.w2p2-trace-word.is-complete { border-color: transparent; background: transparent; }
+.w2p2-trace-result {
+  position: absolute;
+  z-index: 10;
+  left: 27.4%;
+  top: 81.4%;
+  width: 15.3%;
+  height: 8.2%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 0 #fff);
+}
+
+.w2p2-trace-open { overflow: hidden; }
+.w2p2-trace-overlay {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(23,38,63,.68);
+  backdrop-filter: blur(5px);
+}
+.w2p2-trace-overlay[hidden] { display: none; }
+.w2p2-trace-board {
+  position: relative;
+  width: min(860px,100%);
+  padding: clamp(22px,4vw,38px);
+  border: 8px solid #fff;
+  border-radius: 34px;
+  background: linear-gradient(145deg,#f8fdff,#fff1f6);
+  box-shadow: 0 12px 0 #e65b88,0 24px 50px rgba(0,0,0,.3);
+  text-align: center;
+}
+.w2p2-trace-board h2 { margin: 0; color: #d82968; font-size: clamp(2rem,6vw,3rem); }
+.w2p2-trace-board > p { margin: 7px 0 16px; color: #486c87; font-family: var(--font-friendly); font-weight: 800; }
+.w2p2-trace-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ef5350;
+  color: #fff;
+  box-shadow: 0 4px 0 #b62e34;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.w2p2-canvas-shell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 20 / 7;
+  overflow: hidden;
+  border: 6px solid #ef93ae;
+  border-radius: 24px;
+  background-color: #fff;
+  background-image: linear-gradient(#f4dce5 1px,transparent 1px),linear-gradient(90deg,#f4dce5 1px,transparent 1px);
+  background-size: 28px 28px;
+}
+.w2p2-trace-guide {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  color: #c8c8c8;
+  font-family: var(--font-friendly);
+  font-size: clamp(4rem,12vw,8.5rem);
+  font-weight: 1000;
+  letter-spacing: .02em;
+  transform: translate(-50%,-54%);
+  user-select: none;
+}
+.w2p2-trace-canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+.w2p2-trace-feedback { min-height: 28px; margin: 12px 0 0 !important; color: #315c7b; font-weight: 900; }
+.w2p2-trace-actions { display: flex; justify-content: center; gap: 12px; margin-top: 12px; }
+
+/* Page 3: compare sizes and connect sentence parts. */
+.w2p3-lines { position: absolute; z-index: 8; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.w2p3-line-outline { stroke: rgba(255,255,255,.96); stroke-width: 15; stroke-linecap: round; }
+.w2p3-line-color { stroke-width: 8; stroke-linecap: round; animation: w2-line-in .3s ease-out both; }
+.w2p3-preview { animation: none; opacity: .9; }
+@keyframes w2-line-in { from { opacity: 0; stroke-dasharray: 0 400; } to { opacity: 1; stroke-dasharray: 400 0; } }
+
+.w2p3-endpoint {
+  position: absolute;
+  z-index: 10;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  transform: translate(-50%,-50%);
+}
+.w2p3-endpoint::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 23px;
+  height: 23px;
+  border: 3px solid #111;
+  border-radius: 50%;
+  background: #111;
+  box-shadow: 0 0 0 3px #fff,0 3px 6px rgba(30,58,95,.25);
+  transform: translate(-50%,-50%);
+  transition: transform .14s ease,background .14s ease;
+}
+.w2p3-endpoint:hover::before { transform: translate(-50%,-50%) scale(1.15); }
+.w2p3-endpoint:active { cursor: grabbing; }
+.w2p3-subject { left: 70.18%; }
+.w2p3-ending { left: 83.36%; }
+.w2p3-row-1 { top: 37.97%; }
+.w2p3-row-2 { top: 49.19%; }
+.w2p3-row-3 { top: 60.5%; }
+.w2p3-row-4 { top: 71.63%; }
+.w2p3-endpoint.is-selected::before { background: #ffc928; box-shadow: 0 0 0 5px rgba(255,201,40,.5); }
+.w2p3-endpoint.is-matched::before { background: #55b932; border-color: #fff; }
+.w2p3-endpoint.is-example::before { background: #318bd2; border-color: #fff; }
+.w2p3-endpoint.is-wrong { animation: w2-wrong-shake .4s ease; }
+.w2p3-speaker { left: 54.2%; }
+.w2p3-speaker-1 { top: 36.2%; }
+.w2p3-speaker-2 { top: 47.5%; }
+.w2p3-speaker-3 { top: 58.8%; }
+.w2p3-speaker-4 { top: 70%; }
+
+/* Page 4: count ducks with yellow bodies. */
+.w2p4-counter-upper-left { left: 25.45%; top: 45.5%; }
+.w2p4-counter-upper-right { left: 70.35%; top: 48.2%; }
+.w2p4-counter-lower-left { left: 25.45%; top: 84.5%; }
+.w2p4-counter-lower-right { left: 70.35%; top: 84.5%; }
+.w2p4-speaker-upper-left { left: 6.2%; top: 25%; }
+.w2p4-speaker-upper-right { left: 51%; top: 25%; }
+.w2p4-speaker-lower-left { left: 6.2%; top: 57%; }
+.w2p4-speaker-lower-right { left: 51%; top: 57%; }
+
+/* Page 5: circle animals that swim and enter each total. */
+.w2p5-animal {
+  position: absolute;
+  z-index: 9;
+  width: 10.5%;
+  height: 19%;
+  padding: 0;
+  border: 5px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  transform: translate(-50%,-50%);
+  transition: border-color .14s ease,box-shadow .14s ease,transform .14s ease;
+}
+.w2p5-animal:hover { border-color: rgba(30,111,217,.35); transform: translate(-50%,-50%) scale(1.04); }
+.w2p5-animal.is-selected { border-color: #1e6fd9; box-shadow: 0 0 0 5px rgba(255,255,255,.9),0 0 0 9px rgba(30,111,217,.35); }
+.w2p5-animal.is-correct { border-color: #4aaa28; box-shadow: 0 0 0 5px rgba(255,255,255,.9),0 0 0 9px rgba(74,170,40,.32); }
+.w2p5-animal.is-wrong-selection { border-color: #e13f49; box-shadow: 0 0 0 5px rgba(255,255,255,.9),0 0 0 9px rgba(225,63,73,.3); animation: w2-wrong-shake .4s ease; }
+.w2p5-animal-upper-left-1 { left: 11.8%; top: 32.4%; }
+.w2p5-animal-upper-left-2 { left: 21.8%; top: 31.6%; height: 21%; }
+.w2p5-animal-upper-left-3 { left: 32.3%; top: 32.3%; }
+.w2p5-animal-upper-left-4 { left: 42%; top: 32.2%; }
+.w2p5-animal-upper-right-1 { left: 57.3%; top: 32.3%; }
+.w2p5-animal-upper-right-2 { left: 67.2%; top: 32.5%; }
+.w2p5-animal-upper-right-3 { left: 77.4%; top: 32.5%; }
+.w2p5-animal-upper-right-4 { left: 88.3%; top: 32.5%; }
+.w2p5-animal-lower-left-1 { left: 12%; top: 68%; }
+.w2p5-animal-lower-left-2 { left: 22.9%; top: 67.4%; }
+.w2p5-animal-lower-left-3 { left: 34%; top: 67.3%; }
+.w2p5-animal-lower-left-4 { left: 44%; top: 67.2%; }
+.w2p5-animal-lower-right-1 { left: 57.7%; top: 67.5%; }
+.w2p5-animal-lower-right-2 { left: 68.3%; top: 67.6%; }
+.w2p5-animal-lower-right-3 { left: 78.5%; top: 67.5%; }
+.w2p5-animal-lower-right-4 { left: 88.7%; top: 67.2%; }
+.w2p5-counter-upper-left { left: 25%; top: 46%; }
+.w2p5-counter-upper-right { left: 70%; top: 46%; }
+.w2p5-counter-lower-left { left: 25%; top: 82.3%; }
+.w2p5-counter-lower-right { left: 70%; top: 82.3%; }
+.w2p5-speaker-upper-left { left: 6.3%; top: 22.7%; }
+.w2p5-speaker-upper-right { left: 51.4%; top: 22.7%; }
+.w2p5-speaker-lower-left { left: 6.3%; top: 57.8%; }
+.w2p5-speaker-lower-right { left: 51.4%; top: 57.8%; }
+
+/* Page 6: choose O or X for each garden rule. */
+.w2p6-rule {
+  position: absolute;
+  z-index: 10;
+  width: 10.5%;
+  height: 5.7%;
+  transform: translate(-50%,-50%);
+}
+.w2p6-rule-left-1,.w2p6-rule-left-2,.w2p6-rule-left-3,.w2p6-rule-left-4 { left: 36.7%; }
+.w2p6-rule-right-1,.w2p6-rule-right-2,.w2p6-rule-right-3,.w2p6-rule-right-4 { left: 80.5%; }
+.w2p6-rule-left-1,.w2p6-rule-right-1 { top: 43.2%; }
+.w2p6-rule-left-2,.w2p6-rule-right-2 { top: 60.4%; }
+.w2p6-rule-left-3,.w2p6-rule-right-3 { top: 77%; }
+.w2p6-rule-left-4,.w2p6-rule-right-4 { top: 93%; }
+.w2p6-choices { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 9%; }
+.w2p6-choice {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 3px solid #258ed0;
+  border-radius: 13px;
+  background: rgba(255,255,255,.94);
+  color: #1676b2;
+  box-shadow: 0 4px 0 #126eaa;
+  font-family: var(--font-friendly);
+  font-size: clamp(1rem,1.8vw,1.45rem);
+  font-weight: 1000;
+  cursor: pointer;
+}
+.w2p6-choice[data-choice="X"] { border-color: #ef5350; color: #d63d43; box-shadow: 0 4px 0 #bd3037; }
+.w2p6-choice:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.w2p6-choice:active { transform: translateY(2px); box-shadow: none; }
+.w2p6-choice:disabled { cursor: default; opacity: 1; }
+.w2p6-choice.is-selected { border-color: #419f25; background: #e7f8df; color: #277c16; box-shadow: 0 4px 0 #2d831b,0 0 0 4px rgba(100,205,61,.25); }
+.w2p6-choice.is-wrong-choice { border-color: #a91d1d; background: #ef5350; color: #fff; box-shadow: 0 4px 0 #a91d1d,0 0 0 5px rgba(239,83,80,.25); }
+.w2p6-status {
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  color: #3c9823;
+  font-size: 1.4rem;
+  font-weight: 1000;
+  transform: translateY(-50%);
+}
+.w2p6-rule.is-wrong .w2p6-status { color: #d0323c; }
+.w2p6-speaker-left-1,.w2p6-speaker-left-2,.w2p6-speaker-left-3,.w2p6-speaker-left-4 { left: 28.5%; }
+.w2p6-speaker-right-1,.w2p6-speaker-right-2,.w2p6-speaker-right-3,.w2p6-speaker-right-4 { left: 72.4%; }
+.w2p6-speaker-left-1,.w2p6-speaker-right-1 { top: 39.8%; }
+.w2p6-speaker-left-2,.w2p6-speaker-right-2 { top: 57%; }
+.w2p6-speaker-left-3,.w2p6-speaker-right-3 { top: 73.6%; }
+.w2p6-speaker-left-4,.w2p6-speaker-right-4 { top: 89.5%; }
+
+@media (max-width: 820px) {
+  .w2-interactive-wrap { border-radius: 16px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .w2-speaker,
+  .w2p2-trace-word,
+  .w2p5-animal { transition: none; }
+  .w2-counter.is-wrong .w2-counter-value,
+  .w2p3-endpoint.is-wrong,
+  .w2p5-animal.is-wrong-selection,
+  .w2p3-line-color { animation-duration: .01ms; }
+}
