@@ -40,16 +40,15 @@
       ]
     },
     {
-      prompt: 'Which animal is playing?',
+      prompt: 'What is the squirrel doing?',
       targetSentence: 'The squirrel is playing.',
-      readTargetSentence: false,
-      visual: picture('play-question.png'),
-      visualLabel: 'A ball and toy block',
+      visual: picture('squirrel-portrait.png'),
+      visualLabel: 'A friendly orange squirrel',
       correct: 'squirrel-playing',
       choices: [
         { id: 'squirrel-playing', ariaLabel: 'Squirrel playing', visual: picture('squirrel-playing.png', 1.06) },
-        { id: 'eagle-flying', ariaLabel: 'Eagle flying', visual: picture('eagle-flying.png', 1.08) },
-        { id: 'swan-swimming', ariaLabel: 'Swan swimming', visual: picture('swan-swimming.png', 1.06) }
+        { id: 'squirrel-running', ariaLabel: 'Squirrel running', visual: picture('squirrel-running.png', 1.06) },
+        { id: 'squirrel-sleeping', ariaLabel: 'Squirrel sleeping', visual: picture('squirrel-sleeping.png', 1.06) }
       ]
     }
   ];

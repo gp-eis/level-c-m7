@@ -16,16 +16,15 @@
       ]
     },
     {
-      prompt: 'Which animal is yawning?',
+      prompt: 'What is the cat doing?',
       targetSentence: 'The cat is yawning.',
-      readTargetSentence: false,
-      visual: picture('yawning-cue.png'),
-      visualLabel: 'A sleepy question symbol',
+      visual: picture('cat-portrait.png'),
+      visualLabel: 'A friendly orange cat',
       correct: 'cat-yawning',
       choices: [
-        { id: 'cat-yawning', ariaLabel: 'Cat yawning', visual: picture('cat-yawning.png') },
-        { id: 'rabbit-sleeping', ariaLabel: 'Rabbit sleeping', visual: picture('rabbit-sleeping-q2.png') },
-        { id: 'dog-sitting', ariaLabel: 'Dog sitting', visual: picture('dog-sitting.png') }
+        { id: 'cat-yawning', ariaLabel: 'Cat yawning', visual: picture('cat-yawning-v2.png') },
+        { id: 'cat-sitting', ariaLabel: 'Cat sitting', visual: picture('cat-sitting.png') },
+        { id: 'cat-sleeping', ariaLabel: 'Cat sleeping', visual: picture('cat-sleeping.png') }
       ]
     },
     {
