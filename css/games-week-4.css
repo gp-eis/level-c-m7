@@ -1,0 +1,51 @@
+.bird-park-game-page,
+.bird-park-selected-area {
+  --game-blue:#45bfe9;
+  --game-blue-dark:#2189b4;
+  --game-green:#67c64a;
+  --game-green-dark:#3f942d;
+  --game-yellow:#ffd34a;
+  --game-orange:#ff963e;
+  --game-pink:#ff7f9f;
+  --game-text:#294f52;
+}
+.bird-park-game-page .subtitle,
+.bird-park-game-page .game-score,
+.bird-park-game-page .memory-status { color:#368b43; }
+.bird-park-game-page .memory-card {
+  background:
+    radial-gradient(circle at 28% 20%,rgba(255,255,255,.62),transparent 24%),
+    linear-gradient(145deg,#59c9ef,#238ebc);
+  box-shadow:inset 0 -10px 16px rgba(20,93,130,.22),inset 0 5px 8px rgba(255,255,255,.45),0 8px 0 #1b76a0,0 14px 18px rgba(41,79,82,.2);
+}
+.bird-park-game-page .memory-card::after {
+  color:#fff5a8;
+  text-shadow:0 4px 0 #d88f00,0 8px 12px rgba(41,79,82,.25);
+}
+.bird-park-game-page .memory-card.is-flipped,
+.bird-park-game-page .memory-card.is-matched,
+.bird-park-game-page .memory-card.is-previewing { background:#fff; }
+.bird-park-game-page .wheel-disc::after { content:'🐦'; }
+.bird-park-game-page .picture-match-board {
+  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(239,255,231,.96));
+  box-shadow:inset 0 -12px 20px rgba(63,148,45,.07),0 12px 0 #bfe3b1,0 22px 34px rgba(41,79,82,.16);
+}
+.bird-park-game-page .picture-choice {
+  background:radial-gradient(circle at 35% 18%,#fff,#f2ffec 78%);
+  box-shadow:inset 0 -9px 14px rgba(63,148,45,.07),0 8px 0 #cce8c1,0 14px 20px rgba(41,79,82,.14);
+}
+.bird-park-game-page .pick-right-board {
+  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(239,255,231,.97));
+  box-shadow:inset 0 -12px 20px rgba(63,148,45,.07),0 12px 0 #bfe3b1,0 22px 34px rgba(41,79,82,.16);
+}
+.bird-park-game-page .pick-right-picture-shell {
+  border-color:#ffd34a;
+  background:radial-gradient(circle at 50% 18%,#fff,#eaf8ff 82%);
+}
+.bird-park-game-page .pick-right-phrase { color:#287691; }
+.bird-park-game-page .pick-right-choice--grammar:first-child { border-color:rgba(69,191,233,.3); }
+.bird-park-game-page .pick-right-choice--alternate { border-color:rgba(255,127,159,.25); }
+.bird-park-game-page .memory-card__picture img,
+.bird-park-game-page .picture-choice img,
+.bird-park-game-page .card-face img,
+.bird-park-game-page .wheel-label img { image-rendering:auto; }

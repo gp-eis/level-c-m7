@@ -9,6 +9,10 @@
 
   document.title = `${track.label} Week ${weekNumber} — Animals`;
   const isReading = trackKey === 'reading';
+  const readingThumbnails = {
+    1: '../assets/images/reading/week-1-video-thumbnail.png'
+  };
+  const readingThumbnail = isReading ? readingThumbnails[weekNumber] : null;
   const phonicsVideos = {
     1: '../assets/video/phonics/week-1-week-2.mp4',
     2: '../assets/video/phonics/week-1-week-2.mp4',
@@ -33,6 +37,11 @@
             Your browser does not support this video.
           </video>
           <button class="center-video-play" type="button" aria-label="Play the Week ${weekNumber} phonics video">▶</button>
+        </div>
+      ` : readingThumbnail ? `
+        <div class="track-video-placeholder track-video-thumbnail">
+          <img class="track-video-thumbnail__image" src="${readingThumbnail}" alt="Why, Why is That? Animal World reading video thumbnail">
+          <button class="center-video-play-placeholder" type="button" aria-label="Reading video coming soon" disabled>▶</button>
         </div>
       ` : `
         <div class="track-video-placeholder"><div class="track-video-placeholder__copy"><span aria-hidden="true">${week.icon}</span><strong>Week ${weekNumber} ${track.label} video placeholder</strong><small>The ${week.animal} lesson video will be added here.</small></div><button class="center-video-play-placeholder" type="button" aria-label="Video placeholder" disabled>▶</button></div>

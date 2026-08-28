@@ -1,0 +1,48 @@
+.jungle-game-page,
+.jungle-selected-area {
+  --game-blue:#35b9a4;
+  --game-blue-dark:#167b69;
+  --game-green:#78c94b;
+  --game-green-dark:#3f8e35;
+  --game-yellow:#ffd55a;
+  --game-orange:#f59a3c;
+  --game-pink:#ef786f;
+  --game-text:#2b4b35;
+}
+.jungle-game-page .subtitle,
+.jungle-game-page .game-score,
+.jungle-game-page .memory-status { color:#3f8e35; }
+.jungle-game-page .memory-card {
+  background:radial-gradient(circle at 28% 20%,rgba(255,255,255,.58),transparent 24%),linear-gradient(145deg,#78d28b,#42a96d);
+  box-shadow:inset 0 -10px 16px rgba(27,105,69,.22),inset 0 5px 8px rgba(255,255,255,.42),0 8px 0 #277f58,0 14px 18px rgba(40,70,44,.2);
+}
+.jungle-game-page .memory-card::after {
+  color:#fff1a8;
+  text-shadow:0 4px 0 #9a6a1e,0 8px 12px rgba(40,70,44,.25);
+}
+.jungle-game-page .memory-card.is-flipped,
+.jungle-game-page .memory-card.is-matched,
+.jungle-game-page .memory-card.is-previewing { background:#fff; }
+.jungle-game-page .wheel-disc::after { content:'🌿'; }
+.jungle-game-page .picture-match-board {
+  background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(240,252,226,.96));
+  box-shadow:inset 0 -12px 20px rgba(63,142,53,.08),0 12px 0 #c5dfad,0 22px 34px rgba(40,70,44,.17);
+}
+.jungle-game-page .picture-choice {
+  background:radial-gradient(circle at 35% 18%,#fff,#f2fbe9 78%);
+  box-shadow:inset 0 -9px 14px rgba(63,142,53,.08),0 8px 0 #cce5b9,0 14px 20px rgba(40,70,44,.14);
+}
+.jungle-game-page .pick-right-board {
+  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(238,251,221,.97));
+  box-shadow:inset 0 -12px 20px rgba(63,142,53,.08),0 12px 0 #c5dfad,0 22px 34px rgba(40,70,44,.17);
+}
+.jungle-game-page .pick-right-picture-shell {
+  border-color:#ffd55a;
+  background:radial-gradient(circle at 50% 18%,#fffdf2,#e9f7d8 82%);
+}
+.jungle-game-page .pick-right-phrase { color:#32653d; }
+.jungle-game-page .pick-right-choice--grammar:first-child { border-color:rgba(53,185,164,.28); }
+.jungle-game-page .pick-right-choice--alternate { border-color:rgba(239,120,111,.25); }
+.jungle-selected-area {
+  background:radial-gradient(circle at 50% 15%,rgba(255,245,184,.9),transparent 28%),linear-gradient(160deg,#d9f0bf,#93cc69 58%,#559446);
+}

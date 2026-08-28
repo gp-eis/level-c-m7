@@ -69,7 +69,7 @@
       `).join('')}
     `);
     addSpeaker(stage, 'w4-page2-speaker-sentence', 'I am a bird', 'I am a bird.');
-    questions.forEach((question, index) => addSpeaker(stage, 'w4-page2-speaker-question', question.text, question.text, `top:${[41,58.1,75.2][index]}%`, index));
+    questions.forEach((question, index) => addSpeaker(stage, 'w4-page2-speaker-question', question.text, question.text, `top:${[40.7,60.2,79.7][index]}%`, index));
     [...stage.querySelectorAll('.w4-page2-speaker-question')].forEach((button, index) => button.dataset.question = String(index));
     const feedback = addFeedback('Trace the word bird and answer all three shape questions.');
 
@@ -166,7 +166,35 @@
         speak('Trace the word bird first.');
         return;
       }
-      traceResult.src = canvas.toDataURL('image/png');
+      const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+      let minX = canvas.width;
+      let minY = canvas.height;
+      let maxX = 0;
+      let maxY = 0;
+      for (let y = 0; y < canvas.height; y += 1) {
+        for (let x = 0; x < canvas.width; x += 1) {
+          if (pixels.data[((y * canvas.width + x) * 4) + 3] === 0) continue;
+          minX = Math.min(minX, x);
+          minY = Math.min(minY, y);
+          maxX = Math.max(maxX, x);
+          maxY = Math.max(maxY, y);
+        }
+      }
+      if (maxX < minX || maxY < minY) {
+        message.textContent = 'Trace the word bird before you press Go.';
+        speak('Trace the word bird first.');
+        return;
+      }
+      const padding = 18;
+      minX = Math.max(0, minX - padding);
+      minY = Math.max(0, minY - padding);
+      maxX = Math.min(canvas.width - 1, maxX + padding);
+      maxY = Math.min(canvas.height - 1, maxY + padding);
+      const trimmed = document.createElement('canvas');
+      trimmed.width = maxX - minX + 1;
+      trimmed.height = maxY - minY + 1;
+      trimmed.getContext('2d').drawImage(canvas, minX, minY, trimmed.width, trimmed.height, 0, 0, trimmed.width, trimmed.height);
+      traceResult.src = trimmed.toDataURL('image/png');
       traceResult.hidden = false;
       traceButton.hidden = true;
       feedback.className = 'w4-feedback is-correct';
@@ -184,14 +212,30 @@
       { text: 'The scary spider', sentence: 'The scary spider scares the bird.', target: 0, color: '#7e57c2' }
     ];
     const targets = ['scares the bird.', 'the baby birds.', 'of the eagle.'];
-    const rows = [40.5, 57.5, 74.6];
+    const rows = [433, 584, 743];
     const stage = makeStage('w4-page3-stage');
     stage.insertAdjacentHTML('beforeend', `
-      <svg class="w4-match-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><g class="w4-match-lines"></g></svg>
+      <button class="w4-picture-audio w4-picture-rat" type="button" data-sentence="0" aria-label="Listen: ${subjects[0].sentence}"></button>
+      <button class="w4-picture-audio w4-picture-eagle" type="button" data-sentence="1" aria-label="Listen: ${subjects[1].sentence}"></button>
+      <button class="w4-picture-audio w4-picture-spider" type="button" data-sentence="2" aria-label="Listen: ${subjects[2].sentence}"></button>
+      <svg class="w4-match-svg" viewBox="0 0 1536 1024" preserveAspectRatio="none" aria-hidden="true"><g class="w4-match-lines"></g></svg>
       ${subjects.map((subject, index) => `<button class="w4-match-endpoint w4-match-source" type="button" data-source="${index}" data-row="${index}" aria-label="Start match: ${subject.text}"></button>`).join('')}
       ${targets.map((target, index) => `<button class="w4-match-endpoint w4-match-target" type="button" data-target="${index}" data-row="${index}" aria-label="Match to ${target}"></button>`).join('')}
     `);
-    const feedback = addFeedback('Tap a black dot beside a sentence beginning, then tap its matching ending.', '<button class="w4-action secondary w4-restart" type="button" hidden>Try Again</button>');
+    subjects.forEach((subject, index) => {
+      addSpeaker(stage, 'w4-page3-sentence-speaker', subject.sentence, subject.sentence, `top:${[40.6,55.3,70.9][index]}%`);
+      stage.lastElementChild.dataset.row = String(index);
+    });
+    stage.querySelectorAll('.w4-picture-audio').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.remove('is-speaking');
+        void button.offsetWidth;
+        button.classList.add('is-speaking');
+        window.setTimeout(() => button.classList.remove('is-speaking'), 650);
+        speak(subjects[Number(button.dataset.sentence)].sentence);
+      });
+    });
+    const feedback = addFeedback('Tap a picture to listen. Then tap a black dot beside a sentence beginning and match its ending.', '<button class="w4-action secondary w4-restart" type="button" hidden>Try Again</button>');
     const sources = [...stage.querySelectorAll('.w4-match-source')];
     const targetsButtons = [...stage.querySelectorAll('.w4-match-target')];
     const lines = stage.querySelector('.w4-match-lines');
@@ -226,14 +270,19 @@
         window.setTimeout(() => { sourceButton.classList.remove('is-wrong'); button.classList.remove('is-wrong'); }, 650);
         return;
       }
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('class', 'w4-match-line');
-      line.setAttribute('x1', '72.85');
-      line.setAttribute('y1', String(rows[selected]));
-      line.setAttribute('x2', '80.75');
-      line.setAttribute('y2', String(rows[target]));
-      line.setAttribute('stroke', subjects[selected].color);
-      lines.appendChild(line);
+      const line = className => {
+        const element = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        element.setAttribute('class', className);
+        element.setAttribute('x1', '1188');
+        element.setAttribute('y1', String(rows[selected]));
+        element.setAttribute('x2', '1268');
+        element.setAttribute('y2', String(rows[target]));
+        return element;
+      };
+      const outline = line('w4-match-line-outline');
+      const color = line('w4-match-line-color');
+      color.setAttribute('stroke', subjects[selected].color);
+      lines.append(outline, color);
       sourceButton.classList.remove('is-selected');
       sourceButton.classList.add('is-matched');
       button.classList.add('is-matched');
@@ -270,12 +319,16 @@
       ? ['11 a.m.', '3 a.m.', '7 a.m.', '9 a.m.', '8 a.m.', '2 a.m.', '1 a.m.', '10 a.m.', '3 p.m.', '1 p.m.', '9 p.m.', '2 p.m.']
       : ['8 p.m.', '10 p.m.', '2 p.m.', '4 p.m.', '9 p.m.', '11 p.m.', '1 p.m.', '3 p.m.', '2 p.m.', '10 p.m.', '8 p.m.', '11 p.m.'];
     const stage = makeStage(`w4-page${pageNumber}-stage`);
-    stage.insertAdjacentHTML('beforeend', times.map((time, index) => `<button class="w4-choice w4-bird-choice" type="button" data-index="${index}" data-row="${Math.floor(index / 4)}" data-col="${index % 4}" aria-label="Bird at ${time}" aria-pressed="false"></button>`).join(''));
-    const instruction = `Choose every bird awake in the ${daytime ? 'daytime' : 'nighttime'}, then press Go.`;
-    const feedback = addFeedback(instruction, '<button class="w4-action w4-check" type="button">Go</button><button class="w4-action secondary w4-restart" type="button" hidden>Try Again</button>');
+    stage.insertAdjacentHTML('beforeend', `
+      ${times.map((time, index) => `<button class="w4-choice w4-bird-choice" type="button" data-index="${index}" data-row="${Math.floor(index / 4)}" data-col="${index % 4}" aria-label="Bird at ${time}" aria-pressed="false"></button>`).join('')}
+      ${[0, 1, 2].map(row => `<button class="w4-bird-row-check" type="button" data-row="${row}" aria-label="Check row ${row + 1}">Go</button>`).join('')}
+    `);
+    const instruction = `Choose the birds awake in the ${daytime ? 'daytime' : 'nighttime'} one row at a time, then press that row's Go button.`;
+    const feedback = addFeedback(instruction, '<button class="w4-action secondary w4-restart" type="button" hidden>Try Again</button>');
     const buttons = [...stage.querySelectorAll('.w4-bird-choice')];
-    const check = document.querySelector('.w4-check');
+    const rowChecks = [...stage.querySelectorAll('.w4-bird-row-check')];
     const restart = document.querySelector('.w4-restart');
+    const completedRows = new Set();
     buttons.forEach(button => button.addEventListener('click', () => {
       if (button.disabled) return;
       const pressed = button.getAttribute('aria-pressed') !== 'true';
@@ -283,9 +336,11 @@
       button.classList.remove('is-wrong', 'is-missing');
       speak(`${button.getAttribute('aria-label')}${pressed ? ' selected' : ' unselected'}.`);
     }));
-    check.addEventListener('click', () => {
+    rowChecks.forEach(check => check.addEventListener('click', () => {
+      const row = Number(check.dataset.row);
+      const rowButtons = buttons.filter(button => Number(button.dataset.row) === row);
       let allCorrect = true;
-      buttons.forEach(button => {
+      rowButtons.forEach(button => {
         const index = Number(button.dataset.index);
         const selected = button.getAttribute('aria-pressed') === 'true';
         const shouldSelect = correctIndexes.has(index);
@@ -296,51 +351,62 @@
       });
       feedback.className = `w4-feedback ${allCorrect ? 'is-correct' : 'is-wrong'}`;
       if (!allCorrect) {
-        feedback.textContent = `Almost! Check the red choices and find every orange ${daytime ? 'daytime' : 'nighttime'} bird.`;
+        feedback.textContent = `Almost! Check row ${row + 1} and find every ${daytime ? 'daytime' : 'nighttime'} bird.`;
         tone(false);
         speak('Almost! Try again.');
         return;
       }
-      buttons.forEach(button => { button.disabled = true; if (button.getAttribute('aria-pressed') === 'true') button.classList.add('is-correct'); });
-      check.hidden = true;
-      restart.hidden = false;
-      feedback.textContent = `Wonderful! You found every bird awake in the ${daytime ? 'daytime' : 'nighttime'}.`;
+      rowButtons.forEach(button => { button.disabled = true; if (button.getAttribute('aria-pressed') === 'true') button.classList.add('is-correct'); });
+      check.disabled = true;
+      check.textContent = '\u2713';
+      check.classList.add('is-complete');
+      completedRows.add(row);
+      feedback.textContent = `Great job! Row ${row + 1} is correct.`;
       tone(true);
       speak(feedback.textContent);
-    });
+      if (completedRows.size === 3) {
+        restart.hidden = false;
+        feedback.textContent = `Wonderful! You found every bird awake in the ${daytime ? 'daytime' : 'nighttime'}.`;
+        speak(feedback.textContent);
+      }
+    }));
     restart.addEventListener('click', () => {
       buttons.forEach(button => { button.disabled = false; button.setAttribute('aria-pressed', 'false'); button.classList.remove('is-correct', 'is-wrong', 'is-missing'); });
+      rowChecks.forEach(check => { check.disabled = false; check.textContent = 'Go'; check.classList.remove('is-complete'); });
+      completedRows.clear();
       feedback.className = 'w4-feedback';
       feedback.textContent = instruction;
-      check.hidden = false;
       restart.hidden = true;
     });
   }
 
   function buildPage6() {
     const rules = [
-      { sentence: 'Run after birds.', answer: 'X' },
-      { sentence: 'Take photos of birds.', answer: 'O' },
-      { sentence: 'Walk quietly.', answer: 'O' },
-      { sentence: 'Leave food on tables.', answer: 'X' },
-      { sentence: 'Use binoculars to watch birds.', answer: 'O' },
-      { sentence: 'Touch bird nests.', answer: 'X' },
-      { sentence: 'Take bird eggs home.', answer: 'X' },
-      { sentence: 'Put trash in bins.', answer: 'O' }
+      { sentence: 'Run after birds.', resultSentence: 'You should not run after birds.', answer: 'X' },
+      { sentence: 'Take photos of birds.', resultSentence: 'You should take photos of birds.', answer: 'O' },
+      { sentence: 'Walk quietly.', resultSentence: 'You should walk quietly.', answer: 'O' },
+      { sentence: 'Leave food on tables.', resultSentence: 'You should not leave food on tables.', answer: 'X' },
+      { sentence: 'Use binoculars to watch birds.', resultSentence: 'You should use binoculars to watch birds.', answer: 'O' },
+      { sentence: 'Touch bird nests.', resultSentence: 'You should not touch bird nests.', answer: 'X' },
+      { sentence: 'Take bird eggs home.', resultSentence: 'You should not take bird eggs home.', answer: 'X' },
+      { sentence: 'Put trash in bins.', resultSentence: 'You should put trash in bins.', answer: 'O' }
     ];
-    const xs = [36.2, 84.2];
-    const speakerXs = [12.5, 54.5];
-    const ys = [39.2, 56.8, 73.7, 90.7];
+    // Keep each O/X pair comfortably inside the right edge of its card.
+    const xs = [17.7, 42.7, 67.7, 92.6];
+    const speakerXs = [2.7, 27.7, 52.7, 74.7];
+    // The first row sits slightly lower so the controls clear the rule text.
+    const ys = [63.0, 88.7];
+    const speakerYs = [44.6, 72.1];
     const stage = makeStage('w4-page6-stage');
     stage.insertAdjacentHTML('beforeend', rules.map((rule, index) => {
-      const col = index % 2;
-      const row = Math.floor(index / 2);
+      const col = index % 4;
+      const row = Math.floor(index / 4);
       return `<div class="w4-rule-control" data-rule="${index}" style="left:${xs[col]}%;top:${ys[row]}%"><div class="w4-rule-choices" role="group" aria-label="Choose O or X for ${rule.sentence}"><button class="w4-rule-choice" type="button" data-choice="O">O</button><button class="w4-rule-choice" type="button" data-choice="X">X</button></div></div>`;
     }).join(''));
     rules.forEach((rule, index) => {
-      const col = index % 2;
-      const row = Math.floor(index / 2);
-      addSpeaker(stage, 'w4-rule-speaker', rule.sentence, rule.sentence, `left:${speakerXs[col]}%;top:${ys[row] - 5.2}%`);
+      const col = index % 4;
+      const row = Math.floor(index / 4);
+      addSpeaker(stage, 'w4-rule-speaker', rule.sentence, rule.sentence, `left:${speakerXs[col]}%;top:${speakerYs[row]}%`);
     });
     const feedback = addFeedback('Listen to each rule, then choose O for a good choice or X for a wrong choice.');
     const completed = new Set();
@@ -363,7 +429,10 @@
         buttons.forEach(choice => { choice.disabled = true; });
         completed.add(index);
         tone(true);
-        feedback.textContent = completed.size === rules.length ? 'Great job! You completed all eight park rules.' : `Correct! ${rule.sentence}`;
+        const correctResponse = `Correct! ${rule.resultSentence}`;
+        feedback.textContent = completed.size === rules.length
+          ? `${correctResponse} Great job! You completed all eight park rules.`
+          : correctResponse;
         speak(feedback.textContent);
       }));
     });
@@ -376,17 +445,94 @@
       { sentence: 'The big black spider is scary.', answer: 'scary' },
       { sentence: 'The bird is scared of the people.', answer: 'scared' }
     ];
-    const ys = [64.1, 71.15, 78.15, 85.15];
+    const ys = [42.7, 57.1, 71.8, 85.9];
     const controls = [
-      { left: 73.9, width: 17.2 },
-      { left: 69.2, width: 17.2 },
-      { left: 76.5, width: 17.2 },
-      { left: 72.1, width: 17.2 }
+      { scary: { left: 81.38, width: 5.79 }, scared: { left: 89, width: 7.23 } },
+      { scary: { left: 72, width: 5.47 }, scared: { left: 79.1, width: 6.38 } },
+      { scary: { left: 84.9, width: 4.82 }, scared: { left: 91.15, width: 5.47 } },
+      { scary: { left: 75.72, width: 4.75 }, scared: { left: 81.84, width: 5.47 } }
     ];
     const stage = makeStage('w4-page7-stage');
-    stage.insertAdjacentHTML('beforeend', questions.map((question, index) => `<div class="w4-grammar-control" data-question="${index}" style="top:${ys[index]}%;left:${controls[index].left}%;width:${controls[index].width}%"><div class="w4-word-choices" role="group" aria-label="Choose scary or scared"><button class="w4-word-choice" type="button" data-choice="scary" aria-label="Choose scary"></button><button class="w4-word-choice" type="button" data-choice="scared" aria-label="Choose scared"></button></div></div>`).join(''));
+    stage.insertAdjacentHTML('beforeend', questions.map((question, index) => `<div class="w4-grammar-control" data-question="${index}" style="top:${ys[index]}%"><div class="w4-word-choices" role="group" aria-label="Choose scary or scared"><button class="w4-word-choice" type="button" data-choice="scary" aria-label="Choose scary" style="left:${controls[index].scary.left}%;width:${controls[index].scary.width}%"></button><button class="w4-word-choice" type="button" data-choice="scared" aria-label="Choose scared" style="left:${controls[index].scared.left}%;width:${controls[index].scared.width}%"></button></div></div>`).join(''));
     questions.forEach((question, index) => addSpeaker(stage, 'w4-grammar-speaker', question.sentence, question.sentence, `top:${ys[index]}%`));
-    const feedback = addFeedback('Listen to each sentence, then choose scary or scared.');
+    const feedback = addFeedback('Watch the clip, then complete the activity.');
+
+    const videoOverlay = document.createElement('div');
+    videoOverlay.className = 'page7-video-overlay';
+    videoOverlay.hidden = true;
+    videoOverlay.innerHTML = `
+      <div class="video-play-shell page7-video-shell">
+        <video class="page7-intro-video" controls playsinline preload="metadata" aria-label="At the Park activity clip">
+          <source src="../assets/video/literacy/week-4-page-07.mp4" type="video/mp4">
+          Your browser does not support this video.
+        </video>
+        <button class="center-video-play page7-video-play" type="button" aria-label="Play the At the Park clip">&#9654;</button>
+      </div>
+      <p class="page7-video-message" aria-live="polite" hidden></p>
+    `;
+
+    const startLayer = document.createElement('div');
+    startLayer.className = 'literacy-activity-start-layer';
+    startLayer.innerHTML = `
+      <button class="literacy-activity-start-button page7-start-button" type="button" aria-label="Start activity and watch the At the Park clip">
+        <span aria-hidden="true">&#9654;</span>
+        <span>Start Activity</span>
+      </button>
+    `;
+
+    wrap.append(videoOverlay, startLayer);
+    wrap.classList.add('has-literacy-activity-start');
+    stage.inert = true;
+    stage.setAttribute('aria-hidden', 'true');
+
+    const startButton = startLayer.querySelector('.page7-start-button');
+    const video = videoOverlay.querySelector('.page7-intro-video');
+    const playButton = videoOverlay.querySelector('.page7-video-play');
+    const videoMessage = videoOverlay.querySelector('.page7-video-message');
+    let activityShown = false;
+
+    const showActivity = () => {
+      if (activityShown) return;
+      activityShown = true;
+      videoOverlay.hidden = true;
+      stage.inert = false;
+      stage.removeAttribute('aria-hidden');
+      feedback.textContent = 'Listen to each sentence, then choose scary or scared.';
+    };
+
+    const playVideo = async () => {
+      playButton.hidden = true;
+      try {
+        await video.play();
+      } catch (error) {
+        playButton.hidden = false;
+        videoMessage.hidden = false;
+        videoMessage.textContent = 'Press the play button to begin the clip.';
+      }
+    };
+
+    startButton.addEventListener('click', () => {
+      startLayer.hidden = true;
+      videoOverlay.hidden = false;
+      feedback.textContent = 'Watch the clip. The activity will appear when it finishes.';
+      playVideo();
+    });
+    playButton.addEventListener('click', playVideo);
+    video.addEventListener('play', () => { playButton.hidden = true; });
+    video.addEventListener('playing', () => {
+      playButton.hidden = true;
+      videoMessage.hidden = true;
+    });
+    video.addEventListener('pause', () => {
+      if (!video.ended) playButton.hidden = false;
+    });
+    video.addEventListener('ended', showActivity);
+    video.addEventListener('error', () => {
+      videoMessage.hidden = false;
+      videoMessage.innerHTML = 'The clip could not be played. <button class="page7-continue-button" type="button">Continue to Activity</button>';
+      videoMessage.querySelector('.page7-continue-button').addEventListener('click', showActivity);
+    });
+
     const completed = new Set();
     stage.querySelectorAll('.w4-grammar-control').forEach(control => {
       const index = Number(control.dataset.question);

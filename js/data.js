@@ -5,7 +5,7 @@ window.LEVEL_C_M7 = Object.freeze({
   weeks: {
     1: { title: 'In the Park', animal: 'dog', icon: '🌳', image: 'assets/images/ui/weekly/week-1-park.png', alt: 'Fun 3D miniature park with a tree, path, bench, and flowers' },
     2: { title: 'In the Garden', animal: 'duck', icon: '🌻', image: 'assets/images/ui/weekly/week-2-garden.png', alt: 'Fun 3D garden with flowers, vegetables, and a watering can' },
-    3: { title: 'In the Jungle', animal: 'snake', icon: '🏡', image: 'assets/images/ui/weekly/week-3-yard.png', alt: 'Fun 3D yard with grass, a fence, a doghouse, and a ball' },
+    3: { title: 'In the Yard', animal: 'snake', icon: '🏡', image: 'assets/images/ui/weekly/week-3-yard.png', alt: 'Fun 3D yard with grass, a fence, a doghouse, and a ball' },
     4: { title: 'In the Cave', animal: 'bird', icon: '🪨', image: 'assets/images/ui/weekly/week-4-cave.png', alt: 'Fun 3D glowing cave with colorful crystals and mushrooms' }
   },
   tracks: [

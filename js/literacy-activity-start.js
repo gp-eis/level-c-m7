@@ -9,10 +9,11 @@
     },
     2: {
       2: 'Quack! Quack! What am I? What shapes make up my body?',
-      3: 'Compare the sizes. The grass is short is the example. Then match the remaining sentence parts.',
+      3: 'Compare the sizes. Tap the picture to listen. Then match all four sentence parts.',
       4: 'Count the number of ducks with yellow bodies in each group.',
       5: 'Which animals swim? Circle them. Then write the total number.',
-      6: 'Garden Rules. What should we do in the garden? Choose O or X for each answer.'
+      6: 'Garden Rules. What should we do in the garden? Choose O or X for each answer.',
+      7: 'In the Garden. Choose find or found to complete each sentence.'
     },
     3: {
       2: 'Hiss! Hiss! What am I? What shapes make up my body?',

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-US" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google" content="notranslate">
+  <title>Picture Match — Week 2 — In the Garden</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/games-week-1.css">
+  <link rel="stylesheet" href="../css/games-week-2.css">
+</head>
+<body class="lesson-page">
+  <main class="page dog-game-page garden-game-page picture-match-page">
+    <a class="back-link" href="index.html?week=2">⬅️ All Games</a>
+    <header class="game-header">
+      <h1 class="big-title page-title-with-icon"><img class="page-title-icon" src="../assets/images/ui/game-matching.webp" alt="">Picture Match</h1>
+      <p class="subtitle">Listen to the garden sentence, then choose the matching picture!</p>
+    </header>
+    <div class="game-toolbar">
+      <button class="pill-btn orange" id="picture-match-new" type="button">🔄 New Round</button>
+      <span class="game-score">Correct: <span id="picture-match-score">0</span></span>
+    </div>
+    <section class="picture-match-board">
+      <div class="picture-match-choices" id="picture-match-choices"></div>
+      <div class="picture-match-sentence">
+        <p id="picture-match-sentence"></p>
+        <button class="game-listen-btn" id="picture-match-listen" type="button" aria-label="Listen to the sentence">🔊</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="game-modal" id="picture-match-modal" role="dialog" aria-modal="true" aria-labelledby="picture-match-modal-title" hidden>
+    <div class="game-modal__card">
+      <h2 id="picture-match-modal-title">Correct! 🎉</h2>
+      <img id="picture-match-review-image" alt="">
+      <p class="game-modal__sentence" id="picture-match-review-sentence"></p>
+      <button class="pill-btn green" id="picture-match-continue" type="button">✓ Continue</button>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/week-2-games-data.js"></script>
+  <script src="../js/week-1-matching.js"></script>
+</body>
+</html>

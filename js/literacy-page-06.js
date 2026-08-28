@@ -4,14 +4,14 @@
   if (!wrap || !worksheetImage) return;
 
   const rules = [
-    { position: 'top-1', sentence: 'Always clean up dog poop.', answer: 'O' },
-    { position: 'top-2', sentence: 'Hurt other dogs.', answer: 'X' },
-    { position: 'top-3', sentence: 'Shout at other dogs.', answer: 'X' },
-    { position: 'top-4', sentence: 'Play with your dog.', answer: 'O' },
-    { position: 'bottom-1', sentence: 'Use a leash.', answer: 'O' },
-    { position: 'bottom-2', sentence: 'Let your dog chase people.', answer: 'X' },
-    { position: 'bottom-3', sentence: 'Let your dog fight other animals.', answer: 'X' },
-    { position: 'bottom-4', sentence: 'Give your dog water.', answer: 'O' }
+    { position: 'top-1', sentence: 'Always clean up dog poop.', resultSentence: 'You should always clean up dog poop.', answer: 'O' },
+    { position: 'top-2', sentence: 'Hurt other dogs.', resultSentence: 'You should not hurt other dogs.', answer: 'X' },
+    { position: 'top-3', sentence: 'Shout at other dogs.', resultSentence: 'You should not shout at other dogs.', answer: 'X' },
+    { position: 'top-4', sentence: 'Play with your dog.', resultSentence: 'You should play with your dog.', answer: 'O' },
+    { position: 'bottom-1', sentence: 'Use a leash.', resultSentence: 'You should use a leash.', answer: 'O' },
+    { position: 'bottom-2', sentence: 'Let your dog chase people.', resultSentence: 'You should not let your dog chase people.', answer: 'X' },
+    { position: 'bottom-3', sentence: 'Let your dog fight other animals.', resultSentence: 'You should not let your dog fight other animals.', answer: 'X' },
+    { position: 'bottom-4', sentence: 'Give your dog water.', resultSentence: 'You should give your dog water.', answer: 'O' }
   ];
 
   const stage = document.createElement('div');
@@ -85,12 +85,14 @@
           completed.add(ruleIndex);
           playAnswerSound(true);
 
+          const correctResponse = `Correct! ${rule.resultSentence}`;
           if (completed.size === rules.length) {
-            feedback.textContent = 'Great job! You completed all eight dog park rules.';
-            speak('Great job! You completed all eight dog park rules.');
+            const completionResponse = `${correctResponse} Great job! You completed all eight dog park rules.`;
+            feedback.textContent = completionResponse;
+            speak(completionResponse);
           } else {
-            feedback.textContent = `Correct! ${rule.sentence}`;
-            speak(`Correct! ${rule.sentence}`);
+            feedback.textContent = correctResponse;
+            speak(correctResponse);
           }
           return;
         }

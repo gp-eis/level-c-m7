@@ -13,8 +13,8 @@
     {
       position: 'upper-right',
       label: 'upper right group of dogs',
-      answer: 5,
-      sentence: 'There are five colors: dark brown, white, gray and yellow.'
+      answer: 4,
+      sentence: 'There are four colors: dark brown, white, gray and yellow.'
     },
     {
       position: 'lower-left',

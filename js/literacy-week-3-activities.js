@@ -219,6 +219,46 @@
       traceFeedback.textContent = '';
     });
 
+    function croppedInkDataUrl() {
+      const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+      let left = canvas.width;
+      let right = -1;
+      let top = canvas.height;
+      let bottom = -1;
+
+      for (let y = 0; y < canvas.height; y += 1) {
+        for (let x = 0; x < canvas.width; x += 1) {
+          if (pixels[((y * canvas.width + x) * 4) + 3] === 0) continue;
+          left = Math.min(left, x);
+          right = Math.max(right, x);
+          top = Math.min(top, y);
+          bottom = Math.max(bottom, y);
+        }
+      }
+
+      if (right < left || bottom < top) return canvas.toDataURL('image/png');
+      const padding = 10;
+      left = Math.max(0, left - padding);
+      right = Math.min(canvas.width - 1, right + padding);
+      top = Math.max(0, top - padding);
+      bottom = Math.min(canvas.height - 1, bottom + padding);
+      const croppedCanvas = document.createElement('canvas');
+      croppedCanvas.width = right - left + 1;
+      croppedCanvas.height = bottom - top + 1;
+      croppedCanvas.getContext('2d').drawImage(
+        canvas,
+        left,
+        top,
+        croppedCanvas.width,
+        croppedCanvas.height,
+        0,
+        0,
+        croppedCanvas.width,
+        croppedCanvas.height
+      );
+      return croppedCanvas.toDataURL('image/png');
+    }
+
     goButton.addEventListener('click', () => {
       if (!hasInk) {
         traceFeedback.textContent = `Trace the word ${word} first.`;
@@ -226,7 +266,7 @@
         speak(`Trace the word ${word} first.`);
         return;
       }
-      traceResult.src = canvas.toDataURL('image/png');
+      traceResult.src = croppedInkDataUrl();
       traceResult.hidden = false;
       traceButton.classList.add('is-complete');
       feedback.textContent = `Great tracing! You wrote ${word}.`;
@@ -259,17 +299,43 @@
 
   function initPage3() {
     const items = [
-      { position: 'one', label: 'snakes hanging on branches', prompt: 'How many snakes are hanging on branches?', answer: 2, correctText: 'Correct! Two snakes are hanging on branches.' },
-      { position: 'two', label: 'snakes on trees', prompt: 'How many snakes are on trees?', answer: 4, correctText: 'Correct! Four snakes are on trees.' },
-      { position: 'three', label: 'snakes behind flowers', prompt: 'How many snakes are behind flowers?', answer: 2, correctText: 'Correct! Two snakes are behind flowers.' },
-      { position: 'four', label: 'snakes on the ground', prompt: 'How many snakes are on the ground?', answer: 2, correctText: 'Correct! Two snakes are on the ground.' }
+      { position: 'one', label: 'snakes hanging on branches', displayText: 'snakes are hanging on branches.', prompt: 'How many snakes are hanging on branches?', answer: 2, correctText: 'Correct! Two snakes are hanging on branches.' },
+      { position: 'two', label: 'snakes on trees', displayText: 'snakes are on trees.', prompt: 'How many snakes are on trees?', answer: 4, correctText: 'Correct! Four snakes are on trees.' },
+      { position: 'three', label: 'snakes behind flowers', displayText: 'snakes are behind flowers.', prompt: 'How many snakes are behind flowers?', answer: 2, correctText: 'Correct! Two snakes are behind flowers.' },
+      { position: 'four', label: 'snakes on the ground', displayText: 'snakes are on the ground.', prompt: 'How many snakes are on the ground?', answer: 2, correctText: 'Correct! Two snakes are on the ground.' }
+    ];
+    const snakes = [
+      { position: 'hanging-left', speech: 'I am hanging on a branch.' },
+      { position: 'hanging-right', speech: 'I am hanging on a branch.' },
+      { position: 'tree-yellow', speech: 'I am on the tree.' },
+      { position: 'tree-pink', speech: 'I am on the tree.' },
+      { position: 'tree-red', speech: 'I am on the tree.' },
+      { position: 'tree-green', speech: 'I am on the tree.' },
+      { position: 'ground-pink', speech: 'I am behind the flowers and on the ground.' },
+      { position: 'ground-orange', speech: 'I am behind the flowers and on the ground.' }
     ];
     const stage = createStage('w3p3-stage');
+    stage.insertAdjacentHTML('beforeend', `
+      ${items.map(item => `<span class="w3p3-row-label w3p3-row-label-${item.position}">${attributeText(item.displayText)}</span>`).join('')}
+      ${snakes.map(snake => `
+        <button class="w3p3-snake w3p3-snake-${snake.position}" type="button" data-speak="${attributeText(snake.speech)}" aria-label="Listen to this snake: ${attributeText(snake.speech)}">
+          <span class="sr-only">${attributeText(snake.speech)}</span>
+        </button>
+      `).join('')}
+    `);
     const feedback = addFeedback('Look carefully at the picture. Count the snakes in each place.');
     buildCounters(stage, items, 'w3p3', feedback, {
       max: 10,
       retryText: 'Try again. Look at where each snake is.',
       retrySpeech: 'Try again. Look carefully at where each snake is.'
+    });
+    stage.querySelectorAll('.w3p3-snake').forEach(snake => {
+      snake.addEventListener('click', () => {
+        snake.classList.remove('is-speaking');
+        void snake.offsetWidth;
+        snake.classList.add('is-speaking');
+        window.setTimeout(() => snake.classList.remove('is-speaking'), 650);
+      });
     });
   }
 
@@ -307,14 +373,14 @@
 
   function initPage6() {
     const rules = [
-      { position: 'left-one', sentence: 'Pet the animals.', answer: 'X' },
-      { position: 'right-one', sentence: 'Watch from far away.', answer: 'O' },
-      { position: 'left-two', sentence: 'Walk carefully.', answer: 'O' },
-      { position: 'right-two', sentence: 'Feed snacks to the animals.', answer: 'X' },
-      { position: 'left-three', sentence: 'Listen to the guide.', answer: 'O' },
-      { position: 'right-three', sentence: 'Throw trash on the ground.', answer: 'X' },
-      { position: 'left-four', sentence: 'Shout and scream.', answer: 'X' },
-      { position: 'right-four', sentence: 'Stay on the path.', answer: 'O' }
+      { position: 'left-one', sentence: 'Pet the animals.', resultSentence: 'You should not pet the animals.', answer: 'X' },
+      { position: 'right-one', sentence: 'Watch from far away.', resultSentence: 'You should watch from far away.', answer: 'O' },
+      { position: 'left-two', sentence: 'Walk carefully.', resultSentence: 'You should walk carefully.', answer: 'O' },
+      { position: 'right-two', sentence: 'Feed snacks to the animals.', resultSentence: 'You should not feed snacks to the animals.', answer: 'X' },
+      { position: 'left-three', sentence: 'Listen to the guide.', resultSentence: 'You should listen to the guide.', answer: 'O' },
+      { position: 'right-three', sentence: 'Throw trash on the ground.', resultSentence: 'You should not throw trash on the ground.', answer: 'X' },
+      { position: 'left-four', sentence: 'Shout and scream.', resultSentence: 'You should not shout and scream.', answer: 'X' },
+      { position: 'right-four', sentence: 'Stay on the path.', resultSentence: 'You should stay on the path.', answer: 'O' }
     ];
     const stage = createStage('w3p6-stage');
     stage.insertAdjacentHTML('beforeend', rules.map((rule, index) => `
@@ -349,9 +415,15 @@
             choices.forEach(choice => { choice.disabled = true; });
             completed.add(index);
             playAnswerSound(true);
-            const allDone = completed.size === rules.length;
-            feedback.textContent = allDone ? 'Great job! You completed all eight jungle rules.' : `Correct! ${rule.sentence}`;
-            speak(allDone ? 'Great job! You completed all eight jungle rules.' : `Correct! ${rule.sentence}`);
+            const correctResponse = `Correct! ${rule.resultSentence}`;
+            if (completed.size === rules.length) {
+              const completionResponse = `${correctResponse} Great job! You completed all eight jungle rules.`;
+              feedback.textContent = completionResponse;
+              speak(completionResponse);
+            } else {
+              feedback.textContent = correctResponse;
+              speak(correctResponse);
+            }
           } else {
             button.classList.add('is-wrong-choice');
             control.classList.add('is-wrong');
@@ -377,15 +449,92 @@
       ${speakerMarkup(`w3p7-speaker w3p7-speaker-${question.position}`, question.sentence)}
       <div class="w3p7-question w3p7-question-${question.position}" data-question="${index}">
         <div class="w3p7-choices" role="group" aria-label="Choose on or behind to complete the sentence">
-          <button class="w3p7-choice w3p7-choice-on" type="button" data-choice="on">on</button>
-          <button class="w3p7-choice w3p7-choice-behind" type="button" data-choice="behind">behind</button>
+          <button class="w3p7-choice w3p7-choice-on" type="button" data-choice="on"><span class="sr-only">on</span></button>
+          <button class="w3p7-choice w3p7-choice-behind" type="button" data-choice="behind"><span class="sr-only">behind</span></button>
         </div>
         <span class="w3p7-status" aria-hidden="true"></span>
       </div>
     `).join(''));
-    const feedback = addFeedback('Listen to each sentence. Choose on or behind.');
+    const feedback = addFeedback('Watch the clip, then complete the activity.');
     const completed = new Set();
     wireSpeakers(stage);
+
+    const videoOverlay = document.createElement('div');
+    videoOverlay.className = 'page7-video-overlay';
+    videoOverlay.hidden = true;
+    videoOverlay.innerHTML = `
+      <div class="video-play-shell page7-video-shell">
+        <video class="page7-intro-video" controls playsinline preload="metadata" aria-label="In the Jungle activity clip">
+          <source src="../assets/video/literacy/week-3-page-07.mp4" type="video/mp4">
+          Your browser does not support this video.
+        </video>
+        <button class="center-video-play page7-video-play" type="button" aria-label="Play the In the Jungle clip">&#9654;</button>
+      </div>
+      <p class="page7-video-message" aria-live="polite" hidden></p>
+    `;
+
+    const startLayer = document.createElement('div');
+    startLayer.className = 'literacy-activity-start-layer';
+    startLayer.innerHTML = `
+      <button class="literacy-activity-start-button page7-start-button" type="button" aria-label="Start activity and watch the In the Jungle clip">
+        <span aria-hidden="true">&#9654;</span>
+        <span>Start Activity</span>
+      </button>
+    `;
+
+    wrap.append(videoOverlay, startLayer);
+    wrap.classList.add('has-literacy-activity-start');
+    stage.inert = true;
+    stage.setAttribute('aria-hidden', 'true');
+
+    const startButton = startLayer.querySelector('.page7-start-button');
+    const video = videoOverlay.querySelector('.page7-intro-video');
+    const playButton = videoOverlay.querySelector('.page7-video-play');
+    const videoMessage = videoOverlay.querySelector('.page7-video-message');
+    let activityShown = false;
+
+    function showActivity() {
+      if (activityShown) return;
+      activityShown = true;
+      videoOverlay.hidden = true;
+      stage.inert = false;
+      stage.removeAttribute('aria-hidden');
+      feedback.textContent = 'Listen to each sentence. Choose on or behind.';
+    }
+
+    async function playVideo() {
+      playButton.hidden = true;
+      try {
+        await video.play();
+      } catch (error) {
+        playButton.hidden = false;
+        videoMessage.hidden = false;
+        videoMessage.textContent = 'Press the play button to begin the clip.';
+      }
+    }
+
+    startButton.addEventListener('click', () => {
+      startLayer.hidden = true;
+      videoOverlay.hidden = false;
+      feedback.textContent = 'Watch the clip. The activity will appear when it finishes.';
+      playVideo();
+    });
+
+    playButton.addEventListener('click', playVideo);
+    video.addEventListener('play', () => { playButton.hidden = true; });
+    video.addEventListener('playing', () => {
+      playButton.hidden = true;
+      videoMessage.hidden = true;
+    });
+    video.addEventListener('pause', () => {
+      if (!video.ended) playButton.hidden = false;
+    });
+    video.addEventListener('ended', showActivity);
+    video.addEventListener('error', () => {
+      videoMessage.hidden = false;
+      videoMessage.innerHTML = 'The clip could not be played. <button class="page7-continue-button" type="button">Continue to Activity</button>';
+      videoMessage.querySelector('.page7-continue-button').addEventListener('click', showActivity);
+    });
 
     stage.querySelectorAll('.w3p7-question').forEach(control => {
       const index = Number(control.dataset.question);

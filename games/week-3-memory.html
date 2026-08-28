@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-US" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google" content="notranslate">
+  <title>Memory Game — Week 3 — In the Yard</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/games-week-1.css">
+  <link rel="stylesheet" href="../css/games-week-3.css">
+</head>
+<body class="lesson-page">
+  <main class="page dog-game-page jungle-game-page memory-game-page">
+    <a class="back-link" href="index.html?week=3">⬅️ All Games</a>
+    <header class="game-header">
+      <h1 class="big-title page-title-with-icon"><img class="page-title-icon" src="../assets/images/ui/game-memory.webp" alt="">Memory Game</h1>
+      <p class="subtitle">Listen carefully, then find the 5 matching jungle pairs!</p>
+    </header>
+    <div class="game-actions">
+      <button class="pill-btn blue" id="memory-preview" type="button">👀 Look for 3 Seconds</button>
+      <button class="pill-btn orange" id="memory-restart" type="button">🔄 New Arrangement</button>
+    </div>
+    <section class="memory-board" id="memory-board" aria-label="Jungle rules memory cards"></section>
+    <div class="memory-status" aria-live="polite">
+      <span>Moves: <span id="memory-moves">0</span></span>
+      <span>Pairs: <span id="memory-pairs">0</span> / 5</span>
+    </div>
+  </main>
+
+  <div class="game-modal" id="memory-match-modal" role="dialog" aria-modal="true" aria-labelledby="memory-match-title" hidden>
+    <div class="game-modal__card">
+      <h2 id="memory-match-title">Great match!</h2>
+      <img id="memory-match-image" alt="">
+      <p class="game-modal__sentence" id="memory-match-sentence"></p>
+      <button class="pill-btn green" id="memory-match-continue" type="button">✓ Continue</button>
+    </div>
+  </div>
+  <div class="game-modal game-celebration" id="memory-celebration" role="dialog" aria-modal="true" aria-labelledby="memory-celebration-title" hidden>
+    <div class="game-modal__card">
+      <div class="game-celebration__emoji" aria-hidden="true">🎉🌿🎉</div>
+      <h2 id="memory-celebration-title">You found all the pairs!</h2>
+      <p class="game-modal__sentence">Wonderful listening!</p>
+      <button class="pill-btn green" id="memory-play-again" type="button">🔄 Play Again</button>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/week-3-games-data.js"></script>
+  <script src="../js/week-1-memory.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+.garden-game-page,
+.garden-selected-area {
+  --game-blue:#42bde8;
+  --game-blue-dark:#218bb9;
+  --game-green:#79cf49;
+  --game-green-dark:#4c9e2f;
+  --game-yellow:#ffd84f;
+  --game-orange:#ff9c3b;
+  --game-pink:#ff78a8;
+  --game-text:#244c43;
+}
+.garden-game-page .subtitle,
+.garden-game-page .game-score,
+.garden-game-page .memory-status { color:#4c9e2f; }
+.garden-game-page .memory-card {
+  background:radial-gradient(circle at 28% 20%,rgba(255,255,255,.62),transparent 24%),linear-gradient(145deg,#ff9cc1,#ef5e99);
+  box-shadow:inset 0 -10px 16px rgba(145,34,91,.2),inset 0 5px 8px rgba(255,255,255,.45),0 8px 0 #cc3d7a,0 14px 18px rgba(36,76,67,.2);
+}
+.garden-game-page .memory-card::after { color:#fff7b0;text-shadow:0 4px 0 #d68d00,0 8px 12px rgba(36,76,67,.25); }
+.garden-game-page .memory-card.is-flipped,
+.garden-game-page .memory-card.is-matched,
+.garden-game-page .memory-card.is-previewing { background:#fff; }
+.garden-game-page .wheel-disc::after { content:'🌻'; }
+.garden-game-page .picture-match-board {
+  background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(242,255,233,.95));
+  box-shadow:inset 0 -12px 20px rgba(76,158,47,.07),0 12px 0 #cce9bd,0 22px 34px rgba(36,76,67,.16);
+}
+.garden-game-page .picture-choice {
+  background:radial-gradient(circle at 35% 18%,#fff,#f3ffec 78%);
+  box-shadow:inset 0 -9px 14px rgba(76,158,47,.07),0 8px 0 #d4edc8,0 14px 20px rgba(36,76,67,.14);
+}
+.garden-game-page .pick-right-board {
+  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(247,255,239,.96));
+  box-shadow:inset 0 -12px 20px rgba(76,158,47,.07),0 12px 0 #cce9bd,0 22px 34px rgba(36,76,67,.16);
+}
+.garden-game-page .pick-right-picture-shell {
+  border-color:#ff8fb6;
+  background:radial-gradient(circle at 50% 22%,#fff,#fff3f7 58%,#f0ffe8 100%);
+  box-shadow:inset 0 -10px 18px rgba(76,158,47,.06),0 9px 0 #d95285,0 15px 22px rgba(36,76,67,.14);
+}
+.garden-game-page .pick-right-phrase { color:#3f765e; }
+.garden-game-page .pick-right-choice:first-child { background:#f1ffe9; }
+.garden-game-page .pick-right-choice--alternate { background:#fff1f7; }

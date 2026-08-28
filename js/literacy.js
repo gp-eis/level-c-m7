@@ -6,6 +6,13 @@
   const week = config && config.weeks[weekNumber];
   const pageCount = 7;
 
+  if (page >= 2 && page <= pageCount && !document.querySelector('script[data-level-c-good-job]')) {
+    const completionScript = document.createElement('script');
+    completionScript.src = '../js/literacy-good-job.js';
+    completionScript.dataset.levelCGoodJob = 'true';
+    document.head.appendChild(completionScript);
+  }
+
   if (!app || !week || page < 1 || page > pageCount) return;
 
   const pages = {
@@ -72,6 +79,7 @@
     : `week-${weekNumber}-page-${padded(page + 1)}.html#lesson-focus`;
   const talkSongReturn = `week-${weekNumber}-page-${padded(page)}.html#lesson-focus`;
   const talkSongHref = `tpr.html?week=${weekNumber}&from=${page}&return=${encodeURIComponent(talkSongReturn)}`;
+  const conversationHref = `conversation.html?week=${weekNumber}&from=${page}&return=${encodeURIComponent(talkSongReturn)}`;
   const activityImage = activityImages[weekNumber] && activityImages[weekNumber][page];
   const hasWeekOneLessonVideo = weekNumber === 1 && page === 1;
 
@@ -91,6 +99,7 @@
       <nav class="week-tools" aria-label="Week tools">
         <a class="pill-btn orange" href="${talkSongHref}">🎵 Week Song</a>
         <span class="pill-btn blue is-disabled" aria-disabled="true">🃏 Flashcards</span>
+        <a class="pill-btn green" href="${conversationHref}">💬 Conversation</a>
       </nav>
     </header>
 

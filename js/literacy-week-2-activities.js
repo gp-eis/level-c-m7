@@ -3,7 +3,7 @@
   const page = Number(document.body.dataset.page);
   const wrap = document.querySelector('.activity-sheet-wrap');
   const worksheetImage = wrap && wrap.querySelector('.activity-sheet-image');
-  if (week !== 2 || page < 2 || page > 6 || !wrap || !worksheetImage) return;
+  if (week !== 2 || page < 2 || page > 7 || !wrap || !worksheetImage) return;
 
   function speak(text) {
     if (typeof speakAmericanEnglish !== 'function') return Promise.resolve();
@@ -238,33 +238,46 @@
 
   function initPage3() {
     const subjects = [
-      { label: 'The grass', sentence: 'The grass is short.', answer: 1, color: '#5b9f3a', example: true },
-      { label: 'The tree', sentence: 'The tree is tall.', answer: 0, color: '#8b5a2b' },
-      { label: 'The fence', sentence: 'The fence is big.', answer: 3, color: '#d18a2d' },
-      { label: 'The snail', sentence: 'The snail is small.', answer: 2, color: '#986f4a' }
+      { key: 'grass', label: 'The grass', sentence: 'The grass is short.', answer: 1, color: '#5b9f3a' },
+      { key: 'tree', label: 'The tree', sentence: 'The tree is big.', answer: 3, color: '#8b5a2b' },
+      { key: 'fence', label: 'The fence', sentence: 'The fence is tall.', answer: 0, color: '#d18a2d' },
+      { key: 'snail', label: 'The snail', sentence: 'The snail is small.', answer: 2, color: '#986f4a' }
     ];
     const endings = ['is tall.', 'is short.', 'is small.', 'is big.'];
-    const rows = [423, 548, 674, 798];
+    const rowSentences = subjects.map(subject => subject.sentence);
+    const rows = [404, 545, 688, 829];
     const stage = createStage('w2p3-stage');
     stage.insertAdjacentHTML('beforeend', `
-      <svg class="w2p3-lines" viewBox="0 0 1412 1114" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="w2p3-lines" viewBox="0 0 1536 1024" preserveAspectRatio="none" aria-hidden="true">
         <g class="w2p3-complete-lines"></g><g class="w2p3-preview-lines"></g>
       </svg>
       ${subjects.map((subject, index) => `
-        ${speakerMarkup(`w2p3-speaker w2p3-speaker-${index + 1}`, `Listen: ${subject.sentence}`, subject.sentence)}
-        <button class="w2p3-endpoint w2p3-subject w2p3-row-${index + 1}${subject.example ? ' is-example' : ''}" type="button" data-subject="${index}" aria-label="${subject.example ? 'Example: ' : 'Start a line from '}${subject.label}" ${subject.example ? 'disabled' : ''}></button>
+        <button class="w2p3-picture-hotspot w2p3-hotspot-${subject.key}" type="button" data-speak="${subject.sentence}" aria-label="Listen: ${subject.sentence}"></button>
+        <button class="w2p3-endpoint w2p3-subject w2p3-row-${index + 1}" type="button" data-subject="${index}" aria-label="Start a line from ${subject.label}"></button>
       `).join('')}
-      ${endings.map((ending, index) => `<button class="w2p3-endpoint w2p3-ending w2p3-row-${index + 1}${index === 1 ? ' is-example' : ''}" type="button" data-ending="${index}" aria-label="${index === 1 ? 'Example ending: ' : 'Finish a line at '}${ending}" ${index === 1 ? 'disabled' : ''}></button>`).join('')}
+      ${endings.map((ending, index) => `
+        <button class="w2p3-endpoint w2p3-ending w2p3-row-${index + 1}" type="button" data-ending="${index}" aria-label="Finish a line at ${ending}"></button>
+        ${speakerMarkup(`w2p3-sentence-speaker w2p3-sentence-speaker-${index + 1}`, `Listen: ${rowSentences[index]}`, rowSentences[index])}
+      `).join('')}
     `);
-    const feedback = addFeedback('“The grass is short” is the example. Match the other three sentence parts.');
+    const feedback = addFeedback('Tap the picture to listen, then match all four sentence parts.');
     wireSpeakers(stage);
+
+    stage.querySelectorAll('.w2p3-picture-hotspot').forEach(hotspot => {
+      hotspot.addEventListener('click', () => {
+        hotspot.classList.remove('is-speaking');
+        void hotspot.offsetWidth;
+        hotspot.classList.add('is-speaking');
+        window.setTimeout(() => hotspot.classList.remove('is-speaking'), 650);
+      });
+    });
 
     const completeLines = stage.querySelector('.w2p3-complete-lines');
     const previewLines = stage.querySelector('.w2p3-preview-lines');
     const subjectButtons = [...stage.querySelectorAll('.w2p3-subject')];
     const endingButtons = [...stage.querySelectorAll('.w2p3-ending')];
     let selected = null;
-    let completed = 1;
+    let completed = 0;
     let drag = null;
 
     function clearSelection() {
@@ -275,9 +288,9 @@
     function lineElement(className, subjectIndex, endingIndex = subjectIndex) {
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       line.setAttribute('class', className);
-      line.setAttribute('x1', '991');
+      line.setAttribute('x1', '1157');
       line.setAttribute('y1', String(rows[subjectIndex]));
-      line.setAttribute('x2', '1177');
+      line.setAttribute('x2', '1331');
       line.setAttribute('y2', String(rows[endingIndex]));
       if (className.includes('w2p3-line-color')) line.setAttribute('stroke', subjects[subjectIndex].color);
       return line;
@@ -343,8 +356,8 @@
     function moveDrag(event) {
       if (!drag || event.pointerId !== drag.pointerId) return;
       const bounds = stage.getBoundingClientRect();
-      const x = Math.max(0, Math.min(1412, (event.clientX - bounds.left) * 1412 / bounds.width));
-      const y = Math.max(0, Math.min(1114, (event.clientY - bounds.top) * 1114 / bounds.height));
+      const x = Math.max(0, Math.min(1536, (event.clientX - bounds.left) * 1536 / bounds.width));
+      const y = Math.max(0, Math.min(1024, (event.clientY - bounds.top) * 1024 / bounds.height));
       drag.outline.setAttribute('x2', String(x));
       drag.outline.setAttribute('y2', String(y));
       drag.color.setAttribute('x2', String(x));
@@ -390,14 +403,14 @@
 
   function initPage4() {
     const groups = [
-      { position: 'upper-left', answer: 5, sentence: 'There are five yellow ducks in the upper left group.' },
-      { position: 'upper-right', answer: 6, sentence: 'There are six yellow ducks in the upper right group.' },
-      { position: 'lower-left', answer: 6, sentence: 'There are six yellow ducks in the lower left group.' },
-      { position: 'lower-right', answer: 7, sentence: 'There are seven yellow ducks in the lower right group.' }
+      { position: 'upper-left', answer: 5, clue: 'There are 5 yellow ducks.', sentence: 'There are five yellow ducks in the upper left group.' },
+      { position: 'upper-right', answer: 6, clue: 'There are 6 yellow ducks.', sentence: 'There are six yellow ducks in the upper right group.' },
+      { position: 'lower-left', answer: 6, clue: 'There are 6 yellow ducks.', sentence: 'There are six yellow ducks in the lower left group.' },
+      { position: 'lower-right', answer: 7, clue: 'There are 7 yellow ducks.', sentence: 'There are seven yellow ducks in the lower right group.' }
     ];
     const stage = createStage('w2p4-stage');
     stage.insertAdjacentHTML('beforeend', groups.map((group, index) => `
-      ${speakerMarkup(`w2p4-speaker w2p4-speaker-${group.position}`, `Listen to the ${group.position.replace('-', ' ')} question`, 'Count only the ducks with yellow bodies.')}
+      ${speakerMarkup(`w2p4-speaker w2p4-speaker-${group.position}`, `Listen: ${group.clue}`, group.clue)}
       ${counterMarkup(`w2p4-counter w2p4-counter-${group.position}`, index, `${group.position.replace('-', ' ')} yellow duck count`)}
     `).join(''));
     const feedback = addFeedback('Count only the ducks with yellow bodies. Use the arrows, then press Go.');
@@ -422,28 +435,28 @@
   function initPage5() {
     const groups = [
       {
-        position: 'upper-left', answer: 2,
+        position: 'upper-left', answer: 2, clue: 'The duck and the fish can swim.',
         animals: [
           { name: 'duck', correct: true }, { name: 'giraffe', correct: false },
           { name: 'fish', correct: true }, { name: 'butterfly', correct: false }
         ]
       },
       {
-        position: 'upper-right', answer: 4,
+        position: 'upper-right', answer: 3, clue: 'The dolphin, the jellyfish, and the duck can swim.',
         animals: [
           { name: 'dolphin', correct: true }, { name: 'jellyfish', correct: true },
-          { name: 'hippopotamus', correct: true }, { name: 'duck', correct: true }
+          { name: 'hippopotamus', correct: false }, { name: 'duck', correct: true }
         ]
       },
       {
-        position: 'lower-left', answer: 4,
+        position: 'lower-left', answer: 4, clue: 'The duck, the squid, the shark, and the seahorse can swim.',
         animals: [
           { name: 'duck', correct: true }, { name: 'squid', correct: true },
           { name: 'shark', correct: true }, { name: 'seahorse', correct: true }
         ]
       },
       {
-        position: 'lower-right', answer: 3,
+        position: 'lower-right', answer: 3, clue: 'The whale, the swan, and the octopus can swim.',
         animals: [
           { name: 'whale', correct: true }, { name: 'swan', correct: true },
           { name: 'octopus', correct: true }, { name: 'gorilla', correct: false }
@@ -452,11 +465,11 @@
     ];
     const stage = createStage('w2p5-stage');
     stage.insertAdjacentHTML('beforeend', groups.map((group, groupIndex) => `
-      ${speakerMarkup(`w2p5-speaker w2p5-speaker-${group.position}`, `Listen to the ${group.position.replace('-', ' ')} question`, 'Which animals swim? Circle them, then write the total number.')}
+      ${speakerMarkup(`w2p5-speaker w2p5-speaker-${group.position}`, `Listen: ${group.clue}`, group.clue)}
       ${group.animals.map((animal, animalIndex) => `<button class="w2p5-animal w2p5-animal-${group.position}-${animalIndex + 1}" type="button" data-group="${groupIndex}" data-animal="${animalIndex}" aria-pressed="false" aria-label="Circle ${animal.name}"></button>`).join('')}
       ${counterMarkup(`w2p5-counter w2p5-counter-${group.position}`, groupIndex, `${group.position.replace('-', ' ')} swimming animal total`)}
     `).join(''));
-    const feedback = addFeedback('Circle every animal that swims, enter the total, and press Go for each group.');
+    const feedback = addFeedback('Tap each speaker for a clue. Circle every animal that swims, enter the total, and press Go.');
     wireSpeakers(stage);
     let completed = 0;
 
@@ -516,14 +529,14 @@
 
   function initPage6() {
     const rules = [
-      { position: 'left-1', sentence: 'Squash bugs.', answer: 'X' },
-      { position: 'right-1', sentence: 'Plant flowers.', answer: 'O' },
-      { position: 'left-2', sentence: 'Pull out weeds.', answer: 'O' },
-      { position: 'right-2', sentence: 'Feed birds.', answer: 'O' },
-      { position: 'left-3', sentence: 'Climb fences.', answer: 'X' },
-      { position: 'right-3', sentence: 'Set traps.', answer: 'X' },
-      { position: 'left-4', sentence: 'Break flower pots.', answer: 'X' },
-      { position: 'right-4', sentence: 'Water the flowers.', answer: 'O' }
+      { position: 'left-1', sentence: 'Squash bugs.', resultSentence: 'You should not squash bugs.', answer: 'X' },
+      { position: 'right-1', sentence: 'Plant flowers.', resultSentence: 'You should plant flowers.', answer: 'O' },
+      { position: 'left-2', sentence: 'Pull out weeds.', resultSentence: 'You should pull out weeds.', answer: 'O' },
+      { position: 'right-2', sentence: 'Feed birds.', resultSentence: 'You should feed birds.', answer: 'O' },
+      { position: 'left-3', sentence: 'Climb fences.', resultSentence: 'You should not climb fences.', answer: 'X' },
+      { position: 'right-3', sentence: 'Set traps.', resultSentence: 'You should not set traps.', answer: 'X' },
+      { position: 'left-4', sentence: 'Break flower pots.', resultSentence: 'You should not break flower pots.', answer: 'X' },
+      { position: 'right-4', sentence: 'Water the flowers.', resultSentence: 'You should water the flowers.', answer: 'O' }
     ];
     const stage = createStage('w2p6-stage');
     stage.insertAdjacentHTML('beforeend', rules.map((rule, index) => `
@@ -552,25 +565,168 @@
           control.classList.remove('is-wrong');
           if (correct) {
             button.classList.add('is-selected');
+            control.classList.add('is-correct');
             choices.forEach(choice => { choice.disabled = true; });
             status.textContent = '\u2713';
             completed.add(index);
             playAnswerSound(true);
+            const correctResponse = `Correct! ${rule.resultSentence}`;
             feedback.textContent = completed.size === rules.length
-              ? 'Great job! You completed all eight garden rules.'
-              : `Correct! ${rule.sentence}`;
+              ? `${correctResponse} Great job! You completed all eight garden rules.`
+              : correctResponse;
+            speak(feedback.textContent);
           } else {
             button.classList.add('is-wrong-choice');
             control.classList.add('is-wrong');
             status.textContent = '\u00d7';
             playAnswerSound(false);
             feedback.textContent = 'Try again. Choose O for something we should do or X for something we should not do.';
+            speak('Try again.');
           }
-          speak(feedback.textContent);
         });
       });
     });
   }
 
-  ({ 2: initPage2, 3: initPage3, 4: initPage4, 5: initPage5, 6: initPage6 })[page]();
+  function initPage7() {
+    const questions = [
+      { position: 'one', sentence: 'I can find a butterfly in my garden.', answer: 'find' },
+      { position: 'two', sentence: 'I found a small snail in my garden yesterday.', answer: 'found' },
+      { position: 'three', sentence: 'I can find some short grass in my garden.', answer: 'find' },
+      { position: 'four', sentence: 'I found a duck waddling in my garden last week.', answer: 'found' }
+    ];
+    const stage = createStage('w2p7-stage');
+    stage.insertAdjacentHTML('beforeend', questions.map((question, index) => `
+      ${speakerMarkup(`w2p7-speaker w2p7-speaker-${question.position}`, `Listen: ${question.sentence}`, question.sentence)}
+      <div class="w2p7-question w2p7-question-${question.position}" data-question="${index}">
+        <div class="w2p7-choices" role="group" aria-label="Choose find or found to complete sentence ${index + 1}">
+          <button class="w2p7-choice w2p7-choice-find" type="button" data-choice="find" aria-label="Choose find for sentence ${index + 1}"><span class="sr-only">find</span></button>
+          <button class="w2p7-choice w2p7-choice-found" type="button" data-choice="found" aria-label="Choose found for sentence ${index + 1}"><span class="sr-only">found</span></button>
+        </div>
+        <span class="w2p7-status" aria-hidden="true"></span>
+      </div>
+    `).join(''));
+    const feedback = addFeedback('Watch the clip, then complete the activity.');
+    const completed = new Set();
+    wireSpeakers(stage);
+
+    const videoOverlay = document.createElement('div');
+    videoOverlay.className = 'page7-video-overlay';
+    videoOverlay.hidden = true;
+    videoOverlay.innerHTML = `
+      <div class="video-play-shell page7-video-shell">
+        <video class="page7-intro-video" controls playsinline preload="metadata" aria-label="In the Garden activity clip">
+          <source src="../assets/video/literacy/week-2-page-07.mp4" type="video/mp4">
+          Your browser does not support this video.
+        </video>
+        <button class="center-video-play page7-video-play" type="button" aria-label="Play the In the Garden clip">&#9654;</button>
+      </div>
+      <p class="page7-video-message" aria-live="polite" hidden></p>
+    `;
+
+    const startLayer = document.createElement('div');
+    startLayer.className = 'literacy-activity-start-layer';
+    startLayer.innerHTML = `
+      <button class="literacy-activity-start-button page7-start-button" type="button" aria-label="Start activity and watch the In the Garden clip">
+        <span aria-hidden="true">&#9654;</span>
+        <span>Start Activity</span>
+      </button>
+    `;
+
+    wrap.append(videoOverlay, startLayer);
+    wrap.classList.add('has-literacy-activity-start');
+    stage.inert = true;
+    stage.setAttribute('aria-hidden', 'true');
+
+    const startButton = startLayer.querySelector('.page7-start-button');
+    const video = videoOverlay.querySelector('.page7-intro-video');
+    const playButton = videoOverlay.querySelector('.page7-video-play');
+    const videoMessage = videoOverlay.querySelector('.page7-video-message');
+    let activityShown = false;
+
+    function showActivity() {
+      if (activityShown) return;
+      activityShown = true;
+      video.pause();
+      videoOverlay.hidden = true;
+      stage.inert = false;
+      stage.removeAttribute('aria-hidden');
+      feedback.textContent = 'Listen to each sentence. Choose find or found.';
+    }
+
+    async function playVideo() {
+      playButton.hidden = true;
+      try {
+        await video.play();
+      } catch (error) {
+        playButton.hidden = false;
+        videoMessage.hidden = false;
+        videoMessage.textContent = 'Press the play button to begin the clip.';
+      }
+    }
+
+    startButton.addEventListener('click', () => {
+      startLayer.hidden = true;
+      videoOverlay.hidden = false;
+      feedback.textContent = 'Watch the clip. The activity will appear when it finishes.';
+      playVideo();
+    });
+
+    playButton.addEventListener('click', playVideo);
+    video.addEventListener('play', () => { playButton.hidden = true; });
+    video.addEventListener('playing', () => {
+      playButton.hidden = true;
+      videoMessage.hidden = true;
+    });
+    video.addEventListener('pause', () => {
+      if (!video.ended && !activityShown) playButton.hidden = false;
+    });
+    video.addEventListener('ended', showActivity);
+    video.addEventListener('error', () => {
+      videoMessage.hidden = false;
+      videoMessage.innerHTML = 'The clip could not be played. <button class="page7-continue-button" type="button">Continue to Activity</button>';
+      videoMessage.querySelector('.page7-continue-button').addEventListener('click', showActivity);
+    });
+
+    stage.querySelectorAll('.w2p7-question').forEach(control => {
+      const index = Number(control.dataset.question);
+      const question = questions[index];
+      const choices = [...control.querySelectorAll('.w2p7-choice')];
+      const status = control.querySelector('.w2p7-status');
+
+      choices.forEach(button => {
+        button.addEventListener('click', () => {
+          const correct = button.dataset.choice === question.answer;
+          choices.forEach(choice => choice.classList.remove('is-selected', 'is-wrong-choice'));
+          control.classList.remove('is-wrong');
+
+          if (correct) {
+            button.classList.add('is-selected');
+            control.classList.add('is-correct');
+            status.textContent = '\u2713';
+            choices.forEach(choice => { choice.disabled = true; });
+            completed.add(index);
+            playAnswerSound(true);
+            const allDone = completed.size === questions.length;
+            feedback.textContent = allDone
+              ? 'Wonderful! You completed every garden sentence.'
+              : `Correct! ${question.sentence}`;
+            speak(allDone
+              ? 'Wonderful! You completed every garden sentence.'
+              : `Correct! ${question.sentence}`);
+            return;
+          }
+
+          button.classList.add('is-wrong-choice');
+          control.classList.add('is-wrong');
+          status.textContent = '\u00d7';
+          feedback.textContent = 'Try again. Use find for now and found for the past.';
+          playAnswerSound(false);
+          speak('Try again. Use find for now and found for the past.');
+        });
+      });
+    });
+  }
+
+  ({ 2: initPage2, 3: initPage3, 4: initPage4, 5: initPage5, 6: initPage6, 7: initPage7 })[page]();
 })();

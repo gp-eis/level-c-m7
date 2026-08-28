@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-US" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google" content="notranslate">
+  <title>Spin the Wheel — Week 1 — Animals</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/games-week-1.css">
+</head>
+<body class="lesson-page">
+  <main class="page dog-game-page wheel-game-page">
+    <div class="back-row">
+      <a class="back-link" href="index.html?week=1">⬅️ All Games</a>
+    </div>
+    <header class="game-header">
+      <h1 class="big-title page-title-with-icon"><img class="page-title-icon" src="../assets/images/ui/game-wheel.webp" alt="">Spin the Wheel</h1>
+      <p class="subtitle">Spin slowly, press stop, listen, then flip your picture card!</p>
+    </header>
+
+    <div class="wheel-wrap">
+      <div class="wheel-pointer" aria-hidden="true"></div>
+      <div class="wheel-disc" id="dog-rules-wheel" aria-label="Dog park rules wheel"></div>
+    </div>
+    <div class="wheel-result" id="wheel-result" aria-live="polite"></div>
+    <div class="wheel-actions">
+      <button class="pill-btn wheel-action-btn" id="wheel-spin" type="button">🎡 SPIN!</button>
+      <button class="pill-btn wheel-action-btn wheel-stop-btn" id="wheel-stop" type="button" hidden>🛑 STOP!</button>
+    </div>
+  </main>
+
+  <section class="selected-area" id="wheel-selected-area" role="dialog" aria-modal="true" aria-label="Selected picture card" aria-live="polite" hidden>
+    <p class="flip-hint">👆 Click the card to flip it!</p>
+    <button class="word-card" id="wheel-card" type="button" aria-pressed="false">
+      <span class="card-inner">
+        <span class="card-face card-front">
+          <img id="wheel-card-front-image" alt="">
+        </span>
+        <span class="card-face card-back">
+          <img id="wheel-card-back-image" alt="">
+          <span class="card-sentence" id="wheel-card-sentence"></span>
+        </span>
+      </span>
+    </button>
+    <button class="pill-btn wheel-return-btn" id="wheel-return" type="button">🎡 Back to Wheel</button>
+  </section>
+  <script src="../js/main.js"></script>
+  <script src="../js/week-1-games-data.js"></script>
+  <script src="../js/week-1-wheel.js"></script>
+</body>
+</html>

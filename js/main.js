@@ -199,6 +199,34 @@ function setupSiteSounds() {
   }
 })();
 
+/* ---------- Level C Month 7 week availability ---------- */
+
+window.LEVEL_C_OPEN_WEEKS = Object.freeze([1]);
+
+function isLevelCWeekOpen(week) {
+  return window.LEVEL_C_OPEN_WEEKS.includes(Number(week));
+}
+
+(() => {
+  const path = window.location.pathname.replace(/\\/g, '/');
+  const gamesHubWeek = /\/games\/index\.html$/i.test(path)
+    ? Number(new URLSearchParams(window.location.search).get('week'))
+    : 0;
+  const pageMatch = path.match(/\/week-([2-4])\.html$/i);
+  const lessonMatch = path.match(/\/lessons\/week-([2-4])-page-/i);
+  const trackMatch = path.match(/\/(?:reading|phonics)\/week-([2-4])\.html$/i);
+  const gameMatch = path.match(/\/games\/week-([2-4])-/i);
+  const closedWeek = Number(
+    pageMatch?.[1] || lessonMatch?.[1] || trackMatch?.[1] || gameMatch?.[1] || gamesHubWeek || 0
+  );
+  if (!closedWeek || isLevelCWeekOpen(closedWeek)) return;
+
+  const destination = /\/(?:lessons|reading|phonics|games)\//i.test(path)
+    ? '../index.html'
+    : 'index.html';
+  window.location.replace(destination);
+})();
+
 /* ---------- Level C Month 7 weekly selection ---------- */
 
 (() => {
@@ -207,12 +235,27 @@ function setupSiteSounds() {
   if (!config || !weekGrid) return;
 
   const colorClasses = ['week-orange', 'week-red', 'week-yellow', 'week-green'];
-  weekGrid.innerHTML = Object.entries(config.weeks).map(([number, week], index) => `
-    <a class="week-card ${colorClasses[index]}" href="week-${number}.html">
-      <span class="week-card__inner">
-        <span class="week-card__icon"><img src="${week.image}" width="100" height="100" loading="eager" decoding="async" alt="${week.alt}"></span>
-        <strong>Week ${number}</strong>
-        <span class="week-card__title">${week.title}</span>
-      </span>
-    </a>`).join('');
+  weekGrid.innerHTML = Object.entries(config.weeks).map(([number, week], index) => {
+    const isOpen = isLevelCWeekOpen(number);
+    return `
+      <a class="week-card ${colorClasses[index]}${isOpen ? '' : ' is-locked'}" data-week="${number}" ${isOpen ? `href="week-${number}.html"` : 'aria-disabled="true" tabindex="0"'}>
+        <span class="week-card__inner">
+          <span class="week-card__icon"><img src="${week.image}" width="100" height="100" loading="eager" decoding="async" alt="${week.alt}"></span>
+          <strong>Week ${number}</strong>
+          <span class="week-card__title">${week.title}</span>
+          ${isOpen ? '' : '<span class="week-card__status">🔒 Coming soon</span>'}
+        </span>
+      </a>`;
+  }).join('');
+
+  weekGrid.querySelectorAll('.week-card.is-locked').forEach((card) => {
+    const block = (event) => {
+      event.preventDefault();
+      showToast(`🔒 Week ${card.dataset.week} is coming soon!`);
+    };
+    card.addEventListener('click', block);
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') block(event);
+    });
+  });
 })();
