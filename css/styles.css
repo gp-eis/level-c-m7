@@ -2242,6 +2242,19 @@ a:focus-visible, button:focus-visible { outline: 5px solid #164f9f; outline-offs
 .talk-song-page .center-video-play[hidden] { display: none; }
 .talk-song-note { margin: 16px 0 0; color: #3d5a78; font-family: var(--font-friendly); font-size: 1.05rem; font-weight: 700; text-align: center; }
 
+/* Level C Phonics Magic e video placeholder. */
+.magic-e-page .talk-song-header h1 {
+  color: #7c45d9;
+  text-shadow: 3px 3px 0 #fff,6px 6px 0 rgba(124,69,217,.2);
+}
+.magic-e-page .video-play-shell {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,.13), transparent 28%),
+    linear-gradient(145deg,#342454,#151426);
+}
 @media (max-width: 640px) {
   .talk-song-shell { padding-inline: 14px; }
   .talk-song-card { padding: 14px; border-radius: 24px; }

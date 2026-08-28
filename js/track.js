@@ -27,6 +27,12 @@
     <header class="track-header">
       <div class="track-title-row"><span class="track-title-icon" aria-hidden="true">${track.icon}</span><h1 class="big-title">${track.label} — Week ${weekNumber}</h1></div>
       <p class="subtitle">${week.title}</p>
+      ${trackKey === 'phonics' ? `
+        <nav class="week-tools track-tools" aria-label="Phonics tools">
+          <a class="pill-btn blue phonics-games-btn" href="../games/phonics.html?week=${weekNumber}&from=phonics">🎮 Phonics Games</a>
+          <a class="pill-btn magic-e-btn" href="magic-e.html?week=${weekNumber}">✨ Magic e</a>
+        </nav>
+      ` : ''}
     </header>
     <section class="track-card" id="lesson-focus">
       <h2 class="section-title">🎬 ${track.label} Video</h2>

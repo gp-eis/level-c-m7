@@ -48,6 +48,7 @@
       const video = document.querySelector('#talk-song-video');
       const play = document.querySelector('#talk-song-play');
       const songSources = {
+        1: '../assets/video/literacy/week-1-talk-song.mp4',
         2: '../assets/video/literacy/week-2-talk-song.mp4',
         3: '../assets/video/literacy/week-3-talk-song.mp4',
         4: '../assets/video/literacy/week-4-talk-song.mp4'
@@ -58,7 +59,7 @@
       label.textContent = week ? `Week ${weekNumber} — ${week.title}` : `Week ${weekNumber}`;
       document.title = `Week Song — Week ${weekNumber} — Level C Month 7`;
 
-      video.src = songSources[weekNumber] || '../assets/video/literacy/c-song-m7.mp4';
+      video.src = songSources[weekNumber] || songSources[1];
       video.setAttribute('aria-label', `Level C Month 7 Week ${weekNumber} Week Song video`);
 
       play.addEventListener('click', () => video.play());

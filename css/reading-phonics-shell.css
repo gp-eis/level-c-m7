@@ -205,6 +205,11 @@ a.track-activity-btn:active { transform: translateY(2px); }
 .reading-page .track-title-icon { background: linear-gradient(145deg, #ffd1c9, #ed6b69); box-shadow: 0 7px 0 #ae3544, 0 13px 20px rgba(30,58,95,.18); }
 .phonics-page { --track-accent: #efb919; --track-light: #ffe371; --track-dark: #bd7207; }
 .phonics-page .big-title { color: #ee9412; text-shadow: 3px 3px #fff, 6px 6px rgba(201,140,0,.18); }
+.track-tools { margin-top: 18px; margin-bottom: 0; }
+.magic-e-btn {
+  background: linear-gradient(180deg, #b881ff, #7c45d9);
+  box-shadow: 0 5px 0 #5931a5;
+}
 
 @media (max-width: 600px) {
   .track-shell-page { width: 100%; }

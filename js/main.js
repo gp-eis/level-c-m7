@@ -201,7 +201,7 @@ function setupSiteSounds() {
 
 /* ---------- Level C Month 7 week availability ---------- */
 
-window.LEVEL_C_OPEN_WEEKS = Object.freeze([1]);
+window.LEVEL_C_OPEN_WEEKS = Object.freeze([1, 2, 3, 4]);
 
 function isLevelCWeekOpen(week) {
   return window.LEVEL_C_OPEN_WEEKS.includes(Number(week));
@@ -212,12 +212,18 @@ function isLevelCWeekOpen(week) {
   const gamesHubWeek = /\/games\/index\.html$/i.test(path)
     ? Number(new URLSearchParams(window.location.search).get('week'))
     : 0;
+  const magicEWeek = /\/phonics\/magic-e\.html$/i.test(path)
+    ? Number(new URLSearchParams(window.location.search).get('week'))
+    : 0;
+  const phonicsGameWeek = /\/games\/phonics(?:-[a-z-]+)?\.html$/i.test(path)
+    ? Number(new URLSearchParams(window.location.search).get('week'))
+    : 0;
   const pageMatch = path.match(/\/week-([2-4])\.html$/i);
   const lessonMatch = path.match(/\/lessons\/week-([2-4])-page-/i);
   const trackMatch = path.match(/\/(?:reading|phonics)\/week-([2-4])\.html$/i);
   const gameMatch = path.match(/\/games\/week-([2-4])-/i);
   const closedWeek = Number(
-    pageMatch?.[1] || lessonMatch?.[1] || trackMatch?.[1] || gameMatch?.[1] || gamesHubWeek || 0
+    pageMatch?.[1] || lessonMatch?.[1] || trackMatch?.[1] || gameMatch?.[1] || gamesHubWeek || magicEWeek || phonicsGameWeek || 0
   );
   if (!closedWeek || isLevelCWeekOpen(closedWeek)) return;
 

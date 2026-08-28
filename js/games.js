@@ -33,7 +33,7 @@
       key: 'phonics',
       label: 'Phonics',
       hint: 'Letter games for this week!',
-      emoji: '🔤'
+      image: '../assets/images/ui/phonics-games/vowel-team-train.png'
     }
   ];
 
@@ -47,6 +47,7 @@
     : `<span class="emoji" aria-hidden="true">${game.emoji}</span>`;
 
   const gameHref = (weekNumber, game) => {
+    if (game.key === 'phonics') return `phonics.html?week=${weekNumber}&from=games`;
     const completedPages = {
       1: {
         memory: 'memory.html',
