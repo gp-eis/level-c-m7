@@ -1,6 +1,8 @@
 (() => {
-  const imageBase = '../assets/images/week-1/literacy/activity-page-01/individual';
-  const picture = (file, scale = 1) => ({ src: `${imageBase}/${file}`, scale });
+  const partOneImageBase = '../assets/images/week-1/literacy/activity-page-01/individual';
+  const partTwoImageBase = '../assets/images/week-1/literacy/activity-page-01-part-2/individual';
+  const picture = (file, scale = 1, imageBase = partOneImageBase) => ({ src: `${imageBase}/${file}`, scale });
+  const partTwoPicture = (file, scale = 1) => picture(file, scale, partTwoImageBase);
 
   const questions = [
     {
@@ -49,6 +51,54 @@
         { id: 'rabbit-sitting', ariaLabel: 'Rabbit sitting', visual: picture('rabbit-sitting.png', 1.52) },
         { id: 'rabbit-sleeping', ariaLabel: 'Rabbit sleeping', visual: picture('rabbit-sleeping.png', 1.16) },
         { id: 'rabbit-jumping', ariaLabel: 'Rabbit jumping', visual: picture('rabbit-jumping.png', 1.52) }
+      ]
+    },
+    {
+      prompt: 'What is the eagle doing?',
+      targetSentence: 'The eagle is hunting.',
+      visual: partTwoPicture('eagle-portrait.png'),
+      visualLabel: 'A friendly eagle',
+      correct: 'eagle-hunting',
+      choices: [
+        { id: 'eagle-hunting', ariaLabel: 'Eagle hunting', visual: partTwoPicture('eagle-hunting.png', 1.04) },
+        { id: 'eagle-flying', ariaLabel: 'Eagle flying', visual: partTwoPicture('eagle-flying.png', 1.08) },
+        { id: 'eagle-sleeping', ariaLabel: 'Eagle sleeping', visual: partTwoPicture('eagle-sleeping.png', 1.1) }
+      ]
+    },
+    {
+      prompt: 'What is the duck doing?',
+      targetSentence: 'The duck is swimming.',
+      visual: partTwoPicture('duck-portrait.png'),
+      visualLabel: 'A white duck',
+      correct: 'duck-swimming',
+      choices: [
+        { id: 'duck-walking', ariaLabel: 'Duck walking', visual: partTwoPicture('duck-walking.png', 1.1) },
+        { id: 'duck-swimming', ariaLabel: 'Duck swimming', visual: partTwoPicture('duck-swimming.png', 1.12) },
+        { id: 'duck-sitting', ariaLabel: 'Duck sitting', visual: partTwoPicture('duck-sitting.png', 1.1) }
+      ]
+    },
+    {
+      prompt: 'What is the bat doing?',
+      targetSentence: 'The bat is sleeping.',
+      visual: partTwoPicture('bat-portrait.png'),
+      visualLabel: 'A friendly purple bat',
+      correct: 'bat-sleeping',
+      choices: [
+        { id: 'bat-flying', ariaLabel: 'Bat flying', visual: partTwoPicture('bat-flying.png', 1.08) },
+        { id: 'bat-sleeping', ariaLabel: 'Bat sleeping upside down', visual: partTwoPicture('bat-sleeping.png', 1.04) },
+        { id: 'bat-playing', ariaLabel: 'Bat playing with a ball', visual: partTwoPicture('bat-playing.png', 1.06) }
+      ]
+    },
+    {
+      prompt: 'What is the squirrel doing?',
+      targetSentence: 'The squirrel is playing.',
+      visual: partTwoPicture('squirrel-portrait.png'),
+      visualLabel: 'A friendly orange squirrel',
+      correct: 'squirrel-playing',
+      choices: [
+        { id: 'squirrel-playing', ariaLabel: 'Squirrel playing', visual: partTwoPicture('squirrel-playing.png', 1.06) },
+        { id: 'squirrel-running', ariaLabel: 'Squirrel running', visual: partTwoPicture('squirrel-running.png', 1.06) },
+        { id: 'squirrel-sleeping', ariaLabel: 'Squirrel sleeping', visual: partTwoPicture('squirrel-sleeping.png', 1.06) }
       ]
     }
   ];
@@ -166,7 +216,7 @@
     feedback.hidden = true;
     complete.hidden = false;
     restartButton.focus();
-    speak('Great job! You remembered all four animal actions!');
+    speak('Great job! You remembered all eight animal actions!');
   }
 
   function checkAnswer(button, choice, question) {

@@ -1,0 +1,77 @@
+.week-2-garden-quiz {
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255,255,255,.72) 0 5px, transparent 6px),
+    linear-gradient(180deg, #e6f9ff 0%, #fff5f8 55%, #eefbdc 100%);
+}
+
+.week-2-garden-quiz .literacy-quiz-header .big-title {
+  color: #278c3e;
+  text-shadow: 3px 3px 0 #fff, 6px 6px 0 rgba(39,140,62,.16);
+}
+
+.week-2-garden-quiz .literacy-quiz-board {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(255,255,255,.94) 0 6px, transparent 7px),
+    radial-gradient(circle at 92% 18%, rgba(255,255,255,.88) 0 8px, transparent 9px),
+    linear-gradient(155deg, #fff8d8, #eafff0 52%, #e8f7ff);
+}
+
+.week-2-quiz-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-bottom: 18px;
+}
+
+.week-2-quiz-status .literacy-quiz-progress { margin-bottom: 0; }
+
+.week-2-score-chip {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 7px 15px;
+  border: 3px solid #fff;
+  border-radius: 999px;
+  background: #ffdc5e;
+  color: #664600;
+  box-shadow: 0 4px 0 #e2a713;
+  font-family: var(--font-friendly);
+  font-weight: 900;
+}
+
+.week-2-garden-clue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  overflow: visible;
+  background: linear-gradient(145deg, #e7ffd9, #fff8cf);
+  font-size: clamp(2.8rem, 7vw, 4.6rem);
+  line-height: 1;
+}
+
+.week-2-garden-clue span:last-child {
+  margin-left: -.22em;
+  transform: translateY(.14em) rotate(-8deg);
+}
+
+.week-2-garden-quiz .literacy-answer-card { background: linear-gradient(180deg, #fff, #f5fff0); }
+
+.week-2-garden-quiz .literacy-answer-card:hover:not(:disabled) {
+  border-color: #ffd54f;
+  background: #fffef1;
+}
+
+@media (max-width: 720px) {
+  .week-2-quiz-status { flex-direction: column; gap: 10px; }
+  .week-2-garden-quiz .literacy-answer-card { min-height: 200px; }
+  .week-2-garden-quiz .literacy-answer-visual { height: 180px; }
+}
+
+@media (max-width: 480px) {
+  .week-2-score-chip { width: min(220px, 100%); justify-content: center; }
+  .week-2-garden-quiz .literacy-answer-card { min-height: 180px; }
+  .week-2-garden-quiz .literacy-answer-visual { height: 160px; }
+}

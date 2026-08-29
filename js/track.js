@@ -10,9 +10,26 @@
   document.title = `${track.label} Week ${weekNumber} — Animals`;
   const isReading = trackKey === 'reading';
   const readingThumbnails = {
-    1: '../assets/images/reading/week-1-video-thumbnail.png'
+    1: '../assets/images/reading/why-why-is-that-thumbnail.webp',
+    2: '../assets/images/reading/week-2-do-you-know-who-i-am-thumbnail.webp',
+    3: '../assets/images/reading/week-3-video-thumbnail.png',
+    4: '../assets/images/reading/week-4-video-thumbnail.png'
   };
   const readingThumbnail = isReading ? readingThumbnails[weekNumber] : null;
+  const readingVideos = {
+    1: '../assets/video/reading/week-1-reading-section.mp4',
+    2: '../assets/video/reading/week-2-reading-section.mp4',
+    3: '../assets/video/reading/week-3-reading-section.mp4',
+    4: '../assets/video/reading/week-4-reading-section.mp4'
+  };
+  const readingVideo = isReading ? readingVideos[weekNumber] : null;
+  const readingActivityPages = {
+    1: 'week-1-activity.html',
+    2: 'week-2-activity.html',
+    3: 'week-3-activity.html',
+    4: 'week-4-activity.html'
+  };
+  const readingActivityPage = isReading ? readingActivityPages[weekNumber] : null;
   const phonicsVideos = {
     1: '../assets/video/phonics/week-1-week-2.mp4',
     2: '../assets/video/phonics/week-1-week-2.mp4',
@@ -20,7 +37,8 @@
     4: '../assets/video/phonics/week-3-week-4.mp4'
   };
   const phonicsVideo = trackKey === 'phonics' ? phonicsVideos[weekNumber] : null;
-  const hasPhonicsVideo = Boolean(phonicsVideo);
+  const trackVideo = phonicsVideo || readingVideo;
+  const hasTrackVideo = Boolean(trackVideo);
   app.className = `page track-shell-page ${trackKey}-page`;
   app.innerHTML = `
     <a class="back-link" href="../week-${weekNumber}.html#card-${trackKey}">⬅️ Week ${weekNumber} Home</a>
@@ -36,17 +54,17 @@
     </header>
     <section class="track-card" id="lesson-focus">
       <h2 class="section-title">🎬 ${track.label} Video</h2>
-      ${hasPhonicsVideo ? `
+      ${hasTrackVideo ? `
         <div class="video-play-shell track-video-shell">
-          <video class="track-video" controls playsinline preload="metadata" aria-label="Week ${weekNumber} phonics lesson video">
-            <source src="${phonicsVideo}" type="video/mp4">
+          <video class="track-video" controls playsinline preload="metadata" ${readingThumbnail ? `poster="${readingThumbnail}"` : ''} aria-label="Week ${weekNumber} ${track.label.toLowerCase()} video">
+            <source src="${trackVideo}" type="video/mp4">
             Your browser does not support this video.
           </video>
-          <button class="center-video-play" type="button" aria-label="Play the Week ${weekNumber} phonics video">▶</button>
+          <button class="center-video-play" type="button" aria-label="Play the Week ${weekNumber} ${track.label.toLowerCase()} video">▶</button>
         </div>
       ` : readingThumbnail ? `
         <div class="track-video-placeholder track-video-thumbnail">
-          <img class="track-video-thumbnail__image" src="${readingThumbnail}" alt="Why, Why is That? Animal World reading video thumbnail">
+          <img class="track-video-thumbnail__image" src="${readingThumbnail}" alt="Week ${weekNumber} reading video thumbnail">
           <button class="center-video-play-placeholder" type="button" aria-label="Reading video coming soon" disabled>▶</button>
         </div>
       ` : `
@@ -54,7 +72,16 @@
       `}
       ${isReading ? '<p class="track-note">Watch the story, then try the reading activity!</p>' : ''}
     </section>
-    <section class="track-card track-activity-card"><h2 class="section-title">⭐ ${isReading ? 'Watch and Play!' : 'Check What You Learned'}</h2><p>The follow-up ${track.label.toLowerCase()} activity will be added here.</p><button class="track-activity-btn" type="button" disabled><span aria-hidden="true">${track.icon}</span><span>Activity Placeholder</span></button></section>`;
+    <section class="track-card track-activity-card">
+      <h2 class="section-title">⭐ ${isReading ? 'Watch and Play!' : 'Check What You Learned'}</h2>
+      ${readingActivityPage ? `
+        <p>Answer four picture questions about the story.</p>
+        <a class="track-activity-btn" href="${readingActivityPage}"><span aria-hidden="true">${track.icon}</span><span>Activity</span></a>
+      ` : `
+        <p>The follow-up ${track.label.toLowerCase()} activity will be added here.</p>
+        <button class="track-activity-btn" type="button" disabled><span aria-hidden="true">${track.icon}</span><span>Activity Placeholder</span></button>
+      `}
+    </section>`;
 
   const video = app.querySelector('.track-video');
   const playButton = app.querySelector('.center-video-play');

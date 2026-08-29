@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-US" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="en-US">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Flashcards — Literacy — Level C</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/flashcards.css">
+</head>
+<body class="lesson-page tool-page">
+  <div class="floaties" aria-hidden="true">
+    <span style="top:13%;left:4%;">🃏</span>
+    <span style="top:72%;left:94%;">✨</span>
+  </div>
+
+  <main class="page fc-page">
+    <a class="back-link" id="flashcards-back" href="../week-1.html#card-literacy">⬅️ Week 1 Home</a>
+
+    <header class="fc-header center">
+      <h1 class="big-title page-title-with-icon">
+        <img class="page-title-icon" src="../assets/images/ui/week-home/literacy-gerry.png" alt="">
+        Flashcards
+      </h1>
+      <p class="subtitle" id="flashcards-week-label">Week 1 — In the Park</p>
+      <p class="fc-intro">Look, flip, and listen to every sentence!</p>
+    </header>
+
+    <section class="fc-board" aria-labelledby="flashcards-week-label">
+      <div class="fc-status-row">
+        <span class="fc-counter" id="flashcards-counter">Card 1 of 8</span>
+        <button class="fc-shuffle-btn" id="flashcards-shuffle" type="button">🔀 Shuffle Cards</button>
+      </div>
+
+      <div class="fc-stage">
+        <div class="fc-card" id="flashcard" role="button" tabindex="0" aria-label="Flip the flashcard" aria-pressed="false">
+          <div class="fc-card-face fc-card-front">
+            <img class="fc-main-image" id="flashcard-front-image" src="" alt="">
+            <span class="fc-tap-hint">👆 Tap to see the words</span>
+          </div>
+          <div class="fc-card-face fc-card-back">
+            <img class="fc-back-image" id="flashcard-back-image" src="" alt="">
+            <div class="fc-word-copy">
+              <h2 id="flashcard-phrase"></h2>
+              <p id="flashcard-sentence"></p>
+            </div>
+            <span class="fc-tap-hint">👆 Tap to see the picture</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fc-controls" aria-label="Flashcard controls">
+        <button class="pill-btn orange fc-control" id="flashcards-previous" type="button">⬅️ Previous</button>
+        <button class="pill-btn blue fc-control" id="flashcards-flip" type="button">🔄 Flip Card</button>
+        <button class="pill-btn green fc-control" id="flashcards-listen" type="button">🔊 Listen</button>
+        <button class="pill-btn orange fc-control" id="flashcards-next" type="button">Next ➡️</button>
+      </div>
+
+      <p class="fc-help" id="flashcards-help" aria-live="polite">Tap the large card to reveal the phrase and sentence.</p>
+      <div class="fc-thumbnail-list" id="flashcards-thumbnails" aria-label="Choose a flashcard"></div>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/flashcards.js"></script>
+</body>
+</html>

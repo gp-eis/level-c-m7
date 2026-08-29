@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-US" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="en-US">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Why, Why is That? Activity — Animals</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/reading-week-1-activity.css">
+</head>
+<body>
+  <div class="floaties" aria-hidden="true">
+    <span style="top:12%;left:4%;">🐾</span>
+    <span style="top:72%;left:94%;">🌳</span>
+  </div>
+
+  <main class="page reading-activity-page">
+    <a class="back-link" href="week-1.html">⬅️ Why, Why is That?</a>
+
+    <header class="reading-activity-header">
+      <h1 class="big-title page-title-with-icon">
+        <img class="page-title-icon" src="../assets/images/ui/week-home/reading-penny.png" alt="">
+        Story Challenge
+      </h1>
+      <div class="reading-intro-row">
+        <p class="subtitle">Listen carefully, then choose the best picture!</p>
+        <button class="reading-speaker-btn" id="intro-speaker" type="button" aria-label="Listen to the activity instructions">🔊</button>
+      </div>
+    </header>
+
+    <section class="reading-activity-board" aria-labelledby="question-main">
+      <div class="reading-progress">
+        <span id="progress-label">Question 1 of 4</span>
+        <span class="reading-progress-dots" id="progress-dots" aria-hidden="true"></span>
+      </div>
+
+      <div class="reading-question-panel">
+        <img class="reading-question-image" id="question-image" src="" alt="">
+        <div class="reading-question-copy">
+          <h2 id="question-main"></h2>
+          <p id="question-detail"></p>
+        </div>
+        <button class="reading-speaker-btn" id="question-speaker" type="button" aria-label="Listen to the question">🔊</button>
+      </div>
+
+      <div class="reading-answers-grid" id="answers-grid"></div>
+      <p class="reading-feedback" id="feedback-line" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <div class="reading-completion-overlay" id="completion-overlay" role="dialog" aria-modal="true" aria-labelledby="completion-title" hidden>
+    <div class="reading-completion-card">
+      <div class="reading-completion-icon" aria-hidden="true">🏆</div>
+      <h2 id="completion-title">Great job!</h2>
+      <p>You finished the Why, Why is That? activity!</p>
+      <div class="reading-completion-actions">
+        <button class="reading-speaker-btn" id="completion-speaker" type="button" aria-label="Listen to the congratulations message">🔊</button>
+        <button class="pill-btn green" id="try-again" type="button">🔄 Try Again</button>
+        <a class="pill-btn blue" href="week-1.html">🎬 Back to Reading</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/reading-week-1-activity.js"></script>
+</body>
+</html>

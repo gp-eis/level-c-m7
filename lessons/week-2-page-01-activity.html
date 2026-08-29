@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-US" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Garden Discovery Activity — Literacy Week 2</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/literacy-week-2-page-01.css">
+</head>
+<body class="lesson-page literacy-reading-activity-page week-2-garden-quiz" data-week="2" data-page="1">
+  <main class="page level-c-literacy-quiz-page">
+    <a class="back-link" href="week-2-page-01.html#lesson-focus">⬅️ Back to Video</a>
+
+    <header class="literacy-quiz-header">
+      <h1 class="big-title">Garden Discovery Challenge</h1>
+      <p class="subtitle">Listen to each clue and choose what belongs in the garden!</p>
+    </header>
+
+    <section class="literacy-quiz-board" aria-labelledby="quiz-question">
+      <div class="week-2-quiz-status" aria-label="Activity progress and score">
+        <div class="literacy-quiz-progress">
+          <span id="quiz-progress-label">Question 1 of 8</span>
+          <span class="literacy-progress-dots" id="quiz-progress-dots" aria-hidden="true"></span>
+        </div>
+        <span class="week-2-score-chip" id="quiz-score-label">Score: 0 / 8</span>
+      </div>
+
+      <div class="literacy-question-card">
+        <div class="literacy-question-visual week-2-garden-clue" id="quiz-question-visual" role="img" aria-label="Look closely in the garden">
+          <span aria-hidden="true">🌿</span><span aria-hidden="true">🔍</span>
+        </div>
+        <div class="literacy-question-copy">
+          <h2 id="quiz-question">What can we find in the garden?</h2>
+          <p id="quiz-question-detail">We can find green grass.</p>
+        </div>
+        <button class="literacy-listen-button" id="quiz-listen" type="button" aria-label="Listen to the question and clue">🔊</button>
+      </div>
+
+      <div class="literacy-answer-grid" id="quiz-answers"></div>
+      <p class="literacy-quiz-feedback" id="quiz-feedback" aria-live="polite"></p>
+
+      <div class="literacy-quiz-complete" id="quiz-complete" hidden>
+        <div class="literacy-complete-icon" aria-hidden="true">🌻</div>
+        <h2>Great job!</h2>
+        <p>You found all eight garden clues!</p>
+        <div class="literacy-complete-actions">
+          <button class="pill-btn green" id="quiz-restart" type="button">🔄 Try Again</button>
+          <a class="pill-btn blue" href="week-2-page-01.html#lesson-focus">🎬 Back to Video</a>
+          <a class="pill-btn orange" href="week-2-page-02.html#lesson-focus">Next Page ➡️</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/literacy-week-2-page-01-activity.js"></script>
+  <script src="../js/literacy-good-job.js"></script>
+</body>
+</html>
