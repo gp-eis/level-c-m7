@@ -4,7 +4,6 @@
   const origin = params.get('from') === 'games' ? 'games' : 'phonics';
   const focusTeams = week <= 2 ? ['ai', 'ay'] : ['ea', 'ee'];
   const focusLabel = focusTeams.join(' and ');
-  const vowelSound = week <= 2 ? 'long A' : 'long E';
   const wordsByFocus = {
     a: [
       { word: 'tail', team: 'ai', before: 't', after: 'l', silly: 'tayl', sentence: 'An elephant has a tail.' },
@@ -167,7 +166,7 @@
   const currentWord = () => rounds[roundIndex];
   const correctSpeech = (item) => gameKey === 'picture'
     ? `Correct! ${item.sentence}`
-    : `Correct! ${item.word}. ${item.team.split('').join(' ')} makes the ${vowelSound} sound in ${item.word}.`;
+    : `Correct! ${item.word}.`;
 
   const finishCorrect = async (button, item, updateBoard) => {
     if (roundLocked) return;
@@ -257,7 +256,7 @@
         finishCorrect(button, item, () => button.classList.add('is-popped'));
       });
     });
-    window.setTimeout(() => speak(`Pop ${item.word}.`), 260);
+    window.setTimeout(() => speak(item.word), 260);
   };
 
   const renderTrain = (item) => {
@@ -333,7 +332,7 @@
 
   hearButton?.addEventListener('click', () => {
     const item = currentWord();
-    speak(gameKey === 'picture' ? item.sentence : gameKey === 'pop' ? `Pop ${item.word}.` : item.word);
+    speak(gameKey === 'picture' ? item.sentence : item.word);
   });
   replayButtons.forEach((button) => button.addEventListener('click', newGame));
   renderRound();

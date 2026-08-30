@@ -1,58 +1,67 @@
 (() => {
-  const ASSET_ROOT = '../assets/images/week-2/reading/activity/';
+  const ASSET_ROOT = '../assets/images/week-2/reading/life-identity/';
   const ROUNDS = [
     {
-      question: 'What did the little duck find first?',
-      detail: 'The little duck find the small snail first.',
-      showLabels: false,
-      correct: 'snail',
-      success: 'That\'s right! The little duck found a small snail first.',
-      answers: [
-        { id: 'snail', label: 'A small snail.', image: 'q1-small-snail.webp', alt: 'A small friendly snail in the garden.' },
-        { id: 'grass', label: 'Some short grass.', image: 'q1-short-grass.webp', alt: 'A short patch of green grass.' },
-        { id: 'fence', label: 'A tall fence.', image: 'q1-tall-fence.webp', alt: 'A tall white garden fence.' }
-      ]
-    },
-    {
-      question: 'Why did the little duck cry?',
-      detail: 'Nobody knew who he was.',
-      showLabels: false,
-      correct: 'unknown',
-      success: 'That\'s right! He cried because nobody in the garden knew who he was.',
-      answers: [
-        { id: 'unknown', label: 'Nobody knew who he was.', image: 'q2-no-one-knew-him.webp', alt: 'A confused and lonely duckling sits near a snail and a quiet fence.' },
-        { id: 'hungry', label: 'He was hungry.', image: 'q2-hungry.webp', alt: 'A hungry duckling looks at an empty food bowl.' },
-        { id: 'hurt', label: 'He hurt his foot.', image: 'q2-hurt.webp', alt: 'A duckling sits with a bandage around one foot.' }
-      ]
-    },
-    {
-      question: 'Who helped the little duck learn who he was?',
-      detail: 'His mother duck helped him that he was a duck.',
-      showLabels: false,
-      correct: 'mother',
-      success: 'That\'s right! His mother duck helped him learn that he was a duck.',
-      answers: [
-        { id: 'mother', label: 'His mother duck.', image: 'q3-mother-helps.webp', alt: 'A caring white mother duck comforts her yellow duckling.' },
-        { id: 'snail', label: 'The small snail.', image: 'q1-small-snail.webp', alt: 'A small friendly snail in the garden.' },
-        { id: 'fence', label: 'The tall fence.', image: 'q1-tall-fence.webp', alt: 'A tall white garden fence.' }
-      ]
-    },
-    {
-      question: 'What should you do when a friend is sad and needs help?',
-      detail: 'Choose the kind thing to do.',
+      question: 'How did the little duck feel when he did not know who he was?',
+      detail: '',
+      questionImage: 'q1-question.webp',
+      questionAlt: 'A curious little duckling looks at a large blue question mark in the garden.',
       showLabels: true,
-      correct: 'help',
-      success: 'That\'s right! We should listen and help kindly when a friend is sad.',
+      correct: 'confused',
+      success: 'That\'s right! The little duck felt confused and upset when he did not know who he was.',
       answers: [
-        { id: 'help', label: 'Listen and help kindly.', image: 'q3-mother-helps.webp', alt: 'A caring mother duck listens to and comforts a sad duckling.' },
-        { id: 'laugh', label: 'Laugh at your friend.', image: 'q4-laugh.webp', alt: 'One duckling laughs at another sad duckling.' },
-        { id: 'leave', label: 'Walk away and ignore them.', image: 'q4-walk-away.webp', alt: 'One duckling walks away from another sad duckling.' }
+        { id: 'confused', label: 'He felt confused and upset.', image: 'q1-confused-upset.webp', alt: 'The little duckling looks confused and upset in the garden.' },
+        { id: 'excited', label: 'He felt very excited.', image: 'q1-excited.webp', alt: 'The little duckling jumps with excitement in the garden.' },
+        { id: 'calm', label: 'He did not care.', image: 'q1-calm.webp', alt: 'The little duckling sits calmly without showing a strong feeling.' }
+      ]
+    },
+    {
+      question: 'Why did the little duck look for Mother Duck?',
+      detail: '',
+      questionImage: 'q2-question.webp',
+      questionAlt: 'A curious little duckling stands beside a purple question mark where garden paths meet.',
+      showLabels: true,
+      correct: 'identity',
+      success: 'That\'s right! The little duck looked for Mother Duck because he wanted to learn who he was.',
+      answers: [
+        { id: 'identity', label: 'He wanted to learn who he was.', image: 'q2-learn-who-i-am.webp', alt: 'The little duckling thoughtfully looks at his duck reflection in a garden pond.' },
+        { id: 'food', label: 'He wanted something delicious to eat.', image: 'q2-food.webp', alt: 'The little duckling eagerly looks at a basket of food.' },
+        { id: 'travel', label: 'He wanted to travel far away.', image: 'q2-travel.webp', alt: 'The little duckling carries a backpack and map toward a long path.' }
+      ]
+    },
+    {
+      question: 'What did the little duck learn after meeting Mother Duck?',
+      detail: '',
+      questionImage: 'q3-question.webp',
+      questionAlt: 'A little duckling looks up at a large teal question mark beside the pond.',
+      showLabels: true,
+      correct: 'duck',
+      success: 'That\'s right! The little duck learned, I am a duck!',
+      answers: [
+        { id: 'duck', label: 'I am a duck!', image: 'q3-i-am-duck.webp', alt: 'The little duckling proudly stands with Mother Duck and other ducklings.' },
+        { id: 'cat', label: 'I am a cat!', image: 'q3-i-am-cat.webp', alt: 'The little duckling pretends to be a cat with soft cat ears and a ball of yarn.' },
+        { id: 'fish', label: 'I am a fish!', image: 'q3-i-am-fish.webp', alt: 'The little duckling pretends to be a fish in a blue fish-tail costume.' }
+      ]
+    },
+    {
+      question: 'Why is it important to know who you are?',
+      detail: '',
+      questionImage: 'q4-question.webp',
+      questionAlt: 'A thoughtful little duckling sits beside a large golden question mark reflected in a pond.',
+      showLabels: true,
+      correct: 'yourself',
+      success: 'That\'s right! Knowing who you are helps you understand yourself and be yourself.',
+      answers: [
+        { id: 'yourself', label: 'It helps you understand yourself and be yourself.', image: 'q4-be-yourself.webp', alt: 'A confident little duckling smiles proudly beside his matching reflection.' },
+        { id: 'same', label: 'It helps you become exactly like everyone else.', image: 'q4-be-like-everyone.webp', alt: 'Three ducklings wear identical blue caps and stand in the same pose.' },
+        { id: 'copy', label: 'It helps you always copy other people.', image: 'q4-copy-others.webp', alt: 'A smaller duckling copies every part of another duckling\'s pose.' }
       ]
     }
   ];
 
   const questionMain = document.getElementById('question-main');
   const questionDetail = document.getElementById('question-detail');
+  const questionImage = document.getElementById('question-image');
   const introSpeaker = document.getElementById('intro-speaker');
   const questionSpeaker = document.getElementById('question-speaker');
   const answersGrid = document.getElementById('answers-grid');
@@ -125,8 +134,10 @@
     const round = ROUNDS[roundIndex];
     await speak(round.question, token);
     if (token !== speechToken) return;
-    await pause(650, token);
-    await speak(round.detail, token);
+    if (round.detail) {
+      await pause(650, token);
+      await speak(round.detail, token);
+    }
   }
 
   function makeAnswerSpeaker(label) {
@@ -187,6 +198,9 @@
     const round = ROUNDS[roundIndex];
     questionMain.textContent = round.question;
     questionDetail.textContent = round.detail;
+    questionDetail.hidden = !round.detail;
+    questionImage.src = `${ASSET_ROOT}${round.questionImage}`;
+    questionImage.alt = round.questionAlt;
     answersGrid.innerHTML = '';
     answersGrid.classList.toggle('pictures-only', !round.showLabels);
     renderProgress();

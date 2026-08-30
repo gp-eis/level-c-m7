@@ -1,5 +1,6 @@
 .reading-activity-page {
-  width: min(1120px, 94vw);
+  width: min(1200px, 94vw);
+  max-width: 1200px;
   padding-bottom: 48px;
 }
 
@@ -83,16 +84,27 @@
 
 .reading-question-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr) auto;
   align-items: center;
   gap: 18px;
-  width: min(900px, 100%);
+  width: 100%;
   margin: 0 auto;
   padding: 18px 22px;
   border: 5px solid #78c8f5;
   border-radius: 27px;
   background: rgba(255,255,255,.96);
   box-shadow: 0 7px 0 rgba(57,149,203,.17);
+}
+
+.reading-question-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border: 4px solid #fff;
+  border-radius: 22px;
+  background: #fffaf0;
+  object-fit: cover;
+  box-shadow: 0 5px 0 rgba(57,149,203,.14), 0 9px 18px rgba(45,80,110,.1);
 }
 
 .reading-question-copy {
@@ -114,6 +126,8 @@
   font-weight: 800;
   line-height: 1.25;
 }
+
+.reading-question-copy p[hidden] { display: none; }
 
 .reading-speaker-btn {
   display: grid;
@@ -152,7 +166,7 @@
   position: relative;
   display: flex;
   min-width: 0;
-  min-height: 280px;
+  min-height: 310px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
@@ -178,7 +192,7 @@
 }
 
 .reading-answers-grid.pictures-only .reading-answer-card {
-  min-height: 235px;
+  min-height: 310px;
   justify-content: center;
   padding-bottom: 12px;
 }
@@ -284,13 +298,15 @@
 @media (max-width: 760px) {
   .reading-answers-grid { grid-template-columns: 1fr; }
   .reading-answer-card { min-height: 235px; }
+  .reading-answers-grid.pictures-only .reading-answer-card { min-height: 235px; }
   .reading-answer-image { max-height: 260px; object-fit: contain; background: #fffaf0; }
 }
 
 @media (max-width: 520px) {
   .reading-activity-page { width: 100%; }
   .reading-activity-board { padding: 13px; border-width: 5px; border-radius: 26px; }
-  .reading-question-panel { gap: 10px; padding: 15px 13px; border-width: 4px; border-radius: 22px; }
+  .reading-question-panel { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 15px 13px; border-width: 4px; border-radius: 22px; }
+  .reading-question-image { grid-column: 1 / -1; width: min(260px, 100%); justify-self: center; }
   .reading-speaker-btn { width: 50px; height: 50px; }
   .reading-answer-listen { width: 44px; height: 44px; }
   .reading-answer-card { padding: 9px 9px 15px; border-radius: 23px; }

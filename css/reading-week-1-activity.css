@@ -1,5 +1,6 @@
 .reading-activity-page {
-  width: min(1120px, 94vw);
+  width: min(1200px, 94vw);
+  max-width: 1200px;
   padding-bottom: 48px;
 }
 
@@ -70,10 +71,10 @@
 
 .reading-question-panel {
   display: grid;
-  grid-template-columns: minmax(130px, 190px) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr) auto;
   align-items: center;
   gap: 20px;
-  width: min(940px, 100%);
+  width: 100%;
   margin: 0 auto;
   padding: 16px 20px;
   border: 5px solid #78c8f5;
@@ -110,6 +111,8 @@
   font-weight: 800;
   line-height: 1.25;
 }
+
+.reading-question-copy p[hidden] { display: none; }
 
 .reading-speaker-btn {
   display: grid;
@@ -148,7 +151,7 @@
   position: relative;
   display: flex;
   min-width: 0;
-  min-height: 290px;
+  min-height: 310px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;

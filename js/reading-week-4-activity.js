@@ -2,41 +2,47 @@
   const ASSET_ROOT = '../assets/images/reading/week-4-activity/';
   const ROUNDS = [
     {
-      question: 'Why does the rat climb the tree?',
-      detail: 'Because it wants the birds eggs.',
-      answer: "Because it wants the birds' eggs.",
+      question: 'What do spiders use to make their webs?',
+      detail: 'Spiders use silk to make their webs.',
+      answer: 'Spiders use silk to make their webs.',
       showChoiceText: false,
       choices: [
-        { label: "Because it wants the birds' eggs.", image: 'q1-eggs.webp', alt: 'A gray rat climbs toward a bird nest with three eggs.', correct: true },
-        { label: 'Because it wants to eat the leaves.', image: 'q1-leaves.webp', alt: 'A gray rat eats green leaves on a tree branch.' },
-        { label: 'Because it wants to play in the web.', image: 'q1-web.webp', alt: 'A gray rat plays beside an empty spider web.' }
+        { label: 'Silk.', image: 'q1-silk.webp', alt: 'A realistic spider produces a fine silk strand while building a web.', correct: true },
+        { label: 'Leaves.', image: 'q1-leaves-realistic.webp', alt: 'A realistic spider arranges green leaves between two twigs.' },
+        { label: 'Water.', image: 'q1-water.webp', alt: 'A realistic spider stands beside large water droplets between two twigs.' }
       ]
     },
     {
-      question: 'What is Mommy Bird scared of?',
-      answer: 'Mommy Bird is scared of the eagle.',
+      question: 'Why do spiders make webs?',
+      detail: 'Spiders make webs to catch food.',
+      answer: 'Spiders make webs to catch food.',
+      showChoiceText: false,
       choices: [
-        { label: 'The eagle.', image: 'q2-eagle.webp', alt: 'A worried gray mother bird looks at an eagle flying overhead.', correct: true },
-        { label: 'The spider.', image: 'q2-spider.webp', alt: 'A smiling gray mother bird looks calmly at a small spider.' },
-        { label: 'The baby bird.', image: 'q2-baby-bird.webp', alt: 'A happy gray mother bird smiles beside a yellow baby bird.' }
+        { label: 'To catch food.', image: 'q2-catch-food.webp', alt: 'A realistic spider approaches a fly caught in its web.', correct: true },
+        { label: 'To fly in the sky.', image: 'q2-fly-sky.webp', alt: 'A realistic-looking spider flies through the sky with transparent wings.' },
+        { label: 'To hide from the rain.', image: 'q2-hide-rain.webp', alt: 'A realistic spider shelters beneath a dry leaf during rain.' }
       ]
     },
     {
-      question: 'How does the spider help the birds?',
-      answer: 'Its web warns them that the rat is coming.',
+      question: "Why can't insects easily get out of a spider web?",
+      detail: 'Some parts of the web are sticky.',
+      answer: 'Insects cannot easily get out because some parts of the web are sticky.',
+      showChoiceText: false,
       choices: [
-        { label: 'Its web warns them that the rat is coming.', image: 'q3-web-warning.webp', alt: 'A spider web shakes when a rat touches it, warning two birds.', correct: true },
-        { label: 'It chases the eagle away.', image: 'q3-chase-eagle.webp', alt: 'A spider chases an eagle while birds watch.' },
-        { label: 'It wraps the eggs in its web.', image: 'q3-wrap-eggs.webp', alt: 'A spider wraps eggs in white web inside a nest.' }
+        { label: 'Some parts of the web are sticky.', image: 'q3-sticky.webp', alt: 'A realistic fly is caught on sticky silk strands with tiny adhesive droplets.', correct: true },
+        { label: 'The web is very heavy.', image: 'q3-heavy.webp', alt: 'An unusually thick and heavy web sags between branches.' },
+        { label: 'The insects like the web.', image: 'q3-insects-like.webp', alt: 'Several realistic insects gather peacefully around a clean web.' }
       ]
     },
     {
-      question: 'How can a spider tell that something touched its web?',
-      answer: 'The web moves and vibrates.',
+      question: 'What can happen when an insect touches a spider web?',
+      detail: 'The web can move or shake when an insect touches it.',
+      answer: 'The web can move or shake when an insect touches it.',
+      showChoiceText: false,
       choices: [
-        { label: 'The web moves and vibrates.', image: 'q4-web-vibrates.webp', alt: 'A ladybug touches a web and gentle vibration lines travel toward a friendly spider.', correct: true },
-        { label: 'The web changes color.', image: 'q4-web-changes-color.webp', alt: 'A friendly spider looks surprised as its still web changes into rainbow colors.' },
-        { label: 'The web starts to sing.', image: 'q4-web-sings.webp', alt: 'Colorful music notes float around a still spider web.' }
+        { label: 'The web can move or shake.', image: 'q4-shake.webp', alt: 'A realistic web vibrates with natural motion blur when an insect touches it.', correct: true },
+        { label: 'The web becomes hard like a rock.', image: 'q4-rock.webp', alt: 'A realistic-looking spider web has transformed into rigid gray stone.' },
+        { label: 'The web turns into water.', image: 'q4-water.webp', alt: 'A realistic-looking spider web melts into clear water droplets.' }
       ]
     }
   ];
@@ -249,7 +255,7 @@
     completion.hidden = false;
     tryAgain.focus();
     stopSpeech();
-    speak('Great job! You finished the Bird Watcher Challenge!');
+    speak('Great job! You finished the Spider Web Science Challenge!');
   }
 
   function startActivity() {
@@ -262,12 +268,12 @@
   introSpeaker.addEventListener('click', () => {
     if (locked) return;
     stopSpeech();
-    speak('Bird Watcher Challenge. Listen carefully, then choose the right picture!');
+    speak('Spider Web Science Challenge. Listen carefully, then choose the right picture!');
   });
   questionSpeaker.addEventListener('click', () => { if (!locked) readQuestion(); });
   completionSpeaker.addEventListener('click', () => {
     stopSpeech();
-    speak('Great job! You finished the Bird Watcher Challenge!');
+    speak('Great job! You finished the Spider Web Science Challenge!');
   });
   tryAgain.addEventListener('click', startActivity);
   window.addEventListener('pagehide', stopSpeech);

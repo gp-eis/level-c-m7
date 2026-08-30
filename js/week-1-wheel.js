@@ -1,8 +1,10 @@
 (() => {
-  const items = window.LEVEL_C_GAMES || window.LEVEL_C_WEEK_1_GAMES;
+  const lessonItems = window.LEVEL_C_GAMES || window.LEVEL_C_WEEK_1_GAMES;
   const helpers = window.LevelCGameHelpers;
+  const bonus = window.SpinWheelBonus;
   const wheel = document.querySelector('#dog-rules-wheel');
-  if (!items || !helpers || !wheel) return;
+  if (!lessonItems || !helpers || !wheel || !bonus) return;
+  const items = [...lessonItems, ...bonus.createSegments()];
 
   const { speak } = helpers;
   const spinButton = document.querySelector('#wheel-spin');
@@ -17,7 +19,7 @@
 
   const colors = ['#ff8a80', '#80d8ff', '#b9f6ca', '#ffd180', '#ea80fc', '#ffff8d', '#84ffff', '#ff9e80'];
   const segmentAngle = 360 / items.length;
-  const spinSpeed = 75;
+  const spinSpeed = 540;
   let rotation = 0;
   let spinning = false;
   let stopping = false;
@@ -35,6 +37,7 @@
     const midpoint = (index * segmentAngle + segmentAngle / 2) * Math.PI / 180;
     const label = document.createElement('span');
     label.className = 'wheel-label';
+    label.style.width = `${Math.max(16, 170 / items.length)}%`;
     label.style.setProperty('--label-x', `${50 + Math.sin(midpoint) * 31}%`);
     label.style.setProperty('--label-y', `${50 - Math.cos(midpoint) * 31}%`);
 
@@ -114,6 +117,15 @@
     spinButton.hidden = false;
     stopButton.hidden = true;
     stopButton.disabled = false;
+
+    if (bonus.show(selectedItem, {
+      onSpinAgain: startSpin,
+      onClose: () => spinButton.focus({ preventScroll: true })
+    })) {
+      result.textContent = selectedItem.sentence;
+      selectedItem = null;
+      return;
+    }
 
     frontImage.src = selectedItem.image;
     frontImage.alt = selectedItem.label;

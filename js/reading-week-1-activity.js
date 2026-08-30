@@ -2,58 +2,55 @@
   const ASSET_ROOT = '../assets/images/reading/week-1-activity/';
   const ROUNDS = [
     {
-      question: 'What is the red dog doing?',
-      detail: 'The red dog is sleeping.',
-      pictureOnly: true,
-      cue: 'q1-red-cue.webp',
-      cueAlt: 'A cute red dog from the story.',
-      correct: 'sleeping',
-      success: 'Correct! The red dog is sleeping.',
+      question: 'Why does a dog wag its tail?',
+      detail: '',
+      cue: 'q1-dog-neutral-cue.webp',
+      cueAlt: 'A real dog sitting calmly and looking at the camera.',
+      correct: 'feelings',
+      success: 'Correct! A dog can wag its tail to show how it feels.',
       answers: [
-        { id: 'sleeping', label: 'Sleeping', image: 'q1-red-sleeping.webp', alt: 'A cute red dog sleeping peacefully.' },
-        { id: 'running', label: 'Running', image: 'q1-red-running.webp', alt: 'A cute red dog running.' },
-        { id: 'jumping', label: 'Jumping', image: 'q1-red-jumping.webp', alt: 'A cute red dog jumping.' }
+        { id: 'feelings', label: 'To show how it feels.', image: 'q1-dog-wag-tail.webp', alt: 'A real happy dog wagging its tail.' },
+        { id: 'dig', label: 'To dig a hole.', image: 'q1-dog-dig.webp', alt: 'A real dog digging a small hole.' },
+        { id: 'sleep', label: 'To go to sleep.', image: 'q1-dog-sleep.webp', alt: 'A real dog sleeping peacefully on grass.' }
       ]
     },
     {
-      question: 'What does the yellow dog smell?',
-      detail: 'The yellow dog smells the grass.',
-      pictureOnly: true,
-      cue: 'q2-yellow-cue.webp',
-      cueAlt: 'A cute yellow dog using its nose.',
-      correct: 'grass',
-      success: 'Correct! The yellow dog smells the grass.',
+      question: 'Why does a peacock open its colorful tail?',
+      detail: '',
+      cue: 'q2-peacock-neutral-cue.webp',
+      cueAlt: 'A real peacock standing calmly with its tail folded.',
+      correct: 'show',
+      success: 'Correct! A peacock opens its colorful tail to attract a partner.',
       answers: [
-        { id: 'grass', label: 'The grass', image: 'q2-yellow-grass.webp', alt: 'A cute yellow dog smelling green grass.' },
-        { id: 'flowers', label: 'The flowers', image: 'q2-yellow-flowers.webp', alt: 'A cute yellow dog smelling colorful flowers.' },
-        { id: 'bone', label: 'A bone', image: 'q2-yellow-bone.webp', alt: 'A cute yellow dog smelling a bone.' }
+        { id: 'show', label: 'To attract a partner.', image: 'q2-peacock-fan.webp', alt: 'A real peacock fanning its colorful tail feathers to attract a partner.' },
+        { id: 'food', label: 'To find food.', image: 'q2-peacock-food.webp', alt: 'A real peacock looking for food on the ground.' },
+        { id: 'rest', label: 'To take a nap.', image: 'q2-peacock-rest.webp', alt: 'A real peacock resting quietly on grass.' }
       ]
     },
     {
-      question: 'What does a dog use to smell?',
-      detail: 'Dogs use their noses to smell.',
-      pictureOnly: true,
-      cue: 'q1-red-cue.webp',
-      cueAlt: 'A cute red dog ready to use its senses.',
-      correct: 'nose',
-      success: 'Correct! Dogs use their noses to smell.',
+      question: 'Why does a lion roar?',
+      detail: '',
+      cue: 'q3-lion-neutral-cue.webp',
+      cueAlt: 'A real lion sitting calmly and looking at the camera.',
+      correct: 'here',
+      success: 'Correct! A lion roars to tell other lions, I am here!',
       answers: [
-        { id: 'nose', label: 'Its nose', image: 'q3-dog-nose.webp', alt: 'A cute red dog using its nose to smell a flower.' },
-        { id: 'eyes', label: 'Its eyes', image: 'q3-dog-eyes.webp', alt: 'A cute red dog using its eyes to look at a butterfly.' },
-        { id: 'ears', label: 'Its ears', image: 'q3-dog-ears.webp', alt: 'A cute red dog using its ears to listen to a bell.' }
+        { id: 'here', label: 'To tell other lions, “I am here!”', image: 'q3-lion-roar.webp', alt: 'A real lion roaring to other lions.' },
+        { id: 'drink', label: 'To drink water.', image: 'q3-lion-drink.webp', alt: 'A real lion drinking from a waterhole.' },
+        { id: 'sleep', label: 'To go to sleep.', image: 'q3-lion-sleep.webp', alt: 'A real lion sleeping under a tree.' }
       ]
     },
     {
-      question: 'Which sense do dogs use very well to explore the world?',
-      detail: 'Choose the best answer.',
-      cue: 'q1-red-cue.webp',
-      cueAlt: 'A cute dog ready to explore the world.',
-      correct: 'smell',
-      success: 'Correct! Dogs use their sense of smell very well.',
+      question: 'Why does a bee dance?',
+      detail: '',
+      cue: 'q4-bee-neutral-cue.webp',
+      cueAlt: 'A real honey bee resting calmly on a green leaf.',
+      correct: 'food',
+      success: 'Correct! A bee dances to show other bees where food is.',
       answers: [
-        { id: 'smell', label: 'Their sense of smell.', image: 'q4-sense-smell.webp', alt: 'A cute golden puppy uses its nose to smell grass and flowers.' },
-        { id: 'taste', label: 'Their sense of taste.', image: 'q4-sense-taste.webp', alt: 'A cute golden puppy tastes a dog biscuit.' },
-        { id: 'touch', label: 'Their sense of touch.', image: 'q4-sense-touch.webp', alt: 'A cute golden puppy touches a soft blue blanket with its paw.' }
+        { id: 'food', label: 'To show other bees where food is.', image: 'q4-bee-dance.webp', alt: 'Real honey bees watching another bee dance on a honeycomb.' },
+        { id: 'flower', label: 'To drink from a flower.', image: 'q4-bee-flower.webp', alt: 'A real honey bee drinking nectar from a yellow flower.' },
+        { id: 'clean', label: 'To clean its wings.', image: 'q4-bee-clean.webp', alt: 'A real honey bee grooming its wings on a leaf.' }
       ]
     }
   ];
@@ -133,8 +130,10 @@
     const round = ROUNDS[roundIndex];
     await speak(round.question, token);
     if (token !== speechToken) return;
-    await pause(650, token);
-    await speak(round.detail, token);
+    if (round.detail) {
+      await pause(650, token);
+      await speak(round.detail, token);
+    }
   }
 
   function makeAnswerSpeaker(label) {
@@ -195,6 +194,7 @@
     const round = ROUNDS[roundIndex];
     questionMain.textContent = round.question;
     questionDetail.textContent = round.detail;
+    questionDetail.hidden = !round.detail;
     questionImage.src = `${ASSET_ROOT}${round.cue}`;
     questionImage.alt = round.cueAlt;
     answersGrid.innerHTML = '';
