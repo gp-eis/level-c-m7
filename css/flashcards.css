@@ -60,6 +60,47 @@ body[data-week="2"] .fc-board { --fc-accent: #69c9ff; --fc-accent-dark: #258fc9;
 body[data-week="3"] .fc-board { --fc-accent: #79dc67; --fc-accent-dark: #3fa632; }
 body[data-week="4"] .fc-board { --fc-accent: #ff8f9d; --fc-accent-dark: #d74f64; }
 
+.fc-source-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: min(620px, 100%);
+  margin: 0 auto 20px;
+  padding: 7px;
+  border: 4px solid #fff;
+  border-radius: 999px;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 6px 0 rgba(57,149,203,.14);
+}
+
+.fc-source-tab {
+  flex: 1 1 0;
+  min-height: 52px;
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #41627f;
+  font-family: var(--font-friendly);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .14s ease, background .14s ease, color .14s ease;
+}
+
+.fc-source-tab:hover { transform: translateY(-2px); }
+
+.fc-source-tab.is-active {
+  background: linear-gradient(180deg, var(--fc-accent), var(--fc-accent-dark));
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--fc-accent-dark) 75%, #6c4500);
+  color: #fff;
+}
+
+.fc-source-tab:focus-visible {
+  outline: 5px solid #6dc8ff;
+  outline-offset: 3px;
+}
+
 .fc-status-row {
   display: flex;
   align-items: center;
@@ -162,6 +203,11 @@ body[data-week="4"] .fc-board { --fc-accent: #ff8f9d; --fc-accent-dark: #d74f64;
   box-shadow: 0 6px 0 rgba(57,149,203,.14);
 }
 
+body[data-flashcard-source="speech-book"] .fc-back-image {
+  width: min(390px, 72%);
+  height: 68%;
+}
+
 .fc-word-copy {
   margin-top: 10px;
   text-align: center;
@@ -260,12 +306,15 @@ body[data-week="4"] .fc-board { --fc-accent: #ff8f9d; --fc-accent-dark: #d74f64;
   .fc-page { width: 100%; }
   .fc-header .big-title { font-size: 2rem; }
   .fc-board { padding: 13px; border-width: 5px; border-radius: 26px; }
+  .fc-source-tabs { gap: 7px; padding: 5px; border-width: 3px; }
+  .fc-source-tab { min-height: 48px; padding-inline: 9px; }
   .fc-status-row { align-items: stretch; flex-direction: column; text-align: center; }
   .fc-counter, .fc-shuffle-btn { justify-content: center; width: 100%; }
   .fc-card { aspect-ratio: 4 / 5; }
   .fc-card-face { padding: 13px; border-width: 6px; border-radius: 26px; }
   .fc-main-image { height: calc(100% - 42px); }
   .fc-back-image { width: min(250px, 72%); height: 48%; }
+  body[data-flashcard-source="speech-book"] .fc-back-image { width: 84%; height: 62%; }
   .fc-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .fc-control { width: 100%; min-width: 0; padding-inline: 10px; font-size: 1rem; }
   .fc-thumbnail-list { grid-template-columns: repeat(4, minmax(58px, 1fr)); gap: 8px; }
