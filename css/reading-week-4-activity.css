@@ -103,9 +103,9 @@
   margin: 7px 0 0;
   color: #1879bf;
   font-family: var(--font-friendly);
-  font-size: clamp(1.16rem, 2.6vw, 1.55rem);
+  font-size: clamp(1.3rem, 2.8vw, 1.7rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .reading-question-detail[hidden] { display: none; }

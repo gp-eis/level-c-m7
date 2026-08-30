@@ -31,12 +31,12 @@
       ]
     },
     {
-      question: 'What should you do when you feel scared?',
-      answer: 'Tell a trusted grown-up.',
+      question: 'How can a spider tell that something touched its web?',
+      answer: 'The web moves and vibrates.',
       choices: [
-        { label: 'Tell a trusted grown-up.', image: 'q4-tell-grownup.webp', alt: 'A worried child tells a kind teacher about feeling scared.', correct: true },
-        { label: 'Go closer by yourself.', image: 'q4-go-alone.webp', alt: 'A worried child walks alone toward a dark cave.' },
-        { label: 'Keep it a secret.', image: 'q4-keep-secret.webp', alt: 'A worried child sits silently near a caring teacher.' }
+        { label: 'The web moves and vibrates.', image: 'q4-web-vibrates.webp', alt: 'A ladybug touches a web and gentle vibration lines travel toward a friendly spider.', correct: true },
+        { label: 'The web changes color.', image: 'q4-web-changes-color.webp', alt: 'A friendly spider looks surprised as its still web changes into rainbow colors.' },
+        { label: 'The web starts to sing.', image: 'q4-web-sings.webp', alt: 'Colorful music notes float around a still spider web.' }
       ]
     }
   ];

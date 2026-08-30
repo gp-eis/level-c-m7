@@ -1,59 +1,66 @@
 window.LEVEL_C_WEEK_4_GAMES = Object.freeze([
   Object.freeze({
-    id: 'run-after-birds',
-    label: 'Run after birds',
-    phrase: 'Run after birds.',
-    sentence: 'You should not run after birds.',
-    image: '../assets/images/week-4/games/park-rules/run-after-birds.png'
+    id: 'dark-cave',
+    label: 'Dark cave',
+    phrase: 'A dark cave.',
+    sentence: 'The cave is dark.',
+    image: '../assets/images/games/speech-book/week-4/dark-cave.webp'
   }),
   Object.freeze({
-    id: 'take-photos-of-birds',
-    label: 'Take photos of birds',
-    phrase: 'Take photos of birds.',
-    sentence: 'You should take photos of birds.',
-    image: '../assets/images/week-4/games/park-rules/take-photos-of-birds.png'
+    id: 'monster',
+    label: 'Monster',
+    phrase: 'The monster.',
+    sentence: 'I am scared of the monster.',
+    image: '../assets/images/games/speech-book/week-4/scared-of-monster.webp'
   }),
   Object.freeze({
-    id: 'walk-quietly',
-    label: 'Walk quietly',
-    phrase: 'Walk quietly.',
-    sentence: 'You should walk quietly.',
-    image: '../assets/images/week-4/games/park-rules/walk-quietly.png'
+    id: 'skeletons',
+    label: 'Skeletons',
+    phrase: 'The skeletons.',
+    sentence: 'I am scared of the skeletons.',
+    image: '../assets/images/games/speech-book/week-4/scared-of-skeletons.webp'
   }),
   Object.freeze({
-    id: 'leave-food-on-tables',
-    label: 'Leave food on tables',
-    phrase: 'Leave food on tables.',
-    sentence: 'You should not leave food on tables.',
-    image: '../assets/images/week-4/games/park-rules/leave-food-on-tables.png'
+    id: 'bats',
+    label: 'Bats',
+    phrase: 'The bats.',
+    sentence: 'I am scared of the bats.',
+    image: '../assets/images/games/speech-book/week-4/scared-of-bats.webp'
   }),
   Object.freeze({
-    id: 'use-binoculars-to-watch-birds',
-    label: 'Use binoculars to watch birds',
-    phrase: 'Use binoculars to watch birds.',
-    sentence: 'You should use binoculars to watch birds.',
-    image: '../assets/images/week-4/games/park-rules/use-binoculars-to-watch-birds.png'
+    id: 'spiders',
+    label: 'Spiders',
+    phrase: 'The spiders.',
+    sentence: 'I am scared of the spiders.',
+    image: '../assets/images/games/speech-book/week-4/scared-of-spiders.webp'
   }),
   Object.freeze({
-    id: 'touch-bird-nests',
-    label: 'Touch bird nests',
-    phrase: 'Touch bird nests.',
-    sentence: 'You should not touch bird nests.',
-    image: '../assets/images/week-4/games/park-rules/touch-bird-nests.png'
+    id: 'orange-pumpkin',
+    label: 'Orange pumpkin',
+    phrase: 'An orange pumpkin.',
+    sentence: 'An orange pumpkin is scary.',
+    image: '../assets/images/games/speech-book/week-4/orange-pumpkin.webp'
   }),
   Object.freeze({
-    id: 'take-bird-eggs-home',
-    label: 'Take bird eggs home',
-    phrase: 'Take bird eggs home.',
-    sentence: 'You should not take bird eggs home.',
-    image: '../assets/images/week-4/games/park-rules/take-bird-eggs-home.png'
+    id: 'black-bug',
+    label: 'Black bug',
+    phrase: 'A black bug.',
+    sentence: 'A black bug is scary.',
+    image: '../assets/images/games/speech-book/week-4/black-bug.webp'
   }),
   Object.freeze({
-    id: 'put-trash-in-bins',
-    label: 'Put trash in bins',
-    phrase: 'Put trash in bins.',
-    sentence: 'You should put trash in bins.',
-    image: '../assets/images/week-4/games/park-rules/put-trash-in-bins.png'
+    id: 'gray-rat',
+    label: 'Gray rat',
+    phrase: 'A gray rat.',
+    sentence: 'A gray rat is scary.',
+    image: '../assets/images/games/speech-book/week-4/gray-rat.webp'
+  }),
+  Object.freeze({
+    id: 'white-ghost',
+    label: 'White ghost',
+    phrase: 'A white ghost.',
+    sentence: 'A white ghost is scary.',
+    image: '../assets/images/games/speech-book/week-4/white-ghost.webp'
   })
 ]);
 

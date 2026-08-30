@@ -30,30 +30,30 @@
       ]
     },
     {
-      question: 'What color does the red dog look?',
-      detail: 'The red dog looks gray.',
+      question: 'What does a dog use to smell?',
+      detail: 'Dogs use their noses to smell.',
       pictureOnly: true,
-      cue: 'q3-color-cue.webp',
-      cueAlt: 'A white dog looking at the red dog and thinking about its color.',
-      correct: 'gray',
-      success: 'Correct! The red dog looks gray.',
+      cue: 'q1-red-cue.webp',
+      cueAlt: 'A cute red dog ready to use its senses.',
+      correct: 'nose',
+      success: 'Correct! Dogs use their noses to smell.',
       answers: [
-        { id: 'gray', label: 'Gray', image: 'q3-gray-dog.webp', alt: 'A cute gray dog.' },
-        { id: 'red', label: 'Red', image: 'q1-red-cue.webp', alt: 'A cute red dog.' },
-        { id: 'purple', label: 'Purple', image: 'q3-purple-dog.webp', alt: 'A cute purple dog.' }
+        { id: 'nose', label: 'Its nose', image: 'q3-dog-nose.webp', alt: 'A cute red dog using its nose to smell a flower.' },
+        { id: 'eyes', label: 'Its eyes', image: 'q3-dog-eyes.webp', alt: 'A cute red dog using its eyes to look at a butterfly.' },
+        { id: 'ears', label: 'Its ears', image: 'q3-dog-ears.webp', alt: 'A cute red dog using its ears to listen to a bell.' }
       ]
     },
     {
-      question: 'What should you do when a friend sees something differently?',
-      detail: 'Choose the kind and helpful response.',
-      cue: 'q4-different-view-cue.webp',
-      cueAlt: 'Two children looking curiously at different drawings of the sky.',
-      correct: 'listen',
-      success: 'Correct! Listen and try to understand your friend.',
+      question: 'Which sense do dogs use very well to explore the world?',
+      detail: 'Choose the best answer.',
+      cue: 'q1-red-cue.webp',
+      cueAlt: 'A cute dog ready to explore the world.',
+      correct: 'smell',
+      success: 'Correct! Dogs use their sense of smell very well.',
       answers: [
-        { id: 'listen', label: 'Listen and try to understand.', image: 'q4-listen-kindly.webp', alt: 'One child listens kindly while a friend explains a drawing.' },
-        { id: 'laugh', label: 'Laugh at your friend.', image: 'q4-laugh.webp', alt: 'One child laughs and points while another child looks sad.' },
-        { id: 'turn-away', label: 'Turn away and say they are wrong.', image: 'q4-turn-away.webp', alt: 'One child turns away with crossed arms while another child looks sad.' }
+        { id: 'smell', label: 'Their sense of smell.', image: 'q4-sense-smell.webp', alt: 'A cute golden puppy uses its nose to smell grass and flowers.' },
+        { id: 'taste', label: 'Their sense of taste.', image: 'q4-sense-taste.webp', alt: 'A cute golden puppy tastes a dog biscuit.' },
+        { id: 'touch', label: 'Their sense of touch.', image: 'q4-sense-touch.webp', alt: 'A cute golden puppy touches a soft blue blanket with its paw.' }
       ]
     }
   ];

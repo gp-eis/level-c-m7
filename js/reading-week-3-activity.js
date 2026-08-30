@@ -32,13 +32,13 @@
       ]
     },
     {
-      kind: 'Think About It',
-      question: 'What should you do when you need help?',
-      correctFeedback: 'That’s right! Ask someone to help you.',
+      kind: 'Folktale Lesson',
+      question: 'What lesson does this folktale teach us?',
+      correctFeedback: 'That’s right! Ask for help and look carefully.',
       answers: [
-        { label: 'Ask someone to help you.', image: 'q4-ask-help.png', alt: 'The little monkey politely asks his older brother for help.', correct: true },
-        { label: 'Give up.', image: 'q4-give-up.png', alt: 'The little monkey sadly gives up and walks away.', correct: false },
-        { label: 'Get angry.', image: 'q4-get-angry.png', alt: 'The little monkey folds his arms and gets angry.', correct: false }
+        { label: 'Ask for help and look carefully.', image: 'q4-ask-look-carefully.webp', alt: 'The little monkey asks his older brother for help and they carefully look at snakes among the leaves.', correct: true },
+        { label: 'Give up when something is difficult.', image: 'q4-give-up-new.webp', alt: 'The little monkey sits sadly on the jungle path and gives up.', correct: false },
+        { label: 'Get angry when you cannot find something.', image: 'q4-get-angry-new.webp', alt: 'The little monkey folds its arms and stamps one foot angrily.', correct: false }
       ]
     }
   ];

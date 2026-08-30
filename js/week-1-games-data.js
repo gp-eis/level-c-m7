@@ -1,59 +1,59 @@
 window.LEVEL_C_WEEK_1_GAMES = Object.freeze([
   Object.freeze({
-    id: 'clean-up',
-    label: 'Clean up dog poop',
-    phrase: 'Always clean up dog poop.',
-    sentence: 'You should always clean up dog poop.',
-    image: '../assets/images/week-1/games/dog-park-rules/clean-up-dog-poop.png'
+    id: 'dog-sitting',
+    label: 'Dog sitting',
+    phrase: 'Dog sitting.',
+    sentence: 'The dog is sitting.',
+    image: '../assets/images/games/speech-book/week-1/dog-sitting.webp'
   }),
   Object.freeze({
-    id: 'hurt',
-    label: 'Hurt other dogs',
-    phrase: 'Hurt other dogs.',
-    sentence: 'You should not hurt other dogs.',
-    image: '../assets/images/week-1/games/dog-park-rules/hurt-other-dogs.png'
+    id: 'cat-yawning',
+    label: 'Cat yawning',
+    phrase: 'Cat yawning.',
+    sentence: 'The cat is yawning.',
+    image: '../assets/images/games/speech-book/week-1/cat-yawning.webp'
   }),
   Object.freeze({
-    id: 'shout',
-    label: 'Shout at other dogs',
-    phrase: 'Shout at other dogs.',
-    sentence: 'You should not shout at other dogs.',
-    image: '../assets/images/week-1/games/dog-park-rules/shout-at-other-dogs.png'
+    id: 'deer-walking',
+    label: 'Deer walking',
+    phrase: 'Deer walking.',
+    sentence: 'The deer is walking.',
+    image: '../assets/images/games/speech-book/week-1/deer-walking.webp'
   }),
   Object.freeze({
-    id: 'play',
-    label: 'Play with your dog',
-    phrase: 'Play with your dog.',
-    sentence: 'You should play with your dog.',
-    image: '../assets/images/week-1/games/dog-park-rules/play-with-your-dog.png'
+    id: 'rabbit-jumping',
+    label: 'Rabbit jumping',
+    phrase: 'Rabbit jumping.',
+    sentence: 'The rabbit is jumping.',
+    image: '../assets/images/games/speech-book/week-1/rabbit-jumping.webp'
   }),
   Object.freeze({
-    id: 'leash',
-    label: 'Use a leash',
-    phrase: 'Use a leash.',
-    sentence: 'You should use a leash.',
-    image: '../assets/images/week-1/games/dog-park-rules/use-a-leash.png'
+    id: 'eagle-hunting',
+    label: 'Eagle hunting',
+    phrase: 'Eagle hunting.',
+    sentence: 'The eagle is hunting.',
+    image: '../assets/images/games/speech-book/week-1/eagle-hunting.webp'
   }),
   Object.freeze({
-    id: 'chase',
-    label: 'Let your dog chase people',
-    phrase: 'Let your dog chase people.',
-    sentence: 'You should not let your dog chase people.',
-    image: '../assets/images/week-1/games/dog-park-rules/dog-chase-people.png'
+    id: 'swan-swimming',
+    label: 'Swan swimming',
+    phrase: 'Swan swimming.',
+    sentence: 'The swan is swimming.',
+    image: '../assets/images/games/speech-book/week-1/swan-swimming.webp'
   }),
   Object.freeze({
-    id: 'fight',
-    label: 'Let your dog fight other animals',
-    phrase: 'Let your dog fight other animals.',
-    sentence: 'You should not let your dog fight other animals.',
-    image: '../assets/images/week-1/games/dog-park-rules/dog-fight-other-animals.png'
+    id: 'bat-sleeping',
+    label: 'Bat sleeping',
+    phrase: 'Bat sleeping.',
+    sentence: 'The bat is sleeping.',
+    image: '../assets/images/games/speech-book/week-1/bat-sleeping.webp'
   }),
   Object.freeze({
-    id: 'water',
-    label: 'Give your dog water',
-    phrase: 'Give your dog water.',
-    sentence: 'You should give your dog water.',
-    image: '../assets/images/week-1/games/dog-park-rules/give-dog-water.png'
+    id: 'squirrel-playing',
+    label: 'Squirrel playing',
+    phrase: 'Squirrel playing.',
+    sentence: 'The squirrel is playing.',
+    image: '../assets/images/games/speech-book/week-1/squirrel-playing.webp'
   })
 ]);
 

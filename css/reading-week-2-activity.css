@@ -110,8 +110,9 @@
   margin: 7px 0 0;
   color: #1879bf;
   font-family: var(--font-friendly);
-  font-size: clamp(1.05rem, 2.3vw, 1.35rem);
-  font-weight: 700;
+  font-size: clamp(1.3rem, 2.8vw, 1.7rem);
+  font-weight: 800;
+  line-height: 1.25;
 }
 
 .reading-speaker-btn {

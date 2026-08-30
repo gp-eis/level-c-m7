@@ -1,59 +1,59 @@
 window.LEVEL_C_WEEK_2_GAMES = Object.freeze([
   Object.freeze({
-    id: 'squash-bugs',
-    label: 'Squash bugs',
-    phrase: 'Squash bugs.',
-    sentence: 'You should not squash bugs.',
-    image: '../assets/images/week-2/games/garden-rules/squash-bugs.png'
+    id: 'green-grass',
+    label: 'Green grass',
+    phrase: 'Green grass.',
+    sentence: 'We can find green grass.',
+    image: '../assets/images/games/speech-book/week-2/green-grass.webp'
   }),
   Object.freeze({
-    id: 'plant-flowers',
-    label: 'Plant flowers',
-    phrase: 'Plant flowers.',
-    sentence: 'You should plant flowers.',
-    image: '../assets/images/week-2/games/garden-rules/plant-flowers.png'
+    id: 'brown-ant',
+    label: 'Brown ant',
+    phrase: 'A brown ant.',
+    sentence: 'We can find a brown ant.',
+    image: '../assets/images/games/speech-book/week-2/brown-ant.webp'
   }),
   Object.freeze({
-    id: 'pull-out-weeds',
-    label: 'Pull out weeds',
-    phrase: 'Pull out weeds.',
-    sentence: 'You should pull out weeds.',
-    image: '../assets/images/week-2/games/garden-rules/pull-out-weeds.png'
+    id: 'pink-lotus-flower',
+    label: 'Pink lotus flower',
+    phrase: 'A pink lotus flower.',
+    sentence: 'We can find a pink lotus flower.',
+    image: '../assets/images/games/speech-book/week-2/pink-lotus-flower.webp'
   }),
   Object.freeze({
-    id: 'feed-birds',
-    label: 'Feed birds',
-    phrase: 'Feed birds.',
-    sentence: 'You should feed birds.',
-    image: '../assets/images/week-2/games/garden-rules/feed-birds.png'
+    id: 'red-ladybug',
+    label: 'Red ladybug',
+    phrase: 'A red ladybug.',
+    sentence: 'We can find a red ladybug.',
+    image: '../assets/images/games/speech-book/week-2/red-ladybug.webp'
   }),
   Object.freeze({
-    id: 'climb-fences',
-    label: 'Climb fences',
-    phrase: 'Climb fences.',
-    sentence: 'You should not climb fences.',
-    image: '../assets/images/week-2/games/garden-rules/climb-fences.png'
+    id: 'tall-fence',
+    label: 'Tall fence',
+    phrase: 'A tall fence.',
+    sentence: 'I found a tall fence.',
+    image: '../assets/images/games/speech-book/week-2/tall-fence.webp'
   }),
   Object.freeze({
-    id: 'set-traps',
-    label: 'Set traps',
-    phrase: 'Set traps.',
-    sentence: 'You should not set traps.',
-    image: '../assets/images/week-2/games/garden-rules/set-traps.png'
+    id: 'big-tree',
+    label: 'Big tree',
+    phrase: 'A big tree.',
+    sentence: 'I found a big tree.',
+    image: '../assets/images/games/speech-book/week-2/big-tree.webp'
   }),
   Object.freeze({
-    id: 'break-flower-pots',
-    label: 'Break flower pots',
-    phrase: 'Break flower pots.',
-    sentence: 'You should not break flower pots.',
-    image: '../assets/images/week-2/games/garden-rules/break-flower-pots.png'
+    id: 'short-cactus',
+    label: 'Short cactus',
+    phrase: 'A short cactus.',
+    sentence: 'I found a short cactus.',
+    image: '../assets/images/games/speech-book/week-2/short-cactus.webp'
   }),
   Object.freeze({
-    id: 'water-the-flowers',
-    label: 'Water the flowers',
-    phrase: 'Water the flowers.',
-    sentence: 'You should water the flowers.',
-    image: '../assets/images/week-2/games/garden-rules/water-the-flowers.png'
+    id: 'small-snail',
+    label: 'Small snail',
+    phrase: 'A small snail.',
+    sentence: 'I found a small snail.',
+    image: '../assets/images/games/speech-book/week-2/small-snail.webp'
   })
 ]);
 

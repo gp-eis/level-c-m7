@@ -44,13 +44,6 @@
       page: 'phonics-train.html',
       icon: 'vowel-team-train.png',
       hint: 'Put the correct vowel team on the word train.'
-    },
-    picture: {
-      label: 'Picture Match',
-      shortLabel: 'Picture Match',
-      page: 'phonics-picture-match.html',
-      icon: 'picture-match-3d.png',
-      hint: 'Listen to each sentence and choose the matching picture.'
     }
   };
   const iconRoot = '../assets/images/ui/phonics-games/';
@@ -128,6 +121,10 @@
   const gameApp = document.querySelector('#phonics-game-app');
   if (!gameApp) return;
   const gameKey = document.body.dataset.game;
+  if (gameKey === 'picture') {
+    window.location.replace(`phonics.html?week=${week}&from=${origin}`);
+    return;
+  }
   const game = games[gameKey];
   if (!game) return;
 

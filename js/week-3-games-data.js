@@ -1,59 +1,59 @@
 window.LEVEL_C_WEEK_3_GAMES = Object.freeze([
   Object.freeze({
-    id: 'pet-the-animals',
-    label: 'Pet the animals',
-    phrase: 'Pet the animals.',
-    sentence: 'You should not pet the animals.',
-    image: '../assets/images/week-3/games/jungle-rules/pet-the-animals.png'
+    id: 'gray-moon',
+    label: 'Gray moon',
+    phrase: 'The gray moon.',
+    sentence: "It's barking at the gray moon.",
+    image: '../assets/images/games/speech-book/week-3/barking-gray-moon.webp'
   }),
   Object.freeze({
-    id: 'watch-from-far-away',
-    label: 'Watch from far away',
-    phrase: 'Watch from far away.',
-    sentence: 'You should watch from far away.',
-    image: '../assets/images/week-3/games/jungle-rules/watch-from-far-away.png'
+    id: 'purple-scooter',
+    label: 'Purple scooter',
+    phrase: 'The purple scooter.',
+    sentence: "It's barking at the purple scooter.",
+    image: '../assets/images/games/speech-book/week-3/barking-purple-scooter.webp'
   }),
   Object.freeze({
-    id: 'walk-carefully',
-    label: 'Walk carefully',
-    phrase: 'Walk carefully.',
-    sentence: 'You should walk carefully.',
-    image: '../assets/images/week-3/games/jungle-rules/walk-carefully.png'
+    id: 'brown-owl',
+    label: 'Brown owl',
+    phrase: 'The brown owl.',
+    sentence: "It's barking at the brown owl.",
+    image: '../assets/images/games/speech-book/week-3/barking-brown-owl.webp'
   }),
   Object.freeze({
-    id: 'feed-snacks-to-the-animals',
-    label: 'Feed snacks to the animals',
-    phrase: 'Feed snacks to the animals.',
-    sentence: 'You should not feed snacks to the animals.',
-    image: '../assets/images/week-3/games/jungle-rules/feed-snacks-to-the-animals.png'
+    id: 'blue-car',
+    label: 'Blue car',
+    phrase: 'The blue car.',
+    sentence: "It's barking at the blue car.",
+    image: '../assets/images/games/speech-book/week-3/barking-blue-car.webp'
   }),
   Object.freeze({
-    id: 'listen-to-the-guide',
-    label: 'Listen to the guide',
-    phrase: 'Listen to the guide.',
-    sentence: 'You should listen to the guide.',
-    image: '../assets/images/week-3/games/jungle-rules/listen-to-the-guide.png'
+    id: 'boy-on-scooter',
+    label: 'Boy on scooter',
+    phrase: 'Boy on scooter.',
+    sentence: 'The boy is on the scooter.',
+    image: '../assets/images/games/speech-book/week-3/boy-on-scooter.webp'
   }),
   Object.freeze({
-    id: 'throw-trash-on-the-ground',
-    label: 'Throw trash on the ground',
-    phrase: 'Throw trash on the ground.',
-    sentence: 'You should not throw trash on the ground.',
-    image: '../assets/images/week-3/games/jungle-rules/throw-trash-on-the-ground.png'
+    id: 'moon-above-tree',
+    label: 'Moon above tree',
+    phrase: 'Moon above tree.',
+    sentence: 'The moon is above the tree.',
+    image: '../assets/images/games/speech-book/week-3/moon-above-tree.webp'
   }),
   Object.freeze({
-    id: 'shout-and-scream',
-    label: 'Shout and scream',
-    phrase: 'Shout and scream.',
-    sentence: 'You should not shout and scream.',
-    image: '../assets/images/week-3/games/jungle-rules/shout-and-scream.png'
+    id: 'cat-under-car',
+    label: 'Cat under car',
+    phrase: 'Cat under car.',
+    sentence: 'The cat is under the car.',
+    image: '../assets/images/games/speech-book/week-3/cat-under-car.webp'
   }),
   Object.freeze({
-    id: 'stay-on-the-path',
-    label: 'Stay on the path',
-    phrase: 'Stay on the path.',
-    sentence: 'You should stay on the path.',
-    image: '../assets/images/week-3/games/jungle-rules/stay-on-the-path.png'
+    id: 'rabbit-behind-dog',
+    label: 'Rabbit behind dog',
+    phrase: 'Rabbit behind dog.',
+    sentence: 'The rabbit is behind the dog.',
+    image: '../assets/images/games/speech-book/week-3/rabbit-behind-dog.webp'
   })
 ]);
 
