@@ -12,7 +12,7 @@
   const readingVideoTemporarilyDisabled = isReading && weekNumber >= 2 && weekNumber <= 4;
   const readingThumbnails = {
     1: '../assets/images/reading/why-why-is-that-thumbnail.webp',
-    2: '../assets/images/reading/week-2-do-you-know-who-i-am-thumbnail.webp',
+    2: '../assets/images/reading/week-2-do-you-know-who-i-am-thumbnail.webp?v=20260901-philosophy',
     3: '../assets/images/reading/week-3-video-thumbnail.png',
     4: '../assets/images/reading/week-4-video-thumbnail.png'
   };
