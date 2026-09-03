@@ -9,7 +9,7 @@
 
   document.title = `${track.label} Week ${weekNumber} — Animals`;
   const isReading = trackKey === 'reading';
-  const readingVideoTemporarilyDisabled = isReading && weekNumber >= 3 && weekNumber <= 4;
+  const readingVideoTemporarilyDisabled = isReading && weekNumber === 3;
   const readingThumbnails = {
     1: '../assets/images/reading/why-why-is-that-thumbnail.webp',
     2: '../assets/images/reading/week-2-do-you-know-who-i-am-thumbnail.webp?v=20260901-philosophy',
@@ -19,9 +19,9 @@
   const readingThumbnail = isReading ? readingThumbnails[weekNumber] : null;
   const readingVideos = {
     1: '../assets/video/reading/week-1-reading-section.mp4',
-    2: '../assets/video/reading/week-2-reading-section.mp4?v=20260902-updated',
+    2: '../assets/video/reading/week-2-reading-section.mp4?v=20260903-updated',
     3: '../assets/video/reading/week-3-reading-section.mp4',
-    4: '../assets/video/reading/week-4-reading-section.mp4'
+    4: '../assets/video/reading/week-4-reading-section.mp4?v=20260903-updated'
   };
   const readingVideo = isReading && !readingVideoTemporarilyDisabled ? readingVideos[weekNumber] : null;
   const readingActivityPages = {
