@@ -47,22 +47,22 @@ window.READING_ACTIVITY_CONFIGS = {
     title: 'Little Monkey Challenge', cardCopy: 'Answer four picture questions about the folktale.',
     completion: 'You finished the Little Monkey folktale activity!', assetBase: '../assets/images/reading/week-3-qa/',
     questions: [
-      { question: 'Who does the little monkey copy every day?', answers: [
-        { label: 'His older brother.', image: 'q1-older-brother.png', alt: 'The monkey copies his older brother.', correct: true },
-        { label: 'A parrot.', image: 'q1-parrot.png', alt: 'The monkey copies a parrot.' },
-        { label: 'A snake.', image: 'q1-snake.png', alt: 'The monkey copies a snake.' }] },
-      { question: 'What animal can the little monkey not see at first?', answers: [
-        { label: 'The snakes.', image: 'q2-snakes.png', alt: 'Snakes among jungle leaves.', correct: true },
-        { label: 'The parrot.', image: 'q2-parrot.png', alt: 'A parrot on a branch.' },
-        { label: 'The tiger.', image: 'q2-tiger.png', alt: 'A tiger cub.' }] },
-      { question: 'How does the little monkey find the snakes?', answers: [
-        { label: 'He looks slowly and carefully.', image: 'q4-look-carefully.png', alt: 'The monkey looks carefully.', correct: true },
-        { label: 'He closes his eyes.', image: 'q4-close-eyes.png', alt: 'The monkey closes his eyes.' },
-        { label: 'He runs away.', image: 'q3-run-away.png', alt: 'The monkey runs away.' }] },
-      { question: 'What lesson does this folktale teach us?', answers: [
-        { label: 'Ask for help and look carefully.', image: 'q4-ask-look-carefully.webp', alt: 'The monkey asks for help.', correct: true },
-        { label: 'Give up when something is difficult.', image: 'q4-give-up-new.webp', alt: 'The monkey gives up.' },
-        { label: 'Get angry when you cannot find something.', image: 'q4-get-angry-new.webp', alt: 'The monkey gets angry.' }] }
+      { question: 'What did Momo wear on his ear?', answers: [
+        { label: 'A red flower.', image: 'q1-red-flower.webp', alt: 'Momo wears a red flower on his ear.', correct: true, response: 'That’s right! Momo wore a red flower on his ear.' },
+        { label: 'A green leaf.', image: 'q1-green-leaf.webp', alt: 'Momo wears a green leaf on his ear.' },
+        { label: 'A blue hat.', image: 'q1-blue-hat.webp', alt: 'Momo wears a blue hat.' }] },
+      { question: 'What did Momo realize after copying his friends?', answers: [
+        { label: 'Copying them did not feel right for him.', image: 'q2-copying-feels-wrong.webp', alt: 'Momo looks uncomfortable while copying his friends.', correct: true, response: 'That’s right! Momo realized that copying his friends did not feel right for him.' },
+        { label: 'He could do everything better than them.', image: 'q2-better-than-friends.webp', alt: 'Momo proudly holds a trophy while his friends watch.' },
+        { label: 'He wanted to copy them all day.', image: 'q2-copy-all-day.webp', alt: 'Momo eagerly copies the same pose as his friends.' }] },
+      { question: 'What did Momo do after he felt sad?', answers: [
+        { label: 'He made a silly, droopy face.', image: 'q3-funny-face.webp', alt: 'Momo makes a silly, droopy face.', correct: true, response: 'That’s right! Momo made a silly, droopy face.' },
+        { label: 'He put on another flower.', image: 'q3-another-flower.webp', alt: 'Momo wears two red flowers.' },
+        { label: 'He went to sleep.', image: 'q3-sleep.webp', alt: 'Momo sleeps peacefully in the warm sunlight.' }] },
+      { question: 'What did Momo learn at the end?', answers: [
+        { label: 'He liked being himself.', image: 'q4-like-being-himself.webp', alt: 'Momo happily makes his own funny face while his friends smile.', correct: true, response: 'That’s right! Momo learned that he liked being himself.' },
+        { label: 'He had to keep copying his friends.', image: 'q4-keep-copying.webp', alt: 'Momo copies the same pose as his friends.' },
+        { label: 'He should stay away from his friends.', image: 'q4-stay-away.webp', alt: 'Momo sits alone far away from his friends.' }] }
     ]
   },
   4: {

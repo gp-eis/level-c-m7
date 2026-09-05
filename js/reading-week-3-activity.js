@@ -3,42 +3,42 @@
   const ROUNDS = [
     {
       kind: 'Story Question',
-      question: 'Who does the little monkey copy every day?',
-      correctFeedback: 'That’s right! The little monkey copies his older brother every day.',
+      question: 'What did Momo wear on his ear?',
+      correctFeedback: 'That’s right! Momo wore a red flower on his ear.',
       answers: [
-        { label: 'His older brother.', image: 'q1-older-brother.png', alt: 'The little monkey copies the raised-arm pose of his older brother.', correct: true },
-        { label: 'A parrot.', image: 'q1-parrot.png', alt: 'The little monkey copies a colorful parrot.', correct: false },
-        { label: 'A snake.', image: 'q1-snake.png', alt: 'The little monkey copies a friendly green snake.', correct: false }
+        { label: 'A red flower.', image: 'q1-red-flower.webp', alt: 'Momo wears a red flower on his ear.', correct: true },
+        { label: 'A green leaf.', image: 'q1-green-leaf.webp', alt: 'Momo wears a green leaf on his ear.', correct: false },
+        { label: 'A blue hat.', image: 'q1-blue-hat.webp', alt: 'Momo wears a blue hat.', correct: false }
       ]
     },
     {
       kind: 'Story Question',
-      question: 'What animal can the little monkey not see at first?',
-      correctFeedback: 'That’s right! The little monkey cannot see the snakes at first.',
+      question: 'What did Momo realize after copying his friends?',
+      correctFeedback: 'That’s right! Momo realized that copying his friends did not feel right for him.',
       answers: [
-        { label: 'The snakes.', image: 'q2-snakes.png', alt: 'A group of pale snakes among jungle leaves and flowers.', correct: true },
-        { label: 'The parrot.', image: 'q2-parrot.png', alt: 'A colorful parrot perched on a jungle branch.', correct: false },
-        { label: 'The tiger.', image: 'q2-tiger.png', alt: 'A friendly tiger cub in the jungle.', correct: false }
+        { label: 'Copying them did not feel right for him.', image: 'q2-copying-feels-wrong.webp', alt: 'Momo looks uncomfortable while copying his friends.', correct: true },
+        { label: 'He could do everything better than them.', image: 'q2-better-than-friends.webp', alt: 'Momo proudly holds a trophy while his friends watch.', correct: false },
+        { label: 'He wanted to copy them all day.', image: 'q2-copy-all-day.webp', alt: 'Momo eagerly copies the same pose as his friends.', correct: false }
       ]
     },
     {
       kind: 'Story Question',
-      question: 'How does the little monkey find the snakes?',
-      correctFeedback: 'That’s right! He looks slowly and carefully.',
+      question: 'What did Momo do after he felt sad?',
+      correctFeedback: 'That’s right! Momo made a silly, droopy face.',
       answers: [
-        { label: 'He looks slowly and carefully.', image: 'q4-look-carefully.png', alt: 'The little monkey looks slowly and carefully at the jungle leaves.', correct: true },
-        { label: 'He closes his eyes.', image: 'q4-close-eyes.png', alt: 'The little monkey covers both eyes with his hands.', correct: false },
-        { label: 'He runs away.', image: 'q3-run-away.png', alt: 'The little monkey runs away along the jungle path.', correct: false }
+        { label: 'He made a silly, droopy face.', image: 'q3-funny-face.webp', alt: 'Momo makes a silly, droopy face.', correct: true },
+        { label: 'He put on another flower.', image: 'q3-another-flower.webp', alt: 'Momo wears two red flowers.', correct: false },
+        { label: 'He went to sleep.', image: 'q3-sleep.webp', alt: 'Momo sleeps peacefully in the warm sunlight.', correct: false }
       ]
     },
     {
       kind: 'Folktale Lesson',
-      question: 'What lesson does this folktale teach us?',
-      correctFeedback: 'That’s right! Ask for help and look carefully.',
+      question: 'What did Momo learn at the end?',
+      correctFeedback: 'That’s right! Momo learned that he liked being himself.',
       answers: [
-        { label: 'Ask for help and look carefully.', image: 'q4-ask-look-carefully.webp', alt: 'The little monkey asks his older brother for help and they carefully look at snakes among the leaves.', correct: true },
-        { label: 'Give up when something is difficult.', image: 'q4-give-up-new.webp', alt: 'The little monkey sits sadly on the jungle path and gives up.', correct: false },
-        { label: 'Get angry when you cannot find something.', image: 'q4-get-angry-new.webp', alt: 'The little monkey folds its arms and stamps one foot angrily.', correct: false }
+        { label: 'He liked being himself.', image: 'q4-like-being-himself.webp', alt: 'Momo happily makes his own funny face while his friends smile.', correct: true },
+        { label: 'He had to keep copying his friends.', image: 'q4-keep-copying.webp', alt: 'Momo copies the same pose as his friends.', correct: false },
+        { label: 'He should stay away from his friends.', image: 'q4-stay-away.webp', alt: 'Momo sits alone far away from his friends.', correct: false }
       ]
     }
   ];

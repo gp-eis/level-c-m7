@@ -20,7 +20,7 @@
   const readingVideos = {
     1: '../assets/video/reading/week-1-reading-section.mp4',
     2: '../assets/video/reading/week-2-reading-section.mp4?v=20260903-updated',
-    3: '../assets/video/reading/week-3-reading-section.mp4',
+    3: '../assets/video/reading/week-3-reading-section.mp4?v=20260905-updated',
     4: '../assets/video/reading/week-4-reading-section.mp4?v=20260903-updated'
   };
   const readingVideo = isReading && !readingVideoTemporarilyDisabled ? readingVideos[weekNumber] : null;
