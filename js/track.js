@@ -9,7 +9,6 @@
 
   document.title = `${track.label} Week ${weekNumber} — Animals`;
   const isReading = trackKey === 'reading';
-  const readingVideoTemporarilyDisabled = isReading && weekNumber === 3;
   const readingThumbnails = {
     1: '../assets/images/reading/why-why-is-that-thumbnail.webp',
     2: '../assets/images/reading/week-2-do-you-know-who-i-am-thumbnail.webp?v=20260901-philosophy',
@@ -23,7 +22,7 @@
     3: '../assets/video/reading/week-3-reading-section.mp4?v=20260906-updated',
     4: '../assets/video/reading/week-4-reading-section.mp4?v=20260903-updated'
   };
-  const readingVideo = isReading && !readingVideoTemporarilyDisabled ? readingVideos[weekNumber] : null;
+  const readingVideo = isReading ? readingVideos[weekNumber] : null;
   const readingActivityPages = {
     1: 'week-1-activity.html',
     2: 'week-2-activity.html',
@@ -74,9 +73,7 @@
         <div class="track-video-placeholder"><div class="track-video-placeholder__copy"><span aria-hidden="true">${week.icon}</span><strong>Week ${weekNumber} ${track.label} video placeholder</strong><small>The ${week.animal} lesson video will be added here.</small></div><button class="center-video-play-placeholder" type="button" aria-label="Video placeholder" disabled>▶</button></div>
       `}
       ${isReading
-        ? `<p class="track-note">${readingVideoTemporarilyDisabled
-          ? 'This reading video is being updated. Please check back soon!'
-          : 'Watch the story, then try the reading activity!'}</p>`
+        ? '<p class="track-note">Watch the story, then try the reading activity!</p>'
         : ''}
     </section>
     <section class="track-card track-activity-card">
